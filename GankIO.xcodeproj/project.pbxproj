@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		208EFEEE4C8ED95FF9BB5D36 /* Pods_GankIOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F2656967DAB85E1E1AD59B /* Pods_GankIOTests.framework */; };
 		372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122BE1D348C9F0041601F /* AppDelegate.swift */; };
-		372122C11D348C9F0041601F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122C01D348C9F0041601F /* ViewController.swift */; };
-		372122C41D348C9F0041601F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C21D348C9F0041601F /* Main.storyboard */; };
 		372122C61D348CA00041601F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372122C51D348CA00041601F /* Assets.xcassets */; };
 		372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C71D348CA00041601F /* LaunchScreen.storyboard */; };
 		372122D41D348CA00041601F /* GankIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122D31D348CA00041601F /* GankIOTests.swift */; };
 		372122DF1D348CA00041601F /* GankIOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122DE1D348CA00041601F /* GankIOUITests.swift */; };
+		73B7EB3AE27353E46A0E8BF0 /* Pods_GankIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A5D455CC3FD318E1236D62 /* Pods_GankIO.framework */; };
+		D29B43DD4C3F8B191B544291 /* Pods_GankIOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00C5B8598F9FA1CB0540CAFF /* Pods-GankIOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOUITests/Pods-GankIOUITests.release.xcconfig"; sourceTree = "<group>"; };
+		24700A0CE78604ECAE8F5249 /* Pods-GankIO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankIO/Pods-GankIO.debug.xcconfig"; sourceTree = "<group>"; };
 		372122BB1D348C9F0041601F /* GankIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GankIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372122BE1D348C9F0041601F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		372122C01D348C9F0041601F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		372122C31D348C9F0041601F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		372122C51D348CA00041601F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		372122C81D348CA00041601F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		372122CA1D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +48,13 @@
 		372122DA1D348CA00041601F /* GankIOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankIOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		372122DE1D348CA00041601F /* GankIOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GankIOUITests.swift; sourceTree = "<group>"; };
 		372122E01D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GankIOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D067DC5572959617A3CF172 /* Pods-GankIOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89A42ECA1A7DF032AACE619B /* Pods-GankIOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests.release.xcconfig"; sourceTree = "<group>"; };
+		92681B76516A95A2B9DD849E /* Pods-GankIO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIO.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankIO/Pods-GankIO.release.xcconfig"; sourceTree = "<group>"; };
+		A0A5D455CC3FD318E1236D62 /* Pods_GankIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GankIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F2656967DAB85E1E1AD59B /* Pods_GankIOTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GankIOTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8FEDB517EC46EBB1314FB6F /* Pods-GankIOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOUITests/Pods-GankIOUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B7EB3AE27353E46A0E8BF0 /* Pods_GankIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				208EFEEE4C8ED95FF9BB5D36 /* Pods_GankIOTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29B43DD4C3F8B191B544291 /* Pods_GankIOUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +92,8 @@
 				372122D21D348CA00041601F /* GankIOTests */,
 				372122DD1D348CA00041601F /* GankIOUITests */,
 				372122BC1D348C9F0041601F /* Products */,
+				81FE4A3E9961B1D10C9E98CE /* Pods */,
+				A6A4F915C9A2BDD9C3830AD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				372122BE1D348C9F0041601F /* AppDelegate.swift */,
-				372122C01D348C9F0041601F /* ViewController.swift */,
-				372122C21D348C9F0041601F /* Main.storyboard */,
 				372122C51D348CA00041601F /* Assets.xcassets */,
 				372122C71D348CA00041601F /* LaunchScreen.storyboard */,
 				372122CA1D348CA00041601F /* Info.plist */,
@@ -125,6 +136,29 @@
 			path = GankIOUITests;
 			sourceTree = "<group>";
 		};
+		81FE4A3E9961B1D10C9E98CE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24700A0CE78604ECAE8F5249 /* Pods-GankIO.debug.xcconfig */,
+				92681B76516A95A2B9DD849E /* Pods-GankIO.release.xcconfig */,
+				4D067DC5572959617A3CF172 /* Pods-GankIOTests.debug.xcconfig */,
+				89A42ECA1A7DF032AACE619B /* Pods-GankIOTests.release.xcconfig */,
+				D8FEDB517EC46EBB1314FB6F /* Pods-GankIOUITests.debug.xcconfig */,
+				00C5B8598F9FA1CB0540CAFF /* Pods-GankIOUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A6A4F915C9A2BDD9C3830AD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0A5D455CC3FD318E1236D62 /* Pods_GankIO.framework */,
+				D0F2656967DAB85E1E1AD59B /* Pods_GankIOTests.framework */,
+				4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 372122E31D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIO" */;
 			buildPhases = (
+				C05D8CAE3F6CA9A7395F9353 /* [CP] Check Pods Manifest.lock */,
 				372122B71D348C9F0041601F /* Sources */,
 				372122B81D348C9F0041601F /* Frameworks */,
 				372122B91D348C9F0041601F /* Resources */,
+				16FB8597BCFDB581F4EF98DB /* [CP] Embed Pods Frameworks */,
+				E6ED9F6E509F1E74B86359B5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +186,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 372122E61D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOTests" */;
 			buildPhases = (
+				75A5F8D9D7E4015D2D3F959F /* [CP] Check Pods Manifest.lock */,
 				372122CB1D348CA00041601F /* Sources */,
 				372122CC1D348CA00041601F /* Frameworks */,
 				372122CD1D348CA00041601F /* Resources */,
+				31AD019199AA0B8F8E58980E /* [CP] Embed Pods Frameworks */,
+				C1E4834E008A7E6081210477 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +207,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 372122E91D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOUITests" */;
 			buildPhases = (
+				80101D139CAB9D5B6A08FAE8 /* [CP] Check Pods Manifest.lock */,
 				372122D61D348CA00041601F /* Sources */,
 				372122D71D348CA00041601F /* Frameworks */,
 				372122D81D348CA00041601F /* Resources */,
+				FB99C1C301567CB1E0777759 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,7 +273,6 @@
 			files = (
 				372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */,
 				372122C61D348CA00041601F /* Assets.xcassets in Resources */,
-				372122C41D348C9F0041601F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,12 +292,134 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16FB8597BCFDB581F4EF98DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankIO/Pods-GankIO-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31AD019199AA0B8F8E58980E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75A5F8D9D7E4015D2D3F959F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		80101D139CAB9D5B6A08FAE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C05D8CAE3F6CA9A7395F9353 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C1E4834E008A7E6081210477 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6ED9F6E509F1E74B86359B5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankIO/Pods-GankIO-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB99C1C301567CB1E0777759 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GankIOUITests/Pods-GankIOUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		372122B71D348C9F0041601F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				372122C11D348C9F0041601F /* ViewController.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,14 +456,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		372122C21D348C9F0041601F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				372122C31D348C9F0041601F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		372122C71D348CA00041601F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -397,6 +552,7 @@
 		};
 		372122E41D348CA00041601F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24700A0CE78604ECAE8F5249 /* Pods-GankIO.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GankIO/Info.plist;
@@ -408,6 +564,7 @@
 		};
 		372122E51D348CA00041601F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92681B76516A95A2B9DD849E /* Pods-GankIO.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GankIO/Info.plist;
@@ -419,6 +576,7 @@
 		};
 		372122E71D348CA00041601F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D067DC5572959617A3CF172 /* Pods-GankIOTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GankIOTests/Info.plist;
@@ -431,6 +589,7 @@
 		};
 		372122E81D348CA00041601F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89A42ECA1A7DF032AACE619B /* Pods-GankIOTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GankIOTests/Info.plist;
@@ -443,6 +602,7 @@
 		};
 		372122EA1D348CA00041601F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8FEDB517EC46EBB1314FB6F /* Pods-GankIOUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = GankIOUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -454,6 +614,7 @@
 		};
 		372122EB1D348CA00041601F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00C5B8598F9FA1CB0540CAFF /* Pods-GankIOUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = GankIOUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -482,6 +643,7 @@
 				372122E51D348CA00041601F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		372122E61D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +652,7 @@
 				372122E81D348CA00041601F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		372122E91D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +661,7 @@
 				372122EB1D348CA00041601F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
