@@ -6,12 +6,16 @@ PODS:
     - ChameleonFramework/Default
   - Material (1.42.7)
   - MJRefresh (3.1.10)
+  - NVActivityIndicatorView (2.9)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
   - SnapKit (0.21.1)
   - SVProgressHUD (2.0.3)
   - SwiftyJSON (2.3.2)
+  - VTMagic (1.2.3):
+    - VTMagic/Core (= 1.2.3)
+  - VTMagic/Core (1.2.3)
 
 DEPENDENCIES:
   - Alamofire
@@ -19,10 +23,12 @@ DEPENDENCIES:
   - ChameleonFramework/Swift
   - Material
   - MJRefresh
+  - NVActivityIndicatorView
   - SDWebImage
   - SnapKit
   - SVProgressHUD
   - SwiftyJSON
+  - VTMagic
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -30,11 +36,13 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
+  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  VTMagic: c69c1dd7481e0f3f4c0b2a6f27803dde55455c96
 
-PODFILE CHECKSUM: bf2f7d2d752c972c388d0fb017939232fdad215a
+PODFILE CHECKSUM: 2dc77bfcbc0a06066dce53afc03b714d0891151c
 
 COCOAPODS: 1.0.1

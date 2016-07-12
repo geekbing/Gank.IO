@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-GankIO.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -69,74 +74,13 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>VTMagic.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>04693735BCFA74B873DE04047ECC5FBA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>08C670F14C5E0F92D52B4FD40051294F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1B006392A6DC63E06AC81DE6F08803B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>29DD99664D189A7CA206368F493B1E0B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3824BBAD6434A73D13C7B0ACD6B9D993</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4874C05C13D9655255A0B5EAB68FA58D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5306D1CD3AD636E3214E2B6449FFCF60</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9FD0D855F5ADE4E0DE5806A299626C85</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EA6BDEA8EE8640E169C9D2CEB008CAC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EB9EC5DCCC4EC36BF6BDBA77DB6A92EE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F17D005B029B0351A4E8AD4D1E441A5D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

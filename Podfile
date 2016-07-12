@@ -15,6 +15,8 @@ pod 'SVProgressHUD'
 pod 'Material'
 pod 'MJRefresh'
 pod 'SwiftyJSON'
+pod 'NVActivityIndicatorView'
+pod 'VTMagic'
   target 'GankIOTests' do
     inherit! :search_paths
     # Pods for testing
