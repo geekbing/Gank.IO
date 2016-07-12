@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122BE1D348C9F0041601F /* AppDelegate.swift */; };
+		372122C11D348C9F0041601F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122C01D348C9F0041601F /* ViewController.swift */; };
+		372122C41D348C9F0041601F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C21D348C9F0041601F /* Main.storyboard */; };
+		372122C61D348CA00041601F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372122C51D348CA00041601F /* Assets.xcassets */; };
+		372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C71D348CA00041601F /* LaunchScreen.storyboard */; };
+		372122D41D348CA00041601F /* GankIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122D31D348CA00041601F /* GankIOTests.swift */; };
+		372122DF1D348CA00041601F /* GankIOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122DE1D348CA00041601F /* GankIOUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		372122D01D348CA00041601F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 372122B31D348C9F0041601F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 372122BA1D348C9F0041601F;
+			remoteInfo = GankIO;
+		};
+		372122DB1D348CA00041601F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 372122B31D348C9F0041601F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 372122BA1D348C9F0041601F;
+			remoteInfo = GankIO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		372122BB1D348C9F0041601F /* GankIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GankIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		372122BE1D348C9F0041601F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		372122C01D348C9F0041601F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		372122C31D348C9F0041601F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		372122C51D348CA00041601F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		372122C81D348CA00041601F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		372122CA1D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		372122CF1D348CA00041601F /* GankIOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankIOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		372122D31D348CA00041601F /* GankIOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GankIOTests.swift; sourceTree = "<group>"; };
+		372122D51D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		372122DA1D348CA00041601F /* GankIOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankIOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		372122DE1D348CA00041601F /* GankIOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GankIOUITests.swift; sourceTree = "<group>"; };
+		372122E01D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		372122B81D348C9F0041601F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		372122CC1D348CA00041601F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		372122D71D348CA00041601F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		372122B21D348C9F0041601F = {
+			isa = PBXGroup;
+			children = (
+				372122BD1D348C9F0041601F /* GankIO */,
+				372122D21D348CA00041601F /* GankIOTests */,
+				372122DD1D348CA00041601F /* GankIOUITests */,
+				372122BC1D348C9F0041601F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		372122BC1D348C9F0041601F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				372122BB1D348C9F0041601F /* GankIO.app */,
+				372122CF1D348CA00041601F /* GankIOTests.xctest */,
+				372122DA1D348CA00041601F /* GankIOUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		372122BD1D348C9F0041601F /* GankIO */ = {
+			isa = PBXGroup;
+			children = (
+				372122BE1D348C9F0041601F /* AppDelegate.swift */,
+				372122C01D348C9F0041601F /* ViewController.swift */,
+				372122C21D348C9F0041601F /* Main.storyboard */,
+				372122C51D348CA00041601F /* Assets.xcassets */,
+				372122C71D348CA00041601F /* LaunchScreen.storyboard */,
+				372122CA1D348CA00041601F /* Info.plist */,
+			);
+			path = GankIO;
+			sourceTree = "<group>";
+		};
+		372122D21D348CA00041601F /* GankIOTests */ = {
+			isa = PBXGroup;
+			children = (
+				372122D31D348CA00041601F /* GankIOTests.swift */,
+				372122D51D348CA00041601F /* Info.plist */,
+			);
+			path = GankIOTests;
+			sourceTree = "<group>";
+		};
+		372122DD1D348CA00041601F /* GankIOUITests */ = {
+			isa = PBXGroup;
+			children = (
+				372122DE1D348CA00041601F /* GankIOUITests.swift */,
+				372122E01D348CA00041601F /* Info.plist */,
+			);
+			path = GankIOUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		372122BA1D348C9F0041601F /* GankIO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 372122E31D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIO" */;
+			buildPhases = (
+				372122B71D348C9F0041601F /* Sources */,
+				372122B81D348C9F0041601F /* Frameworks */,
+				372122B91D348C9F0041601F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GankIO;
+			productName = GankIO;
+			productReference = 372122BB1D348C9F0041601F /* GankIO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		372122CE1D348CA00041601F /* GankIOTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 372122E61D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOTests" */;
+			buildPhases = (
+				372122CB1D348CA00041601F /* Sources */,
+				372122CC1D348CA00041601F /* Frameworks */,
+				372122CD1D348CA00041601F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				372122D11D348CA00041601F /* PBXTargetDependency */,
+			);
+			name = GankIOTests;
+			productName = GankIOTests;
+			productReference = 372122CF1D348CA00041601F /* GankIOTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		372122D91D348CA00041601F /* GankIOUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 372122E91D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOUITests" */;
+			buildPhases = (
+				372122D61D348CA00041601F /* Sources */,
+				372122D71D348CA00041601F /* Frameworks */,
+				372122D81D348CA00041601F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				372122DC1D348CA00041601F /* PBXTargetDependency */,
+			);
+			name = GankIOUITests;
+			productName = GankIOUITests;
+			productReference = 372122DA1D348CA00041601F /* GankIOUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		372122B31D348C9F0041601F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Bing;
+				TargetAttributes = {
+					372122BA1D348C9F0041601F = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					372122CE1D348CA00041601F = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 372122BA1D348C9F0041601F;
+					};
+					372122D91D348CA00041601F = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 372122BA1D348C9F0041601F;
+					};
+				};
+			};
+			buildConfigurationList = 372122B61D348C9F0041601F /* Build configuration list for PBXProject "GankIO" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 372122B21D348C9F0041601F;
+			productRefGroup = 372122BC1D348C9F0041601F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				372122BA1D348C9F0041601F /* GankIO */,
+				372122CE1D348CA00041601F /* GankIOTests */,
+				372122D91D348CA00041601F /* GankIOUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		372122B91D348C9F0041601F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */,
+				372122C61D348CA00041601F /* Assets.xcassets in Resources */,
+				372122C41D348C9F0041601F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		372122CD1D348CA00041601F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		372122D81D348CA00041601F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		372122B71D348C9F0041601F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				372122C11D348C9F0041601F /* ViewController.swift in Sources */,
+				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		372122CB1D348CA00041601F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				372122D41D348CA00041601F /* GankIOTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		372122D61D348CA00041601F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				372122DF1D348CA00041601F /* GankIOUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		372122D11D348CA00041601F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 372122BA1D348C9F0041601F /* GankIO */;
+			targetProxy = 372122D01D348CA00041601F /* PBXContainerItemProxy */;
+		};
+		372122DC1D348CA00041601F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 372122BA1D348C9F0041601F /* GankIO */;
+			targetProxy = 372122DB1D348CA00041601F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		372122C21D348C9F0041601F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				372122C31D348C9F0041601F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		372122C71D348CA00041601F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				372122C81D348CA00041601F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		372122E11D348CA00041601F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		372122E21D348CA00041601F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		372122E41D348CA00041601F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GankIO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		372122E51D348CA00041601F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GankIO/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		372122E71D348CA00041601F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GankIOTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIOTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GankIO.app/GankIO";
+			};
+			name = Debug;
+		};
+		372122E81D348CA00041601F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GankIOTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIOTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GankIO.app/GankIO";
+			};
+			name = Release;
+		};
+		372122EA1D348CA00041601F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GankIOUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIOUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GankIO;
+			};
+			name = Debug;
+		};
+		372122EB1D348CA00041601F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GankIOUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIOUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GankIO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		372122B61D348C9F0041601F /* Build configuration list for PBXProject "GankIO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				372122E11D348CA00041601F /* Debug */,
+				372122E21D348CA00041601F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		372122E31D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				372122E41D348CA00041601F /* Debug */,
+				372122E51D348CA00041601F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		372122E61D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				372122E71D348CA00041601F /* Debug */,
+				372122E81D348CA00041601F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		372122E91D348CA00041601F /* Build configuration list for PBXNativeTarget "GankIOUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				372122EA1D348CA00041601F /* Debug */,
+				372122EB1D348CA00041601F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 372122B31D348C9F0041601F /* Project object */;
+}
