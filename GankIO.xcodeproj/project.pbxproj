@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		208EFEEE4C8ED95FF9BB5D36 /* Pods_GankIOTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F2656967DAB85E1E1AD59B /* Pods_GankIOTests.framework */; };
 		371C48AD1D349B2400488043 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48AC1D349B2400488043 /* Main.swift */; };
+		371C48B31D349DC300488043 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48B21D349DC300488043 /* Common.swift */; };
+		371C48B51D349ECE00488043 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48B41D349ECE00488043 /* New.swift */; };
+		371C48B71D349ED500488043 /* Mine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48B61D349ED500488043 /* Mine.swift */; };
+		371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48B91D349FBF00488043 /* Outsourcing.swift */; };
+		371C48BC1D34A06D00488043 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48BB1D34A06D00488043 /* Category.swift */; };
+		371C48BF1D34A19300488043 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48BE1D34A19300488043 /* Guide.swift */; };
+		371C48C41D34AF1F00488043 /* IOSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48C31D34AF1F00488043 /* IOSVC.swift */; };
+		371C48C81D34AF3A00488043 /* AndroidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48C71D34AF3A00488043 /* AndroidVC.swift */; };
 		372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122BE1D348C9F0041601F /* AppDelegate.swift */; };
 		372122C61D348CA00041601F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372122C51D348CA00041601F /* Assets.xcassets */; };
 		372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C71D348CA00041601F /* LaunchScreen.storyboard */; };
@@ -39,6 +47,15 @@
 		00C5B8598F9FA1CB0540CAFF /* Pods-GankIOUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOUITests/Pods-GankIOUITests.release.xcconfig"; sourceTree = "<group>"; };
 		24700A0CE78604ECAE8F5249 /* Pods-GankIO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankIO/Pods-GankIO.debug.xcconfig"; sourceTree = "<group>"; };
 		371C48AC1D349B2400488043 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		371C48B21D349DC300488043 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		371C48B41D349ECE00488043 /* New.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
+		371C48B61D349ED500488043 /* Mine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mine.swift; sourceTree = "<group>"; };
+		371C48B91D349FBF00488043 /* Outsourcing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outsourcing.swift; sourceTree = "<group>"; };
+		371C48BB1D34A06D00488043 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		371C48BE1D34A19300488043 /* Guide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
+		371C48C01D34A25400488043 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		371C48C31D34AF1F00488043 /* IOSVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSVC.swift; sourceTree = "<group>"; };
+		371C48C71D34AF3A00488043 /* AndroidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndroidVC.swift; sourceTree = "<group>"; };
 		372122BB1D348C9F0041601F /* GankIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GankIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372122BE1D348C9F0041601F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372122C51D348CA00041601F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +107,7 @@
 		371C48AA1D349B1600488043 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				371C48C01D34A25400488043 /* bridge.h */,
 				372122BE1D348C9F0041601F /* AppDelegate.swift */,
 				372122C51D348CA00041601F /* Assets.xcassets */,
 				372122C71D348CA00041601F /* LaunchScreen.storyboard */,
@@ -109,6 +127,9 @@
 		371C48AE1D349C4200488043 /* New */ = {
 			isa = PBXGroup;
 			children = (
+				371C48C21D34AEFE00488043 /* Android */,
+				371C48C11D34AEE700488043 /* iOS */,
+				371C48B41D349ECE00488043 /* New.swift */,
 			);
 			name = New;
 			sourceTree = "<group>";
@@ -116,6 +137,7 @@
 		371C48AF1D349C5500488043 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				371C48BE1D34A19300488043 /* Guide.swift */,
 			);
 			name = Guide;
 			sourceTree = "<group>";
@@ -123,8 +145,49 @@
 		371C48B01D349C5D00488043 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				371C48B61D349ED500488043 /* Mine.swift */,
 			);
 			name = Mine;
+			sourceTree = "<group>";
+		};
+		371C48B11D349DAF00488043 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				371C48B21D349DC300488043 /* Common.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		371C48B81D349EDF00488043 /* Outsourcing */ = {
+			isa = PBXGroup;
+			children = (
+				371C48B91D349FBF00488043 /* Outsourcing.swift */,
+			);
+			name = Outsourcing;
+			sourceTree = "<group>";
+		};
+		371C48BD1D34A07100488043 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				371C48BB1D34A06D00488043 /* Category.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		371C48C11D34AEE700488043 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				371C48C31D34AF1F00488043 /* IOSVC.swift */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		371C48C21D34AEFE00488043 /* Android */ = {
+			isa = PBXGroup;
+			children = (
+				371C48C71D34AF3A00488043 /* AndroidVC.swift */,
+			);
+			name = Android;
 			sourceTree = "<group>";
 		};
 		372122B21D348C9F0041601F = {
@@ -152,6 +215,9 @@
 		372122BD1D348C9F0041601F /* GankIO */ = {
 			isa = PBXGroup;
 			children = (
+				371C48BD1D34A07100488043 /* Category */,
+				371C48B81D349EDF00488043 /* Outsourcing */,
+				371C48B11D349DAF00488043 /* Common */,
 				371C48B01D349C5D00488043 /* Mine */,
 				371C48AF1D349C5500488043 /* Guide */,
 				371C48AB1D349B1D00488043 /* Main */,
@@ -464,7 +530,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				371C48AD1D349B2400488043 /* Main.swift in Sources */,
+				371C48B31D349DC300488043 /* Common.swift in Sources */,
+				371C48B51D349ECE00488043 /* New.swift in Sources */,
+				371C48B71D349ED500488043 /* Mine.swift in Sources */,
+				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
+				371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
+				371C48BC1D34A06D00488043 /* Category.swift in Sources */,
+				371C48C81D34AF3A00488043 /* AndroidVC.swift in Sources */,
+				371C48C41D34AF1F00488043 /* IOSVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +677,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = GankIO/bridge.h;
 			};
 			name = Debug;
 		};
@@ -615,6 +690,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = GankIO/bridge.h;
 			};
 			name = Release;
 		};
