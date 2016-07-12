@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '44B026DC22DDB7D629F196A51B3CCD32'
-               BlueprintName = 'VTMagic'
+               BlueprintIdentifier = 'F62F5EAD4EBF1C5CCBB45B0E06EA4B93'
+               BlueprintName = 'ITDAvatarPlaceholder-ITDAvatarPlaceholder'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'VTMagic.framework'>
+               BuildableName = 'ITDAvatarPlaceholder.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

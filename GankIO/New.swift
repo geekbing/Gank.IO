@@ -12,7 +12,7 @@ import VTMagic
 class New: UIViewController
 {
     // 顶部的菜单数组
-    let menuList = ["iOS", "Android", "前端", "休息视频", "App", "福利"]
+    let menuList = ["iOS", "Android", "Web", "Video", "App", "Photos"]
     
     var magic: VTMagicController!
     
@@ -30,9 +30,11 @@ class New: UIViewController
             magic = VTMagicController()
             magic.magicView.navigationColor = UIColor.whiteColor()
             magic.magicView.sliderColor = UIColor.redColor()
-            magic.magicView.layoutStyle = VTLayoutStyle.Default
-            magic.magicView.switchStyle = VTSwitchStyle.Default
-            magic.magicView.navigationHeight = 40.0
+            magic.magicView.layoutStyle = .Center
+            magic.magicView.itemSpacing = 20
+            magic.magicView.againstStatusBar = true
+            magic.magicView.switchStyle = .Default
+            magic.magicView.navigationHeight = 44.0
             magic.magicView.dataSource = self
             magic.magicView.delegate = self
             self.addChildViewController(self.magic)

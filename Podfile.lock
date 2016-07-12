@@ -4,6 +4,8 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - ITDAvatarPlaceholder (0.1.0):
+    - ChameleonFramework/Swift
   - Material (1.42.7)
   - MJRefresh (3.1.10)
   - NVActivityIndicatorView (2.9)
@@ -21,6 +23,7 @@ DEPENDENCIES:
   - Alamofire
   - AVOSCloud
   - ChameleonFramework/Swift
+  - ITDAvatarPlaceholder
   - Material
   - MJRefresh
   - NVActivityIndicatorView
@@ -34,6 +37,7 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  ITDAvatarPlaceholder: 1aa137b6c863cae4b40a18402f97d1387fb19ad5
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
   NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
@@ -43,6 +47,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   VTMagic: c69c1dd7481e0f3f4c0b2a6f27803dde55455c96
 
-PODFILE CHECKSUM: 2dc77bfcbc0a06066dce53afc03b714d0891151c
+PODFILE CHECKSUM: 2342ebf938f7b1271dbcd12f5677ae66be44d158
 
 COCOAPODS: 1.0.1

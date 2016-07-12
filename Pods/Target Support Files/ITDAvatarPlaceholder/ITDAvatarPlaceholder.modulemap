@@ -1,0 +1,6 @@
+framework module ITDAvatarPlaceholder {
+  umbrella header "ITDAvatarPlaceholder-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -26,7 +26,7 @@ class Main: UITabBarController
     private func addAllChildViewController()
     {
         // 最新
-        let newVc = UINavigationController(rootViewController: New())
+        let newVc = New()
         addChildViewController(newVc, title: "最新", imageName: "New")
         
         // 分类

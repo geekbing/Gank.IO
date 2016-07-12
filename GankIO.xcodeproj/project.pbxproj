@@ -17,6 +17,10 @@
 		371C48BF1D34A19300488043 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48BE1D34A19300488043 /* Guide.swift */; };
 		371C48C41D34AF1F00488043 /* IOSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48C31D34AF1F00488043 /* IOSVC.swift */; };
 		371C48C81D34AF3A00488043 /* AndroidVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48C71D34AF3A00488043 /* AndroidVC.swift */; };
+		371C48CE1D34CE8000488043 /* RootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48CC1D34CE8000488043 /* RootClass.swift */; };
+		371C48CF1D34CE8000488043 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48CD1D34CE8000488043 /* Result.swift */; };
+		371C48D11D34CEED00488043 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48D01D34CEED00488043 /* ArticleCell.swift */; };
+		371C48D41D34DD3A00488043 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371C48D31D34DD3A00488043 /* API.swift */; };
 		372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122BE1D348C9F0041601F /* AppDelegate.swift */; };
 		372122C61D348CA00041601F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372122C51D348CA00041601F /* Assets.xcassets */; };
 		372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C71D348CA00041601F /* LaunchScreen.storyboard */; };
@@ -56,6 +60,10 @@
 		371C48C01D34A25400488043 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		371C48C31D34AF1F00488043 /* IOSVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSVC.swift; sourceTree = "<group>"; };
 		371C48C71D34AF3A00488043 /* AndroidVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndroidVC.swift; sourceTree = "<group>"; };
+		371C48CC1D34CE8000488043 /* RootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootClass.swift; sourceTree = "<group>"; };
+		371C48CD1D34CE8000488043 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		371C48D01D34CEED00488043 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		371C48D31D34DD3A00488043 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		372122BB1D348C9F0041601F /* GankIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GankIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372122BE1D348C9F0041601F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		372122C51D348CA00041601F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +135,7 @@
 		371C48AE1D349C4200488043 /* New */ = {
 			isa = PBXGroup;
 			children = (
+				371C48CB1D34CE7700488043 /* Model */,
 				371C48C21D34AEFE00488043 /* Android */,
 				371C48C11D34AEE700488043 /* iOS */,
 				371C48B41D349ECE00488043 /* New.swift */,
@@ -177,6 +186,7 @@
 		371C48C11D34AEE700488043 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				371C48CA1D34C72F00488043 /* V */,
 				371C48C31D34AF1F00488043 /* IOSVC.swift */,
 			);
 			name = iOS;
@@ -188,6 +198,31 @@
 				371C48C71D34AF3A00488043 /* AndroidVC.swift */,
 			);
 			name = Android;
+			sourceTree = "<group>";
+		};
+		371C48CA1D34C72F00488043 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				371C48D01D34CEED00488043 /* ArticleCell.swift */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		371C48CB1D34CE7700488043 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				371C48CC1D34CE8000488043 /* RootClass.swift */,
+				371C48CD1D34CE8000488043 /* Result.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		371C48D21D34DD3300488043 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				371C48D31D34DD3A00488043 /* API.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		372122B21D348C9F0041601F = {
@@ -215,6 +250,7 @@
 		372122BD1D348C9F0041601F /* GankIO */ = {
 			isa = PBXGroup;
 			children = (
+				371C48D21D34DD3300488043 /* API */,
 				371C48BD1D34A07100488043 /* Category */,
 				371C48B81D349EDF00488043 /* Outsourcing */,
 				371C48B11D349DAF00488043 /* Common */,
@@ -532,8 +568,12 @@
 				371C48AD1D349B2400488043 /* Main.swift in Sources */,
 				371C48B31D349DC300488043 /* Common.swift in Sources */,
 				371C48B51D349ECE00488043 /* New.swift in Sources */,
+				371C48CE1D34CE8000488043 /* RootClass.swift in Sources */,
 				371C48B71D349ED500488043 /* Mine.swift in Sources */,
 				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
+				371C48D41D34DD3A00488043 /* API.swift in Sources */,
+				371C48CF1D34CE8000488043 /* Result.swift in Sources */,
+				371C48D11D34CEED00488043 /* ArticleCell.swift in Sources */,
 				371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
 				371C48BC1D34A06D00488043 /* Category.swift in Sources */,

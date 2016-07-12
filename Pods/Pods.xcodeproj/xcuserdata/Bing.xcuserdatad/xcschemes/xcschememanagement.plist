@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ITDAvatarPlaceholder-ITDAvatarPlaceholder.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ITDAvatarPlaceholder.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,11 +97,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>04A529497FE1DDAEB8BD7981AF58B931</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>08C670F14C5E0F92D52B4FD40051294F</key>
 		<dict>
 			<key>primary</key>
@@ -102,22 +107,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>243025EF78E7714CF1135FCAE9E73A76</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>29DD99664D189A7CA206368F493B1E0B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E9070A5E61F8EC70119DAF625AB8BA3</key>
+		<key>446774708DDE991B3F2131484ABFA5E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F72FCEDADF77E568ED422CC684AA126</key>
+		<key>44B026DC22DDB7D629F196A51B3CCD32</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +127,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>623B3DDBDA0EBE6DF4E89296BE1FA299</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6783A39EADF76C0EE537ED0DD42995EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>821A20FB6F16059B8A441D1385260B39</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84C1E8DEDED7CD7E02A04F14089A7BBD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,12 +157,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96B3B35E8E62D63C14C59E8D608653C2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A2470AD956379CC94CB7E1466F439238</key>
+		<key>B0514317E373BD620D6358BC0714C7F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -153,6 +168,11 @@
 			<true/>
 		</dict>
 		<key>F17D005B029B0351A4E8AD4D1E441A5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F62F5EAD4EBF1C5CCBB45B0E06EA4B93</key>
 		<dict>
 			<key>primary</key>
 			<true/>
