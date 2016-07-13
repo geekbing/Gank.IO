@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ITDAvatarPlaceholder-ITDAvatarPlaceholder.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,11 +112,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15224AD2B04B1DFCE8921AAA90A4AB94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1B006392A6DC63E06AC81DE6F08803B1</key>
 		<dict>
 			<key>primary</key>
@@ -122,7 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38A9EEC7A13B4A9C15D4578C1459473E</key>
+		<key>302D357CEEFF326B89366DF6C20F87FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>303B3AC6DD17B1EE7D98EF8BF8898BEB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,17 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4A33FCCCEA0136172AAA0FA73DB61A1C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>54C95ED8F9119D074BFE1A461B4B552F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>55AA60C3B633107DE654A3233890B7FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,22 +152,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>808A3A9929AF4F6A457A66728478AD87</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>8698C4558AE758AD92477EC134E714F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC8A22F70CBBD59EA6CCCF326CA489CD</key>
+		<key>B0514317E373BD620D6358BC0714C7F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0514317E373BD620D6358BC0714C7F1</key>
+		<key>C700B1780E0CF09F155288BEA21D3DF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB2374E57FC55E282C4592861D6F45D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0FEF1C37B39C436B933DED8835D5BDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -183,6 +188,11 @@
 			<true/>
 		</dict>
 		<key>F62F5EAD4EBF1C5CCBB45B0E06EA4B93</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA54D33819797A1275DE30E4174CBE8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

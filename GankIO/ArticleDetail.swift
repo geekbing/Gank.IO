@@ -9,47 +9,35 @@
 import UIKit
 import SVProgressHUD
 
-class ArticleDetail: UIViewController
+class ArticleDetail: CYWebViewController
 {
-    var url: String
-    var webView: UIWebView!
-    
-    init(url: String)
+    override func viewDidLoad()
     {
-        self.url = url
-        super.init(nibName: nil, bundle: nil)
+        super.viewDidLoad()
+        self.title = "Github"
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.loadingBarTintColor = UIColor.flatRedColor()
     }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.hidden = true
         self.navigationController?.navigationBar.hidden = false
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        self.title = "Github"
+        self.tabBarController?.tabBar.hidden = true
     }
     
     override func viewWillDisappear(animated: Bool)
     {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.hidden = false
         self.navigationController?.navigationBar.hidden = true
-    }
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-        self.title = "Github"
-        
-        SVProgressHUD.show()
-        webView = UIWebView(frame: self.view.bounds)
-        let nsurlRequest = NSURLRequest(URL: NSURL(string: url)!)
-        webView.loadRequest(nsurlRequest)
-        self.view.addSubview(webView)
-        SVProgressHUD.dismiss()
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()

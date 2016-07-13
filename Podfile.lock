@@ -4,6 +4,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - FDFullscreenPopGesture (1.1)
   - ITDAvatarPlaceholder (0.1.0):
     - ChameleonFramework/Swift
   - LTMorphingLabel (0.2.1)
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - Alamofire
   - AVOSCloud
   - ChameleonFramework/Swift
+  - FDFullscreenPopGesture
   - ITDAvatarPlaceholder
   - LTMorphingLabel
   - Material
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   ITDAvatarPlaceholder: 1aa137b6c863cae4b40a18402f97d1387fb19ad5
   LTMorphingLabel: 1858358ea38ef4d548e1f58b648b0d08ec3a62ed
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
@@ -50,6 +53,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   VTMagic: c69c1dd7481e0f3f4c0b2a6f27803dde55455c96
 
-PODFILE CHECKSUM: 0bce28a31587439dd98f1e450267c54c3d59caea
+PODFILE CHECKSUM: 64d5a63b9dc16fe9edd9a9642a3e63530caf1690
 
 COCOAPODS: 1.0.1

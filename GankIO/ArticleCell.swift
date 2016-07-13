@@ -74,7 +74,6 @@ class ArticleCell: UITableViewCell
             make.left.equalTo(avatar!)
             make.bottom.equalTo(self.contentView).offset(-10)
         })
-        
     }
     
     required init?(coder aDecoder: NSCoder)

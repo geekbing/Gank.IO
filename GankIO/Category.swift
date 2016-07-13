@@ -70,5 +70,16 @@ extension Category: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        var vc: UIViewController
+        if indexPath.row == 0
+        {
+            vc = Girls()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else
+        {
+            let vc = IOSVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

@@ -21,7 +21,6 @@ class New: UIViewController
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = true
 
-//        self.title = "最新"
         initMagicController()
     }
     
@@ -100,8 +99,8 @@ extension New: VTMagicViewDataSource
         switch pageIndex
         {
             case 0:
-                let vc = IOSVC()
-//                let vc = UINavigationController(rootViewController: IOSVC())
+//                let vc = IOSVC()
+                let vc = NewSubVC()
                 return vc
             case 1:
                 let vc = AndroidVC()

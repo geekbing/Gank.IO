@@ -110,12 +110,7 @@ extension IOSVC: UITableViewDelegate
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let result = dataArr[indexPath.row]
-        
-        let vc = ArticleDetail(url: result.url)
+        let vc = ArticleDetail(URLString: result.url)
         self.navigationController?.pushViewController(vc, animated: true)
-//        let vc = SFSafariViewController(URL: NSURL(string: result.url)!)
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        self.showViewController(vc, sender: self)
-
     }
 }

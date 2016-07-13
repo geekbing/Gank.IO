@@ -28,6 +28,21 @@
 		372122DF1D348CA00041601F /* GankIOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122DE1D348CA00041601F /* GankIOUITests.swift */; };
 		3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0A01D352DD5001C69AE /* ArticleDetail.swift */; };
 		3747A0A51D35CFB5001C69AE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0A41D35CFB5001C69AE /* CategoryCell.swift */; };
+		3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0D91D360F5C001C69AE /* Girls.swift */; };
+		3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0DE1D36129C001C69AE /* NewSubVC.swift */; };
+		3747A0E21D3613C5001C69AE /* NewSubVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */; };
+		3747A0E91D3630F6001C69AE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0E81D3630F6001C69AE /* Extension.swift */; };
+		37F549581D3638A4008A9C72 /* UIButton+WHE.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549461D3638A4008A9C72 /* UIButton+WHE.m */; };
+		37F549591D3638A4008A9C72 /* UIColor+WHE.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549481D3638A4008A9C72 /* UIColor+WHE.m */; };
+		37F5495A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F5494A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m */; };
+		37F5495B1D3638A4008A9C72 /* CYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F5494C1D3638A4008A9C72 /* CYWebViewController.m */; };
+		37F5495C1D3638A4008A9C72 /* backBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F5494E1D3638A4008A9C72 /* backBtn.png */; };
+		37F5495D1D3638A4008A9C72 /* backBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F5494F1D3638A4008A9C72 /* backBtn@2x.png */; };
+		37F5495E1D3638A4008A9C72 /* backBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37F549501D3638A4008A9C72 /* backBtn@3x.png */; };
+		37F5495F1D3638A4008A9C72 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549531D3638A4008A9C72 /* NJKWebViewProgress.m */; };
+		37F549601D3638A4008A9C72 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549551D3638A4008A9C72 /* NJKWebViewProgressView.m */; };
+		37F549611D3638A4008A9C72 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549571D3638A4008A9C72 /* UINavigationBar+Awesome.m */; };
+		37F549631D363DDB008A9C72 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F549621D363DDB008A9C72 /* ToolBarView.swift */; };
 		73B7EB3AE27353E46A0E8BF0 /* Pods_GankIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A5D455CC3FD318E1236D62 /* Pods_GankIO.framework */; };
 		D29B43DD4C3F8B191B544291 /* Pods_GankIOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +94,28 @@
 		372122E01D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3747A0A01D352DD5001C69AE /* ArticleDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		3747A0A41D35CFB5001C69AE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		3747A0D91D360F5C001C69AE /* Girls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Girls.swift; sourceTree = "<group>"; };
+		3747A0DE1D36129C001C69AE /* NewSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVC.swift; sourceTree = "<group>"; };
+		3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVCCell.swift; sourceTree = "<group>"; };
+		3747A0E81D3630F6001C69AE /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		37F549451D3638A4008A9C72 /* UIButton+WHE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WHE.h"; sourceTree = "<group>"; };
+		37F549461D3638A4008A9C72 /* UIButton+WHE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WHE.m"; sourceTree = "<group>"; };
+		37F549471D3638A4008A9C72 /* UIColor+WHE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WHE.h"; sourceTree = "<group>"; };
+		37F549481D3638A4008A9C72 /* UIColor+WHE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WHE.m"; sourceTree = "<group>"; };
+		37F549491D3638A4008A9C72 /* UIImage+CYButtonIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CYButtonIcon.h"; sourceTree = "<group>"; };
+		37F5494A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CYButtonIcon.m"; sourceTree = "<group>"; };
+		37F5494B1D3638A4008A9C72 /* CYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYWebViewController.h; sourceTree = "<group>"; };
+		37F5494C1D3638A4008A9C72 /* CYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYWebViewController.m; sourceTree = "<group>"; };
+		37F5494E1D3638A4008A9C72 /* backBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backBtn.png; sourceTree = "<group>"; };
+		37F5494F1D3638A4008A9C72 /* backBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backBtn@2x.png"; sourceTree = "<group>"; };
+		37F549501D3638A4008A9C72 /* backBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backBtn@3x.png"; sourceTree = "<group>"; };
+		37F549521D3638A4008A9C72 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		37F549531D3638A4008A9C72 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		37F549541D3638A4008A9C72 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		37F549551D3638A4008A9C72 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		37F549561D3638A4008A9C72 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
+		37F549571D3638A4008A9C72 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
+		37F549621D363DDB008A9C72 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GankIOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D067DC5572959617A3CF172 /* Pods-GankIOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests.debug.xcconfig"; sourceTree = "<group>"; };
 		89A42ECA1A7DF032AACE619B /* Pods-GankIOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +176,7 @@
 		371C48AE1D349C4200488043 /* New */ = {
 			isa = PBXGroup;
 			children = (
+				3747A0DD1D3611C5001C69AE /* NewSubVC */,
 				371C48CB1D34CE7700488043 /* Model */,
 				371C48C21D34AEFE00488043 /* Android */,
 				371C48C11D34AEE700488043 /* iOS */,
@@ -255,6 +293,9 @@
 		372122BD1D348C9F0041601F /* GankIO */ = {
 			isa = PBXGroup;
 			children = (
+				3747A0E31D3630C7001C69AE /* Extension */,
+				3747A0D81D360EC9001C69AE /* Girls */,
+				3747A0A61D35FD7A001C69AE /* Third */,
 				3747A09F1D352DB1001C69AE /* ArticleDetail */,
 				371C48D21D34DD3300488043 /* API */,
 				371C48BD1D34A07100488043 /* Category */,
@@ -309,6 +350,96 @@
 				3747A0A41D35CFB5001C69AE /* CategoryCell.swift */,
 			);
 			name = V;
+			sourceTree = "<group>";
+		};
+		3747A0A61D35FD7A001C69AE /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				37F549431D3638A4008A9C72 /* CY */,
+			);
+			name = Third;
+			sourceTree = "<group>";
+		};
+		3747A0D81D360EC9001C69AE /* Girls */ = {
+			isa = PBXGroup;
+			children = (
+				3747A0D91D360F5C001C69AE /* Girls.swift */,
+			);
+			name = Girls;
+			sourceTree = "<group>";
+		};
+		3747A0DD1D3611C5001C69AE /* NewSubVC */ = {
+			isa = PBXGroup;
+			children = (
+				3747A0E01D3613B3001C69AE /* V */,
+				3747A0DE1D36129C001C69AE /* NewSubVC.swift */,
+			);
+			name = NewSubVC;
+			sourceTree = "<group>";
+		};
+		3747A0E01D3613B3001C69AE /* V */ = {
+			isa = PBXGroup;
+			children = (
+				3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */,
+				37F549621D363DDB008A9C72 /* ToolBarView.swift */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		3747A0E31D3630C7001C69AE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3747A0E81D3630F6001C69AE /* Extension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		37F549431D3638A4008A9C72 /* CY */ = {
+			isa = PBXGroup;
+			children = (
+				37F549441D3638A4008A9C72 /* Category */,
+				37F5494B1D3638A4008A9C72 /* CYWebViewController.h */,
+				37F5494C1D3638A4008A9C72 /* CYWebViewController.m */,
+				37F5494D1D3638A4008A9C72 /* img */,
+				37F549511D3638A4008A9C72 /* NJKWebViewProgress */,
+				37F549561D3638A4008A9C72 /* UINavigationBar+Awesome.h */,
+				37F549571D3638A4008A9C72 /* UINavigationBar+Awesome.m */,
+			);
+			path = CY;
+			sourceTree = "<group>";
+		};
+		37F549441D3638A4008A9C72 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				37F549451D3638A4008A9C72 /* UIButton+WHE.h */,
+				37F549461D3638A4008A9C72 /* UIButton+WHE.m */,
+				37F549471D3638A4008A9C72 /* UIColor+WHE.h */,
+				37F549481D3638A4008A9C72 /* UIColor+WHE.m */,
+				37F549491D3638A4008A9C72 /* UIImage+CYButtonIcon.h */,
+				37F5494A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		37F5494D1D3638A4008A9C72 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				37F5494E1D3638A4008A9C72 /* backBtn.png */,
+				37F5494F1D3638A4008A9C72 /* backBtn@2x.png */,
+				37F549501D3638A4008A9C72 /* backBtn@3x.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		37F549511D3638A4008A9C72 /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				37F549521D3638A4008A9C72 /* NJKWebViewProgress.h */,
+				37F549531D3638A4008A9C72 /* NJKWebViewProgress.m */,
+				37F549541D3638A4008A9C72 /* NJKWebViewProgressView.h */,
+				37F549551D3638A4008A9C72 /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
 		81FE4A3E9961B1D10C9E98CE /* Pods */ = {
@@ -446,8 +577,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F5495E1D3638A4008A9C72 /* backBtn@3x.png in Resources */,
+				37F5495D1D3638A4008A9C72 /* backBtn@2x.png in Resources */,
 				372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */,
 				372122C61D348CA00041601F /* Assets.xcassets in Resources */,
+				37F5495C1D3638A4008A9C72 /* backBtn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,19 +730,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				371C48AD1D349B2400488043 /* Main.swift in Sources */,
+				37F5495B1D3638A4008A9C72 /* CYWebViewController.m in Sources */,
+				37F549631D363DDB008A9C72 /* ToolBarView.swift in Sources */,
+				37F5495A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m in Sources */,
 				371C48B31D349DC300488043 /* Common.swift in Sources */,
 				371C48B51D349ECE00488043 /* New.swift in Sources */,
 				3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */,
+				37F549591D3638A4008A9C72 /* UIColor+WHE.m in Sources */,
+				37F549601D3638A4008A9C72 /* NJKWebViewProgressView.m in Sources */,
 				371C48CE1D34CE8000488043 /* RootClass.swift in Sources */,
 				371C48B71D349ED500488043 /* Mine.swift in Sources */,
+				37F549581D3638A4008A9C72 /* UIButton+WHE.m in Sources */,
 				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
 				371C48D41D34DD3A00488043 /* API.swift in Sources */,
+				37F549611D3638A4008A9C72 /* UINavigationBar+Awesome.m in Sources */,
 				371C48CF1D34CE8000488043 /* Result.swift in Sources */,
 				371C48D11D34CEED00488043 /* ArticleCell.swift in Sources */,
+				3747A0E21D3613C5001C69AE /* NewSubVCCell.swift in Sources */,
 				371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */,
+				3747A0E91D3630F6001C69AE /* Extension.swift in Sources */,
 				3747A0A51D35CFB5001C69AE /* CategoryCell.swift in Sources */,
+				3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
+				37F5495F1D3638A4008A9C72 /* NJKWebViewProgress.m in Sources */,
 				371C48BC1D34A06D00488043 /* Category.swift in Sources */,
+				3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */,
 				371C48C81D34AF3A00488043 /* AndroidVC.swift in Sources */,
 				371C48C41D34AF1F00488043 /* IOSVC.swift in Sources */,
 			);
@@ -748,6 +894,53 @@
 				INFOPLIST_FILE = GankIO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"AVOSCloud\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"ChameleonFramework\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"ITDAvatarPlaceholder\"",
+					"-framework",
+					"\"LTMorphingLabel\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Material\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"NVActivityIndicatorView\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"VTMagic\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = GankIO/bridge.h;
@@ -762,6 +955,53 @@
 				INFOPLIST_FILE = GankIO/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-l\"AVOSCloud\"",
+					"-l\"icucore\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"ChameleonFramework\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"ITDAvatarPlaceholder\"",
+					"-framework",
+					"\"LTMorphingLabel\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Material\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"NVActivityIndicatorView\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"SVProgressHUD\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SnapKit\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"VTMagic\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = GankIO/bridge.h;

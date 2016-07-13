@@ -19,6 +19,7 @@ pod 'NVActivityIndicatorView'
 pod 'VTMagic'
 pod 'ITDAvatarPlaceholder'
 pod 'LTMorphingLabel'
+pod 'FDFullscreenPopGesture'
   target 'GankIOTests' do
     inherit! :search_paths
     # Pods for testing
