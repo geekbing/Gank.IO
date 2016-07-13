@@ -19,8 +19,16 @@ class New: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.hidden = true
+
+//        self.title = "最新"
         initMagicController()
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.hidden = true
     }
     
     func initMagicController()
@@ -93,12 +101,15 @@ extension New: VTMagicViewDataSource
         {
             case 0:
                 let vc = IOSVC()
+//                let vc = UINavigationController(rootViewController: IOSVC())
                 return vc
             case 1:
                 let vc = AndroidVC()
+//                let vc = UINavigationController(rootViewController: AndroidVC())
                 return vc
             default:
                 let vc = IOSVC()
+//                let vc = UINavigationController(rootViewController: IOSVC())
                 return vc
         }
     }

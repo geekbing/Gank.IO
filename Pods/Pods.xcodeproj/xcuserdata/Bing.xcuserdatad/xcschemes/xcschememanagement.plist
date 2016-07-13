@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LTMorphingLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,6 +107,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>15224AD2B04B1DFCE8921AAA90A4AB94</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1B006392A6DC63E06AC81DE6F08803B1</key>
 		<dict>
 			<key>primary</key>
@@ -112,12 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>446774708DDE991B3F2131484ABFA5E5</key>
+		<key>38A9EEC7A13B4A9C15D4578C1459473E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44B026DC22DDB7D629F196A51B3CCD32</key>
+		<key>3C900E8E2449EBBCC12128A9BDA69E7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>623B3DDBDA0EBE6DF4E89296BE1FA299</key>
+		<key>54C95ED8F9119D074BFE1A461B4B552F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6783A39EADF76C0EE537ED0DD42995EF</key>
+		<key>55AA60C3B633107DE654A3233890B7FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,17 +152,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>821A20FB6F16059B8A441D1385260B39</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>84C1E8DEDED7CD7E02A04F14089A7BBD</key>
+		<key>808A3A9929AF4F6A457A66728478AD87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>8698C4558AE758AD92477EC134E714F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC8A22F70CBBD59EA6CCCF326CA489CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

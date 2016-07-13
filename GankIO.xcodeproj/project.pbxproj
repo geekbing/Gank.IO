@@ -26,6 +26,8 @@
 		372122C91D348CA00041601F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372122C71D348CA00041601F /* LaunchScreen.storyboard */; };
 		372122D41D348CA00041601F /* GankIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122D31D348CA00041601F /* GankIOTests.swift */; };
 		372122DF1D348CA00041601F /* GankIOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372122DE1D348CA00041601F /* GankIOUITests.swift */; };
+		3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0A01D352DD5001C69AE /* ArticleDetail.swift */; };
+		3747A0A51D35CFB5001C69AE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0A41D35CFB5001C69AE /* CategoryCell.swift */; };
 		73B7EB3AE27353E46A0E8BF0 /* Pods_GankIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A5D455CC3FD318E1236D62 /* Pods_GankIO.framework */; };
 		D29B43DD4C3F8B191B544291 /* Pods_GankIOUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		372122DA1D348CA00041601F /* GankIOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankIOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		372122DE1D348CA00041601F /* GankIOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GankIOUITests.swift; sourceTree = "<group>"; };
 		372122E01D348CA00041601F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3747A0A01D352DD5001C69AE /* ArticleDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
+		3747A0A41D35CFB5001C69AE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		4BF0B2A2AA4930EE45094216 /* Pods_GankIOUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GankIOUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D067DC5572959617A3CF172 /* Pods-GankIOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests.debug.xcconfig"; sourceTree = "<group>"; };
 		89A42ECA1A7DF032AACE619B /* Pods-GankIOTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GankIOTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GankIOTests/Pods-GankIOTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -178,7 +182,8 @@
 		371C48BD1D34A07100488043 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				371C48BB1D34A06D00488043 /* Category.swift */,
+				3747A0A31D35CF82001C69AE /* V */,
+				3747A0A21D35CF7D001C69AE /* C */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 		372122BD1D348C9F0041601F /* GankIO */ = {
 			isa = PBXGroup;
 			children = (
+				3747A09F1D352DB1001C69AE /* ArticleDetail */,
 				371C48D21D34DD3300488043 /* API */,
 				371C48BD1D34A07100488043 /* Category */,
 				371C48B81D349EDF00488043 /* Outsourcing */,
@@ -279,6 +285,30 @@
 				372122E01D348CA00041601F /* Info.plist */,
 			);
 			path = GankIOUITests;
+			sourceTree = "<group>";
+		};
+		3747A09F1D352DB1001C69AE /* ArticleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3747A0A01D352DD5001C69AE /* ArticleDetail.swift */,
+			);
+			name = ArticleDetail;
+			sourceTree = "<group>";
+		};
+		3747A0A21D35CF7D001C69AE /* C */ = {
+			isa = PBXGroup;
+			children = (
+				371C48BB1D34A06D00488043 /* Category.swift */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
+		3747A0A31D35CF82001C69AE /* V */ = {
+			isa = PBXGroup;
+			children = (
+				3747A0A41D35CFB5001C69AE /* CategoryCell.swift */,
+			);
+			name = V;
 			sourceTree = "<group>";
 		};
 		81FE4A3E9961B1D10C9E98CE /* Pods */ = {
@@ -568,6 +598,7 @@
 				371C48AD1D349B2400488043 /* Main.swift in Sources */,
 				371C48B31D349DC300488043 /* Common.swift in Sources */,
 				371C48B51D349ECE00488043 /* New.swift in Sources */,
+				3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */,
 				371C48CE1D34CE8000488043 /* RootClass.swift in Sources */,
 				371C48B71D349ED500488043 /* Mine.swift in Sources */,
 				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
@@ -575,6 +606,7 @@
 				371C48CF1D34CE8000488043 /* Result.swift in Sources */,
 				371C48D11D34CEED00488043 /* ArticleCell.swift in Sources */,
 				371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */,
+				3747A0A51D35CFB5001C69AE /* CategoryCell.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
 				371C48BC1D34A06D00488043 /* Category.swift in Sources */,
 				371C48C81D34AF3A00488043 /* AndroidVC.swift in Sources */,
@@ -714,6 +746,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GankIO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -727,6 +760,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GankIO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geekbing.GankIO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

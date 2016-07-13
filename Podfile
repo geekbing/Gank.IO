@@ -18,6 +18,7 @@ pod 'SwiftyJSON'
 pod 'NVActivityIndicatorView'
 pod 'VTMagic'
 pod 'ITDAvatarPlaceholder'
+pod 'LTMorphingLabel'
   target 'GankIOTests' do
     inherit! :search_paths
     # Pods for testing

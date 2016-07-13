@@ -16,6 +16,17 @@ let screenHeight = UIScreen.mainScreen().bounds.size.height
 let mainColor = UIColor(red: 97.0 / 255.0, green: 197.0 / 255.0, blue: 170.0 / 255.0, alpha: 1.0)
 let tabbarColor = UIColor(red: 146.0 / 255.0, green: 146.0 / 255.0, blue: 146.0 / 255.0, alpha: 1.0)
 
+// 分类页面的面板颜色
+let cateColor1 = UIColor(hexString: "673ADD", withAlpha: 0.85)!
+let cateColor2 = UIColor(hexString: "E12562", withAlpha: 0.85)!
+let cateColor3 = UIColor(hexString: "ECA32A", withAlpha: 0.85)!
+let cateColor4 = UIColor(hexString: "59A7A1", withAlpha: 0.85)!
+let cateColor5 = UIColor(hexString: "FC5732", withAlpha: 0.85)!
+let cateColor6 = UIColor(hexString: "67D5A3", withAlpha: 0.85)!
+let cateColor7 = UIColor(hexString: "3ECC14", withAlpha: 0.85)!
+let cateColor8 = UIColor(hexString: "673ADD", withAlpha: 0.85)!
+
+
 // 字体
 let font20 = UIFont.systemFontOfSize(20, weight: UIFontWeightThin)
 let font19 = UIFont.systemFontOfSize(19, weight: UIFontWeightThin)
