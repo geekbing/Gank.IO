@@ -14,6 +14,10 @@ class NewSubVC: UIViewController
     var dataArr = [Result]()
     var collectionView: UICollectionView!
     
+    // 是否赞
+    var isZan = false
+    // 是否收藏
+    var isCollection = true
     // 当前页数
     var currentPage = 1
 
@@ -100,28 +104,132 @@ extension NewSubVC: UICollectionViewDataSource
         
         return cell
     }
+    
+    func getIndexByTouch(event: UIEvent) -> NSIndexPath?
+    {
+        let touches:NSSet = event.allTouches()!
+        let touch:UITouch = touches.anyObject() as! UITouch
+        let currentTouchPosition:CGPoint = touch.locationInView(collectionView)
+        // 获取点击位置所在的行
+        let indexPath = collectionView.indexPathForItemAtPoint(currentTouchPosition)
+        return indexPath
+    }
 }
 
 extension NewSubVC: ToolBarViewDelegate
 {
-    func clickShare(btn: UIButton)
+    // 点击分享按钮
+    func clickShare(btn: UIButton, event: UIEvent)
     {
-        print("clickShare")
+        // 获取点击位置所在的行
+//        let indexPath = getIndexByTouch(event)
+        
+        let imagePath = NSBundle.mainBundle().pathForResource("ShareTest", ofType: "png")
+        let shareImage = UIImage(contentsOfFile: imagePath!)
+        
+        
+        let shareParames = NSMutableDictionary()
+        
+        shareParames.SSDKSetupShareParamsByText("分享测试",
+                                                images : shareImage,
+                                                url : NSURL(string:"http://geekbing.com"),
+                                                title : "分享标题",
+                                                type : SSDKContentType.Image)
+        
+        ShareSDK.share(SSDKPlatformType.TypeQQ, parameters: shareParames) { (state: SSDKResponseState, userData: [NSObject : AnyObject]!, contentEntity: SSDKContentEntity!, error: NSError!) in
+            switch state
+            {
+            case SSDKResponseState.Success:
+                print("分享成功")
+                let alert = UIAlertController(title: nil, message: "分享成功", preferredStyle: .Alert)
+                let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
+                })
+                alert.addAction(sure)
+                self.presentViewController(alert, animated: true, completion: nil)
+            case SSDKResponseState.Fail:
+                print("分享失败,错误描述:\(error)")
+                let alert = UIAlertController(title: nil, message: "分享失败", preferredStyle: .Alert)
+                let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
+                })
+                alert.addAction(sure)
+                self.presentViewController(alert, animated: true, completion: nil)
+            case SSDKResponseState.Cancel:
+                print("分享取消")
+            default:
+                break
+            }
+        }
+        
+        //2.进行分享
+      /*  ShareSDK.share(SSDKPlatformType.TypeSinaWeibo, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
+            
+            switch state
+            {
+                case SSDKResponseState.Success:
+                    print("分享成功")
+                    let alert = UIAlertController(title: nil, message: "分享成功", preferredStyle: .Alert)
+                    let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
+                    })
+                    alert.addAction(sure)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                case SSDKResponseState.Fail:
+                    print("分享失败,错误描述:\(error)")
+                    let alert = UIAlertController(title: nil, message: "分享失败", preferredStyle: .Alert)
+                    let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
+                    })
+                    alert.addAction(sure)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                case SSDKResponseState.Cancel:
+                    print("分享取消")
+                default:
+                    break
+            }
+        }*/
     }
     
-    func clickComment(btn: UIButton)
+    // 点击评论按钮
+    func clickComment(btn: UIButton, event: UIEvent)
     {
-        print("clickComment")
+        // 获取点击位置所在的行
+        let indexPath = getIndexByTouch(event)
+        let result = dataArr[indexPath!.row]
+        let vc = Comment()
+        vc.result = result
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func clickZan(btn: UIButton)
+    // 点击赞按钮
+    func clickZan(btn: UIButton, event: UIEvent)
     {
-        print("clickZan")
+        // 获取点击位置所在的行
+        // let indexPath = getIndexByTouch(event)
+        if isZan == false
+        {
+            isZan = true
+            btn.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+        else
+        {
+            isZan = false
+            btn.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
     }
     
-    func clickCollection(btn: UIButton)
+    // 点击收藏按钮
+    func clickCollection(btn: UIButton, event: UIEvent)
     {
-        print("clickCollection")
+        // 获取点击位置所在的行
+//        let indexPath = getIndexByTouch(event)
+        if isCollection == false
+        {
+            isCollection = true
+            btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+        else
+        {
+            isCollection = false
+            btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
     }
 }
 

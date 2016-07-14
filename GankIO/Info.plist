@@ -2,11 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+        <string>sinaweibo</string>
+        <string>sinaweibohd</string>
+        <string>sinaweibosso</string>
+        <string>sinaweibohdsso</string>
+        <string>weibosdk</string>
+        <string>weibosdk2.5</string>
+        <string>wechat</string>
+        <string>weixin</string>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>wtloginmqq2</string>
+        <string>mqq</string>
+        <string>mqqapi</string>
+        <string>mqzoneopensdk</string>
+        <string>mqzoneopensdkapi</string>
+        <string>mqzoneopensdkapi19</string>
+        <string>mqzoneopensdkapiV2</string>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>wtloginmqq2</string>
+        <string>mqqapi</string>
+        <string>mqqwpa</string>
+        <string>mqzone</string>
+        <string>mqq</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -23,10 +47,50 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.geekbing.GankIO</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>comgeekbinggankio</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx4868b35061f87885</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>QQ41E53F02</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wb4287282896</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
