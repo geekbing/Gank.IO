@@ -9,8 +9,18 @@
 
 import UIKit
 
+protocol ToolBarViewDelegate
+{
+    func clickShare(btn: UIButton)
+    func clickComment(btn: UIButton)
+    func clickZan(btn: UIButton)
+    func clickCollection(btn: UIButton)
+}
+
 class ToolBarView: UIView
 {
+    var delegate: ToolBarViewDelegate!
+    
     override func drawRect(rect: CGRect)
     {
         let context = UIGraphicsGetCurrentContext()
@@ -36,7 +46,27 @@ class ToolBarView: UIView
             let btn = UIButton(frame: CGRect(x: CGFloat(i) * frame.size.width / 3, y: 0, width: frame.size.width / 3, height: frame.size.height))
             btn.setImage(UIImage(named: imgNames[i])?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
             btn.tintColor = UIColor.flatGrayColor()
+            btn.tag = i
+            btn.addTarget(self, action: .toolBarViewAction, forControlEvents: .TouchUpInside)
             self.addSubview(btn)
+        }
+    }
+    
+    // 点击分享点赞等4个按钮
+    func toolBarViewAction(btn: UIButton)
+    {
+        switch btn.tag
+        {
+            case 0:
+                delegate.clickZan(btn)
+            case 1:
+                delegate.clickComment(btn)
+            case 2:
+                delegate.clickCollection(btn)
+            case 3:
+                delegate.clickShare(btn)
+            default:
+                break
         }
     }
     
@@ -44,4 +74,9 @@ class ToolBarView: UIView
     {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private extension Selector
+{
+    static let toolBarViewAction = #selector(ToolBarView.toolBarViewAction(_:))
 }

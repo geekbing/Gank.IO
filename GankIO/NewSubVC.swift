@@ -96,7 +96,32 @@ extension NewSubVC: UICollectionViewDataSource
         cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: result.who ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
         cell.desc?.text = result.desc
         
+        cell.toolBar?.delegate = self
+        
         return cell
+    }
+}
+
+extension NewSubVC: ToolBarViewDelegate
+{
+    func clickShare(btn: UIButton)
+    {
+        print("clickShare")
+    }
+    
+    func clickComment(btn: UIButton)
+    {
+        print("clickComment")
+    }
+    
+    func clickZan(btn: UIButton)
+    {
+        print("clickZan")
+    }
+    
+    func clickCollection(btn: UIButton)
+    {
+        print("clickCollection")
     }
 }
 

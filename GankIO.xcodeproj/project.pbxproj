@@ -32,6 +32,8 @@
 		3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0DE1D36129C001C69AE /* NewSubVC.swift */; };
 		3747A0E21D3613C5001C69AE /* NewSubVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */; };
 		3747A0E91D3630F6001C69AE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0E81D3630F6001C69AE /* Extension.swift */; };
+		37C152681D37149D0006B111 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C152671D37149D0006B111 /* MineCell.swift */; };
+		37C1526A1D37310D0006B111 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C152691D37310D0006B111 /* MineHeaderView.swift */; };
 		37F549581D3638A4008A9C72 /* UIButton+WHE.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549461D3638A4008A9C72 /* UIButton+WHE.m */; };
 		37F549591D3638A4008A9C72 /* UIColor+WHE.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549481D3638A4008A9C72 /* UIColor+WHE.m */; };
 		37F5495A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F5494A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m */; };
@@ -98,6 +100,8 @@
 		3747A0DE1D36129C001C69AE /* NewSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVC.swift; sourceTree = "<group>"; };
 		3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVCCell.swift; sourceTree = "<group>"; };
 		3747A0E81D3630F6001C69AE /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		37C152671D37149D0006B111 /* MineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
+		37C152691D37310D0006B111 /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		37F549451D3638A4008A9C72 /* UIButton+WHE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WHE.h"; sourceTree = "<group>"; };
 		37F549461D3638A4008A9C72 /* UIButton+WHE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WHE.m"; sourceTree = "<group>"; };
 		37F549471D3638A4008A9C72 /* UIColor+WHE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WHE.h"; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		371C48B01D349C5D00488043 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				37C152661D37148F0006B111 /* V */,
 				371C48B61D349ED500488043 /* Mine.swift */,
 			);
 			name = Mine;
@@ -392,6 +397,15 @@
 				3747A0E81D3630F6001C69AE /* Extension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		37C152661D37148F0006B111 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				37C152671D37149D0006B111 /* MineCell.swift */,
+				37C152691D37310D0006B111 /* MineHeaderView.swift */,
+			);
+			name = V;
 			sourceTree = "<group>";
 		};
 		37F549431D3638A4008A9C72 /* CY */ = {
@@ -731,6 +745,7 @@
 			files = (
 				371C48AD1D349B2400488043 /* Main.swift in Sources */,
 				37F5495B1D3638A4008A9C72 /* CYWebViewController.m in Sources */,
+				37C152681D37149D0006B111 /* MineCell.swift in Sources */,
 				37F549631D363DDB008A9C72 /* ToolBarView.swift in Sources */,
 				37F5495A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m in Sources */,
 				371C48B31D349DC300488043 /* Common.swift in Sources */,
@@ -752,6 +767,7 @@
 				3747A0A51D35CFB5001C69AE /* CategoryCell.swift in Sources */,
 				3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
+				37C1526A1D37310D0006B111 /* MineHeaderView.swift in Sources */,
 				37F5495F1D3638A4008A9C72 /* NJKWebViewProgress.m in Sources */,
 				371C48BC1D34A06D00488043 /* Category.swift in Sources */,
 				3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */,
