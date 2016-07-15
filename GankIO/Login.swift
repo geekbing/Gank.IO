@@ -178,7 +178,7 @@ class Login: UIViewController
         }
         self.showLoding("登录中...")
         // 开始登录
-       login(usernameStr, password: passwordStr, successCall: {_ in
+       API.login(usernameStr, password: passwordStr, successCall: {_ in
             let vc = Main()
             UIApplication.sharedApplication().keyWindow?.rootViewController = vc
             self.stopActivityAnimating()

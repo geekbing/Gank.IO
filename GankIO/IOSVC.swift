@@ -6,7 +6,6 @@
 //  Copyright © 2016 Bing. All rights reserved.
 //
 
-
 import UIKit
 import ChameleonFramework
 import ITDAvatarPlaceholder
@@ -27,10 +26,11 @@ class IOSVC: UIViewController
         
         prepareUI()
         
-        getArticlesByType(getUrlByTypeCountAndPage(.iOS, count: 10, page: 4)) { (result) in
-            self.dataArr = result
-            self.tableView.reloadData()
-        }
+        // TODO
+//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: 4)) { (result) in
+//            self.dataArr = result
+//            self.tableView.reloadData()
+//        }
     }
     
     func prepareUI()
@@ -51,23 +51,25 @@ class IOSVC: UIViewController
     // 下拉刷新
     func headerRefresh()
     {
-        getArticlesByType(getUrlByTypeCountAndPage(.iOS, count: 10, page: 1)) { (result) in
-            self.currentPage = 1
-            self.tableView.mj_header.endRefreshing()
-            self.dataArr = result
-            self.tableView.reloadData()
-        }
+        // TODO
+//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: 1)) { (result) in
+//            self.currentPage = 1
+//            self.tableView.mj_header.endRefreshing()
+//            self.dataArr = result
+//            self.tableView.reloadData()
+//        }
     }
     
     // 上拉加载
     func footerRefresh()
     {
-        getArticlesByType(getUrlByTypeCountAndPage(.iOS, count: 10, page: currentPage + 1)) { (result) in
-            self.currentPage += 1
-            self.tableView.mj_footer.endRefreshing()
-            self.dataArr.appendContentsOf(result)
-            self.tableView.reloadData()
-        }
+        // TODO
+//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: currentPage + 1)) { (result) in
+//            self.currentPage += 1
+//            self.tableView.mj_footer.endRefreshing()
+//            self.dataArr.appendContentsOf(result)
+//            self.tableView.reloadData()
+//        }
     }
     
     override func didReceiveMemoryWarning()

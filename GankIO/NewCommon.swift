@@ -1,36 +1,66 @@
 //
-//  NewSubVC.swift
+//  NewCommonVC.swift
 //  GankIO
 //
-//  Created by Bing on 7/13/16.
+//  Created by Bing on 7/15/16.
 //  Copyright © 2016 Bing. All rights reserved.
 //
 
 import UIKit
 import MJRefresh
+import SVProgressHUD
 
-class NewSubVC: UIViewController
+class NewCommon: UIViewController
 {
     var dataArr = [AVObject]()
+    
     var collectionView: UICollectionView!
     
     // 是否赞
     var isZan = false
     // 是否收藏
     var isCollection = true
-    // 当前页数
-    var currentPage = 1
-
+    
+    var type: ClassType
+    
+    init(type: ClassType)
+    {
+        self.type = type
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        prepareUI()
+        
+        showLoding("加载数据中...")
+        API.getDataByTypeAndParams(type, limit: 10, skip: 0, successCall: { (results) in
+            self.dataArr = results
+            self.collectionView.reloadData()
+            self.stopActivityAnimating()
+        }) { (error) in
+            self.stopActivityAnimating()
+            print(error.localizedDescription)
+            SVProgressHUD.showErrorWithStatus("获取数据出错。")
+        }
+    }
+    
+    func prepareUI()
+    {
+        view.backgroundColor = UIColor.whiteColor()
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 64), collectionViewLayout: layout)
-        collectionView.registerClass(NewSubVCCell.classForCoder(), forCellWithReuseIdentifier: "NewSubVCCell")
+        collectionView.registerClass(NewCommonCell.classForCoder(), forCellWithReuseIdentifier: "NewCommonCell")
         
         collectionView.backgroundColor = UIColor.flatWhiteColor()
         collectionView.dataSource = self
@@ -41,37 +71,32 @@ class NewSubVC: UIViewController
         // 下拉刷新和上拉加载
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: .headerRefresh)
         collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: .footerRefresh)
-        // TODO
-//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: 1)) { (result) in
-//            self.dataArr = result
-//            self.collectionView.reloadData()
-//        }
     }
     
     // 下拉刷新
     func headerRefresh()
     {
-        // TODO
-//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: 1)) { (result) in
-//            self.currentPage = 1
-//            self.collectionView.mj_header.endRefreshing()
-//            self.dataArr = result
-//            self.collectionView.reloadData()
-//        }
+        API.getDataByTypeAndParams(type, limit: 10, skip: 0, successCall: { (results) in
+            self.collectionView.mj_header.endRefreshing()
+            self.dataArr = results
+            self.collectionView.reloadData()
+        }) { (error) in
+            SVProgressHUD.showErrorWithStatus("获取数据出错。")
+        }
     }
     
     // 上拉加载
     func footerRefresh()
     {
-        // TODO
-//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: currentPage + 1)) { (result) in
-//            self.currentPage += 1
-//            self.collectionView.mj_footer.endRefreshing()
-//            self.dataArr.appendContentsOf(result)
-//            self.collectionView.reloadData()
-//        }
+        API.getDataByTypeAndParams(type, limit: 10, skip: dataArr.count, successCall: { (results) in
+            self.collectionView.mj_footer.endRefreshing()
+            self.dataArr.appendContentsOf(results)
+            self.collectionView.reloadData()
+        }) { (error) in
+            SVProgressHUD.showErrorWithStatus("获取数据出错。")
+        }
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -80,11 +105,11 @@ class NewSubVC: UIViewController
 
 private extension Selector
 {
-    static let headerRefresh = #selector(IOSVC.headerRefresh)
-    static let footerRefresh = #selector(IOSVC.footerRefresh)
+    static let headerRefresh = #selector(NewCommon.headerRefresh)
+    static let footerRefresh = #selector(NewCommon.footerRefresh)
 }
 
-extension NewSubVC: UICollectionViewDataSource
+extension NewCommon: UICollectionViewDataSource
 {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
@@ -93,8 +118,8 @@ extension NewSubVC: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewSubVCCell", forIndexPath: indexPath) as! NewSubVCCell
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommonCell", forIndexPath: indexPath) as! NewCommonCell
+        
         cell.backgroundColor = UIColor.whiteColor()
         let result = dataArr[indexPath.row]
         cell.who?.text = result["who"] as? String
@@ -118,13 +143,13 @@ extension NewSubVC: UICollectionViewDataSource
     }
 }
 
-extension NewSubVC: ToolBarViewDelegate
+extension NewCommon: ToolBarViewDelegate
 {
     // 点击分享按钮
     func clickShare(btn: UIButton, event: UIEvent)
     {
         // 获取点击位置所在的行
-//        let indexPath = getIndexByTouch(event)
+        //        let indexPath = getIndexByTouch(event)
         
         let imagePath = NSBundle.mainBundle().pathForResource("ShareTest", ofType: "png")
         let shareImage = UIImage(contentsOfFile: imagePath!)
@@ -161,32 +186,6 @@ extension NewSubVC: ToolBarViewDelegate
                 break
             }
         }
-        
-        //2.进行分享
-      /*  ShareSDK.share(SSDKPlatformType.TypeSinaWeibo, parameters: shareParames) { (state : SSDKResponseState, userData : [NSObject : AnyObject]!, contentEntity :SSDKContentEntity!, error : NSError!) -> Void in
-            
-            switch state
-            {
-                case SSDKResponseState.Success:
-                    print("分享成功")
-                    let alert = UIAlertController(title: nil, message: "分享成功", preferredStyle: .Alert)
-                    let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
-                    })
-                    alert.addAction(sure)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case SSDKResponseState.Fail:
-                    print("分享失败,错误描述:\(error)")
-                    let alert = UIAlertController(title: nil, message: "分享失败", preferredStyle: .Alert)
-                    let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
-                    })
-                    alert.addAction(sure)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                case SSDKResponseState.Cancel:
-                    print("分享取消")
-                default:
-                    break
-            }
-        }*/
     }
     
     // 点击评论按钮
@@ -221,7 +220,7 @@ extension NewSubVC: ToolBarViewDelegate
     func clickCollection(btn: UIButton, event: UIEvent)
     {
         // 获取点击位置所在的行
-//        let indexPath = getIndexByTouch(event)
+        //        let indexPath = getIndexByTouch(event)
         if isCollection == false
         {
             isCollection = true
@@ -235,7 +234,7 @@ extension NewSubVC: ToolBarViewDelegate
     }
 }
 
-extension NewSubVC: UICollectionViewDelegate
+extension NewCommon: UICollectionViewDelegate
 {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
@@ -245,7 +244,7 @@ extension NewSubVC: UICollectionViewDelegate
     }
 }
 
-extension NewSubVC: UICollectionViewDelegateFlowLayout
+extension NewCommon: UICollectionViewDelegateFlowLayout
 {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {

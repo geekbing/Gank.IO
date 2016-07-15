@@ -116,7 +116,7 @@ class FindPassword: UIViewController
         }
         self.showLoding("邮件发送中")
         // 发送重置邮件
-        resetPassWordByEmail(emailStr, successCall: { 
+        API.resetPassWordByEmail(emailStr, successCall: {
             self.stopActivityAnimating()
             self.email.resignFirstResponder()
             SVProgressHUD.showSuccessWithStatus("邮件发送成功。")

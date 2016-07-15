@@ -12,7 +12,7 @@ import VTMagic
 class New: UIViewController
 {
     // 顶部的菜单数组
-    let menuList = ["iOS", "Android", "Web", "Video", "App", "Photos"]
+    let menuList = ["iOS", "Android", "Web", "Video", "App"]
     
     var magic: VTMagicController!
     
@@ -96,19 +96,26 @@ extension New: VTMagicViewDataSource
 //            gridViewController = [[VTGridViewController alloc] init];
 //        }
 //        return gridViewController;
+//        ["iOS", "Android", "Web", "Video", "App"]
         switch pageIndex
         {
             case 0:
-//                let vc = IOSVC()
-                let vc = NewSubVC()
+                let vc = NewCommon(type: .iOS)
                 return vc
             case 1:
-                let vc = AndroidVC()
-//                let vc = UINavigationController(rootViewController: AndroidVC())
+                let vc = NewCommon(type: .Android)
+                return vc
+            case 2:
+                let vc = NewCommon(type: .Web)
+                return vc
+            case 3:
+                let vc = NewCommon(type: .Video)
+                return vc
+            case 4:
+                let vc = NewCommon(type: .App)
                 return vc
             default:
-                let vc = IOSVC()
-//                let vc = UINavigationController(rootViewController: IOSVC())
+                let vc = NewCommon(type: .iOS)
                 return vc
         }
     }

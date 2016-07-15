@@ -192,7 +192,7 @@ class Register: UIViewController
         }
         self.showLoding("注册中...")
         // 进行注册
-        register(usernameStr!, password: passwordStr!, email: emailStr!, successCall: {
+        API.register(usernameStr!, password: passwordStr!, email: emailStr!, successCall: {
             self.stopActivityAnimating()
             // 键盘收起来
             self.username.resignFirstResponder()
@@ -201,7 +201,7 @@ class Register: UIViewController
 
             self.showLoding("注册成功。自动登录...")
             // 进行登录
-            login(usernameStr!, password: passwordStr!, successCall: { (_) in
+            API.login(usernameStr!, password: passwordStr!, successCall: { (_) in
                 self.email.resignFirstResponder()
                 UIApplication.sharedApplication().keyWindow?.rootViewController = Main()
                 self.stopActivityAnimating()

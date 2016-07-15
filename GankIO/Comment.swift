@@ -11,7 +11,7 @@ import UIKit
 class Comment: UIViewController
 {
     // 传递过来的数据
-    var result: Result!
+    var result: AVObject!
     
     // 上面的视图
     var upView: CommentUpView!
@@ -19,7 +19,7 @@ class Comment: UIViewController
     // 下面的评论表格
     var tableView: UITableView!
     // 评论数据源
-    var dataArr = [Result]()
+    var dataArr = [AVObject]()
     
     // 最下面的评论工具条
     var commentToolBar: CommentToolBar!
@@ -32,15 +32,15 @@ class Comment: UIViewController
         self.automaticallyAdjustsScrollViewInsets = false
         
         // 内容的高度
-        let descHeight = result.desc.stringHeightWith(font16, width: screenWidth - 30)
+        let descHeight = (result["desc"] as? String)!.stringHeightWith(font16, width: screenWidth - 30)
         let upViewHeight = descHeight + 80
         upView = CommentUpView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: upViewHeight))
         // upView.layer.borderWidth = 1
         // upView.layer.borderColor = UIColor.flatRedColor().CGColor
-        upView.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: result.who ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
-        upView.desc?.text = result.desc
-        upView.who?.text = result.who
-        upView.publishedAt?.text = result.publishedAt
+        upView.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (result["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+        upView.desc?.text = result["desc"] as? String
+        upView.who?.text = result["who"] as? String
+        upView.publishedAt?.text = result["publishedAt"] as? String
         view.addSubview(upView)
         
         // 评论表格
@@ -67,10 +67,11 @@ class Comment: UIViewController
         commentToolBar = CommentToolBar(frame: CGRect(x: 0, y: screenHeight - 104, width: screenWidth, height: 40))
         view.addSubview(commentToolBar)
         
-        getArticlesByType(getUrlByTypeCountAndPage(.iOS, count: 10, page: 4)) { (result) in
-            self.dataArr = result
-            self.tableView.reloadData()
-        }
+        // TODO
+//        API.getArticlesByType(API.getUrlByTypeCountAndPage(.iOS, count: 10, page: 4)) { (result) in
+//            self.dataArr = result
+//            self.tableView.reloadData()
+//        }
     }
     
     override func viewWillAppear(animated: Bool)
@@ -105,10 +106,10 @@ extension Comment: UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("CommentCell", forIndexPath: indexPath) as! CommentCell
         let result = dataArr[indexPath.row]
         
-        cell.who?.text = result.who
-        cell.publishedAt?.text = result.publishedAt
-        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: result.who ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
-        cell.desc?.text = result.desc
+        cell.who?.text = result["who"] as? String
+        cell.publishedAt?.text = result["publishedAt"] as? String
+        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (result["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+        cell.desc?.text = result["desc"] as? String
         
         return cell
     }
