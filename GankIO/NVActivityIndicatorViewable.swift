@@ -48,22 +48,15 @@ public extension NVActivityIndicatorViewable where Self: UIViewController {
         activityIndicatorView.startAnimation()
         activityContainer.addSubview(activityIndicatorView)
         
-        let width = activityContainer.frame.size.width * 2
+        let width = activityContainer.frame.size.width / 3
         if let message = message where !message.isEmpty {
             let label = UILabel(frame: CGRectMake(0, 0, width, 30))
             label.center = CGPointMake(
                 activityIndicatorView.center.x,
-                activityIndicatorView.center.y + actualSize.height - 20)
+                activityIndicatorView.center.y + actualSize.height)
             label.textAlignment = .Center
             label.text = message
-            if #available(iOS 8.2, *)
-            {
-                label.font = UIFont.systemFontOfSize(18, weight: UIFontWeightThin)
-            }
-            else
-            {
-                label.font = UIFont.systemFontOfSize(18)
-            }
+            label.font = UIFont.boldSystemFontOfSize(20)
             label.textColor = activityIndicatorView.color
             activityContainer.addSubview(label)
         }

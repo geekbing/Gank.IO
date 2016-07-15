@@ -11,6 +11,7 @@ import SnapKit
 import ChameleonFramework
 import Material
 import SVProgressHUD
+import NVActivityIndicatorView
 
 class Login: UIViewController
 {
@@ -46,6 +47,8 @@ class Login: UIViewController
         username.textColor = UIColor.flatWhiteColor()
         username.placeholder = "用户名"
         username.font = font14
+        username.returnKeyType = .Next
+        username.delegate = self
         view.addSubview(username)
         
         // 密码
@@ -59,7 +62,16 @@ class Login: UIViewController
         password.secureTextEntry = true
         password.placeholder = "密码"
         password.font = font14
+        password.returnKeyType = .Done
+        password.delegate = self
         view.addSubview(password)
+        
+        // 查看密码眼睛
+        let seePassword = UIButton()
+        seePassword.setImage(UIImage(named: "Eye")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        seePassword.tintColor = UIColor.flatNavyBlueColor()
+        seePassword.addTarget(self, action: .seePasswordClick, forControlEvents: .TouchUpInside)
+        view.addSubview(seePassword)
         
         // 登录按钮
         let login = RaisedButton()
@@ -110,6 +122,12 @@ class Login: UIViewController
             make.right.equalTo(view).offset(-30)
             make.height.equalTo(30)
         }
+        seePassword.snp_makeConstraints { (make) in
+            make.top.equalTo(username.snp_bottom).offset(5)
+            make.bottom.equalTo(password).offset(-5)
+            make.right.equalTo(password)
+            make.width.equalTo(seePassword.snp_height)
+        }
         login.snp_makeConstraints { (make) in
             make.top.equalTo(password.snp_bottom).offset(30)
             make.left.equalTo(view).offset(30)
@@ -134,27 +152,47 @@ class Login: UIViewController
         self.navigationController?.navigationBar.hidden = true
     }
     
+    // 点击查看密码按钮
+    func seePasswordClick()
+    {
+        self.password.secureTextEntry = !self.password.secureTextEntry
+    }
+    
     // 点击登录按钮
     func loginClick()
     {
         username.resignFirstResponder()
         password.resignFirstResponder()
         
-        
-        SVProgressHUD.show()
-        login(username.text!, password: password.text!, successCall: {_ in 
-            SVProgressHUD.showSuccessWithStatus("登录成功。")
+        let usernameStr = username.text!
+        if usernameStr == ""
+        {
+            SVProgressHUD.showErrorWithStatus("用户名不能为空!")
+            return
+        }
+        let passwordStr = password.text!
+        if passwordStr == ""
+        {
+            SVProgressHUD.showErrorWithStatus("密码不能为空!")
+            return
+        }
+        self.showLoding("登录中...")
+        // 开始登录
+       login(usernameStr, password: passwordStr, successCall: {_ in
             let vc = Main()
-            self.presentViewController(vc, animated: true, completion: nil)
+            UIApplication.sharedApplication().keyWindow?.rootViewController = vc
+            self.stopActivityAnimating()
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus(error.localizedDescription)
+            self.stopActivityAnimating()
+            SVProgressHUD.showErrorWithStatus(getErrorMessageByCode(error.code))
         }
     }
     
     // 点击找回密码按钮
     func foundPasswordClick()
     {
-        print("foundPasswordClick")
+        let vc = FindPassword()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // 点击去注册按钮
@@ -172,7 +210,25 @@ class Login: UIViewController
 
 private extension Selector
 {
+    static let seePasswordClick = #selector(Login.seePasswordClick)
     static let loginClick = #selector(Login.loginClick)
     static let foundPasswordClick = #selector(Login.foundPasswordClick)
     static let registerClick = #selector(Login.registerClick)
+}
+
+extension Login: UITextFieldDelegate
+{
+    // 键盘上return键被触摸后调用
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        if textField == username
+        {
+            password.becomeFirstResponder()
+        }
+        else
+        {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }

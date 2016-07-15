@@ -6,7 +6,8 @@
 //  Copyright © 2016 Bing. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import NVActivityIndicatorView
 
 extension String
 {
@@ -20,5 +21,13 @@ extension String
         let text = self as NSString
         let rect = text.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
         return rect.size.height
+    }
+}
+
+extension UIViewController: NVActivityIndicatorViewable
+{
+    func showLoding(message: String)
+    {
+        self.startActivityAnimating(CGSize(width: 100, height: 100), message: message, type: .BallScaleMultiple, color: UIColor.flatWhiteColor(), padding: 10)
     }
 }

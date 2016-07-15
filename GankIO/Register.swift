@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import SVProgressHUD
+import NVActivityIndicatorView
 
 class Register: UIViewController
 {
@@ -53,6 +54,8 @@ class Register: UIViewController
         username.textColor = UIColor.flatWhiteColor()
         username.placeholder = "用户名"
         username.font = font14
+        username.returnKeyType = .Next
+        username.delegate = self
         view.addSubview(username)
         
         // 密码
@@ -66,7 +69,16 @@ class Register: UIViewController
         password.secureTextEntry = true
         password.placeholder = "密码"
         password.font = font14
+        password.returnKeyType = .Next
+        password.delegate = self
         view.addSubview(password)
+        
+        // 查看密码眼睛
+        let seePassword = UIButton()
+        seePassword.setImage(UIImage(named: "Eye")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        seePassword.tintColor = UIColor.flatNavyBlueColor()
+        seePassword.addTarget(self, action: .seePasswordClick, forControlEvents: .TouchUpInside)
+        view.addSubview(seePassword)
         
         // 邮箱
         email = TextField()
@@ -79,12 +91,15 @@ class Register: UIViewController
         email.secureTextEntry = true
         email.placeholder = "邮箱"
         email.font = font14
+        email.returnKeyType = .Done
+        email.delegate = self
         view.addSubview(email)
         
         // 注册按钮
         let register = UIButton()
         register.layer.masksToBounds = true
         register.layer.cornerRadius = 20
+        register.titleLabel?.font = font16
         register.setTitle("注册", forState: .Normal)
         register.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         register.backgroundColor = UIColor(red:0.24, green:0.28, blue:0.31, alpha:1.00)
@@ -106,7 +121,7 @@ class Register: UIViewController
             make.centerX.equalTo(view.snp_centerX)
         }
         username.snp_makeConstraints { (make) in
-            make.top.equalTo(logo).offset(100)
+            make.top.equalTo(logo.snp_bottom).offset(80)
             make.left.equalTo(view).offset(30)
             make.right.equalTo(view).offset(-30)
             make.height.equalTo(30)
@@ -116,6 +131,12 @@ class Register: UIViewController
             make.left.equalTo(view).offset(30)
             make.right.equalTo(view).offset(-30)
             make.height.equalTo(30)
+        }
+        seePassword.snp_makeConstraints { (make) in
+            make.top.equalTo(username.snp_bottom).offset(5)
+            make.bottom.equalTo(password).offset(-5)
+            make.right.equalTo(password)
+            make.width.equalTo(seePassword.snp_height)
         }
         email.snp_makeConstraints { (make) in
             make.top.equalTo(password.snp_bottom).offset(20)
@@ -131,6 +152,12 @@ class Register: UIViewController
         }
     }
     
+    // 点击查看密码按钮
+    func seePasswordClick()
+    {
+        self.password.secureTextEntry = !self.password.secureTextEntry
+    }
+
     // 点击返回按钮
     func backBtnClick()
     {
@@ -163,21 +190,28 @@ class Register: UIViewController
             SVProgressHUD.showErrorWithStatus("邮箱格式不合理!")
             return
         }
-        SVProgressHUD.show()
+        self.showLoding("注册中...")
         // 进行注册
         register(usernameStr!, password: passwordStr!, email: emailStr!, successCall: {
+            self.stopActivityAnimating()
             // 键盘收起来
-            self.resignFirstResponder()
-            SVProgressHUD.showSuccessWithStatus("注册成功! 自动登录...")
+            self.username.resignFirstResponder()
+            self.password.resignFirstResponder()
+            self.email.resignFirstResponder()
+
+            self.showLoding("注册成功。自动登录...")
             // 进行登录
             login(usernameStr!, password: passwordStr!, successCall: { (_) in
-                SVProgressHUD.showSuccessWithStatus("登录成功!")
+                self.email.resignFirstResponder()
                 UIApplication.sharedApplication().keyWindow?.rootViewController = Main()
+                self.stopActivityAnimating()
             }, failCall: { (error) in
                 SVProgressHUD.showSuccessWithStatus(getErrorMessageByCode(error.code))
+                self.stopActivityAnimating()
             })
         }) { (error) in
             SVProgressHUD.showErrorWithStatus(getErrorMessageByCode(error.code))
+            self.stopActivityAnimating()
         }
     }
     
@@ -189,6 +223,28 @@ class Register: UIViewController
 
 private extension Selector
 {
+    static let seePasswordClick = #selector(Login.seePasswordClick)
     static let backBtnClick = #selector(Register.backBtnClick)
     static let registerClick = #selector(Register.registerClick)
+}
+
+extension Register: UITextFieldDelegate
+{
+    // 键盘上return键被触摸后调用
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        if textField == username
+        {
+            password.becomeFirstResponder()
+        }
+        else if textField == password
+        {
+            email.becomeFirstResponder()
+        }
+        else
+        {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }

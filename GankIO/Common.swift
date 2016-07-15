@@ -74,14 +74,30 @@ func getErrorMessageByCode(code: Int) -> String
     var errorMessage = ""
     switch code
     {
+        case 125:
+            errorMessage = "电子邮箱地址无效。"
+        case 139:
+            errorMessage = "角色名称非法，角色名称只能以英文字母、数字或下划线组成。"
         case 202:
             errorMessage = "用户名已经被占用。"
         case 203:
             errorMessage = "电子邮箱地址已经被占用。"
         case 204:
             errorMessage = "没有提供电子邮箱地址。"
+        case 205:
+            errorMessage = "找不到电子邮箱地址对应的用户。"
+        case 210:
+            errorMessage = "用户名和密码不匹配。"
+        case 211:
+            errorMessage = "找不到用户。"
+        case 216:
+            errorMessage = "未验证的邮箱地址。"
+        case 217:
+            errorMessage = "无效的用户名，不允许空白用户名。"
+        case 218:
+            errorMessage = "无效的密码，不允许空白密码。"
         default:
-            errorMessage = "注册失败"
+            errorMessage = "操作失败。"
     }
     return errorMessage
 }

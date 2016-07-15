@@ -104,3 +104,18 @@ func login(username: String, password: String, successCall: (user: AVUser) -> ()
         }
     }
 }
+
+// 邮件重置密码
+func resetPassWordByEmail(email: String, successCall: () -> (), failCall: (error: NSError) -> ())
+{
+    AVUser.requestPasswordResetForEmailInBackground(email) { (success: Bool, error: NSError!) in
+        if success
+        {
+            successCall()
+        }
+        else
+        {
+            failCall(error: error)
+        }
+    }
+}
