@@ -19,11 +19,8 @@ class Mine: UIViewController
     {
         super.viewDidLoad()
         
-//        let headerView = UIView()
-//        let background = UIImageView()
-//        background.image = UIImage(named: "background")
-//        headerView.addSubview(background)
         let headerView = MineHeaderView()
+        headerView.delegate = self
         view.addSubview(headerView)
         
         tableView = UITableView()
@@ -68,6 +65,22 @@ class Mine: UIViewController
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension Mine: MineHeaderViewDelegate
+{
+    // 点击设置按钮
+    func clickSettingBtn()
+    {
+        let vc = Setting()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // 点击头像
+    func clickAvatar()
+    {
+        
     }
 }
 

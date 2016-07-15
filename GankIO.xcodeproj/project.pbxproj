@@ -32,6 +32,11 @@
 		3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0DE1D36129C001C69AE /* NewSubVC.swift */; };
 		3747A0E21D3613C5001C69AE /* NewSubVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */; };
 		3747A0E91D3630F6001C69AE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0E81D3630F6001C69AE /* Extension.swift */; };
+		379DB10D1D386A1A001BEA29 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DB10C1D386A1A001BEA29 /* Login.swift */; };
+		379DB10F1D386A2E001BEA29 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DB10E1D386A2E001BEA29 /* Register.swift */; };
+		379DB1131D386ABC001BEA29 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 379DB1121D386ABC001BEA29 /* UIImage+ImageEffects.m */; };
+		379DB1161D387F90001BEA29 /* FindPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DB1151D387F90001BEA29 /* FindPassword.swift */; };
+		379DB1191D388D4C001BEA29 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379DB1181D388D4C001BEA29 /* Setting.swift */; };
 		37C152681D37149D0006B111 /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C152671D37149D0006B111 /* MineCell.swift */; };
 		37C1526A1D37310D0006B111 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C152691D37310D0006B111 /* MineHeaderView.swift */; };
 		37C1526D1D377D2F0006B111 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1526C1D377D2E0006B111 /* Comment.swift */; };
@@ -124,6 +129,12 @@
 		3747A0DE1D36129C001C69AE /* NewSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVC.swift; sourceTree = "<group>"; };
 		3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVCCell.swift; sourceTree = "<group>"; };
 		3747A0E81D3630F6001C69AE /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		379DB10C1D386A1A001BEA29 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		379DB10E1D386A2E001BEA29 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		379DB1111D386ABC001BEA29 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		379DB1121D386ABC001BEA29 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		379DB1151D387F90001BEA29 /* FindPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPassword.swift; sourceTree = "<group>"; };
+		379DB1181D388D4C001BEA29 /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		37C152671D37149D0006B111 /* MineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		37C152691D37310D0006B111 /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		37C1526C1D377D2E0006B111 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -276,8 +287,10 @@
 		371C48B01D349C5D00488043 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				379DB1171D388D44001BEA29 /* Setting */,
+				379DB10B1D386A0D001BEA29 /* User */,
+				379DB1141D387216001BEA29 /* C */,
 				37C152661D37148F0006B111 /* V */,
-				371C48B61D349ED500488043 /* Mine.swift */,
 			);
 			name = Mine;
 			sourceTree = "<group>";
@@ -438,6 +451,7 @@
 		3747A0A61D35FD7A001C69AE /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				379DB1101D386ABC001BEA29 /* UIImage+ImageEffects */,
 				37C152A81D37C5380006B111 /* ShareSDK */,
 				37F549431D3638A4008A9C72 /* CY */,
 			);
@@ -476,6 +490,41 @@
 				3747A0E81D3630F6001C69AE /* Extension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		379DB10B1D386A0D001BEA29 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				379DB10C1D386A1A001BEA29 /* Login.swift */,
+				379DB10E1D386A2E001BEA29 /* Register.swift */,
+				379DB1151D387F90001BEA29 /* FindPassword.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		379DB1101D386ABC001BEA29 /* UIImage+ImageEffects */ = {
+			isa = PBXGroup;
+			children = (
+				379DB1111D386ABC001BEA29 /* UIImage+ImageEffects.h */,
+				379DB1121D386ABC001BEA29 /* UIImage+ImageEffects.m */,
+			);
+			path = "UIImage+ImageEffects";
+			sourceTree = "<group>";
+		};
+		379DB1141D387216001BEA29 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				371C48B61D349ED500488043 /* Mine.swift */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
+		379DB1171D388D44001BEA29 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				379DB1181D388D4C001BEA29 /* Setting.swift */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		37C152661D37148F0006B111 /* V */ = {
@@ -968,6 +1017,7 @@
 				37F5495A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m in Sources */,
 				371C48B31D349DC300488043 /* Common.swift in Sources */,
 				371C48B51D349ECE00488043 /* New.swift in Sources */,
+				379DB1161D387F90001BEA29 /* FindPassword.swift in Sources */,
 				3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */,
 				37F549591D3638A4008A9C72 /* UIColor+WHE.m in Sources */,
 				37F549601D3638A4008A9C72 /* NJKWebViewProgressView.m in Sources */,
@@ -975,11 +1025,14 @@
 				371C48B71D349ED500488043 /* Mine.swift in Sources */,
 				37F549581D3638A4008A9C72 /* UIButton+WHE.m in Sources */,
 				37C152751D3787E50006B111 /* CommentCell.swift in Sources */,
+				379DB1191D388D4C001BEA29 /* Setting.swift in Sources */,
 				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
 				371C48D41D34DD3A00488043 /* API.swift in Sources */,
 				37F549611D3638A4008A9C72 /* UINavigationBar+Awesome.m in Sources */,
 				371C48CF1D34CE8000488043 /* Result.swift in Sources */,
 				371C48D11D34CEED00488043 /* ArticleCell.swift in Sources */,
+				379DB10D1D386A1A001BEA29 /* Login.swift in Sources */,
+				379DB1131D386ABC001BEA29 /* UIImage+ImageEffects.m in Sources */,
 				3747A0E21D3613C5001C69AE /* NewSubVCCell.swift in Sources */,
 				371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */,
 				3747A0E91D3630F6001C69AE /* Extension.swift in Sources */,
@@ -988,6 +1041,7 @@
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
 				37C1526A1D37310D0006B111 /* MineHeaderView.swift in Sources */,
 				37C1526D1D377D2F0006B111 /* Comment.swift in Sources */,
+				379DB10F1D386A2E001BEA29 /* Register.swift in Sources */,
 				37F5495F1D3638A4008A9C72 /* NJKWebViewProgress.m in Sources */,
 				371C48BC1D34A06D00488043 /* Category.swift in Sources */,
 				3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */,

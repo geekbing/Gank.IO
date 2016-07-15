@@ -8,8 +8,11 @@
 
 import UIKit
 
-protocol MineHeaderViewDelegate {
-    func clickSetting()
+protocol MineHeaderViewDelegate
+{
+    // 点击设置按钮
+    func clickSettingBtn()
+    // 点击头像
     func clickAvatar()
 }
 
@@ -52,6 +55,7 @@ class MineHeaderView: UIView
         setting = UIButton()
         setting.setImage(UIImage(named: "Setting")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         setting.tintColor = UIColor.flatWhiteColor()
+        setting.addTarget(self, action: .clickSettingBtn, forControlEvents: .TouchUpInside)
         self.addSubview(setting)
         
         // 布局
@@ -79,4 +83,15 @@ class MineHeaderView: UIView
     {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // 点击设置按钮
+    func clickSettingBtn()
+    {
+        delegate.clickSettingBtn()
+    }
+}
+
+private extension Selector
+{
+    static let clickSettingBtn = #selector(MineHeaderView.clickSettingBtn)
 }

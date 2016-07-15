@@ -65,17 +65,18 @@ extension Main: UITabBarControllerDelegate
 {
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool
     {
-        //        if viewController == tabBarController.viewControllers![3]
-        //        {
-        //            let isLogin = NSUserDefaults.standardUserDefaults().valueForKey("isLogin") as? Bool
-        //            if isLogin == nil || isLogin == false
-        //            {
-        //                let vc = UINavigationController(rootViewController: Login())
-        //                tabBarController.presentViewController(vc, animated: true, completion: nil)
-        //                return false
-        //            }
-        //        }
+        // 点击我的TabBar
+        if viewController == tabBarController.viewControllers![3]
+        {
+            // 如果用户没登录
+            if AVUser.currentUser() == nil
+            {
+                // let vc = UINavigationController(rootViewController: Login())
+                let vc = Login()
+                tabBarController.presentViewController(vc, animated: true, completion: nil)
+                return false
+            }
+        }
         return true
     }
 }
-

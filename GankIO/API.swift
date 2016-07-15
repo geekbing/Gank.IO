@@ -71,3 +71,36 @@ func getArticlesByType(url: String, callBack: (result: [Result]) -> ())
     }
 }
 
+// 注册
+func register(username: String, password: String, email: String, successCall: () -> (), failCall: (error: NSError) -> ())
+{
+    let newUser = AVUser()
+    newUser.username = username
+    newUser.password = password
+    newUser.email = email
+    newUser.signUpInBackgroundWithBlock { (success: Bool, error: NSError!) in
+        if success
+        {
+            successCall()
+        }
+        else
+        {
+            failCall(error: error)
+        }
+    }
+}
+
+// 登录
+func login(username: String, password: String, successCall: (user: AVUser) -> (), failCall: (error: NSError) -> ())
+{
+    AVUser.logInWithUsernameInBackground(username, password: password) { (user: AVUser!, error: NSError!) in
+        if user != nil && error == nil
+        {
+            successCall(user: user)
+        }
+        else
+        {
+            failCall(error: error)
+        }
+    }
+}

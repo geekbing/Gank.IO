@@ -59,3 +59,29 @@ func isNewVersion() -> Bool
     // 对比
     return currentVersion > sandboxVersion
 }
+
+// 验证邮箱合法性
+func isValidateEmail(email: String) -> Bool
+{
+    let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+    let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+    return emailTest.evaluateWithObject(email)
+}
+
+// leanCloud 错误码得到错误消息
+func getErrorMessageByCode(code: Int) -> String
+{
+    var errorMessage = ""
+    switch code
+    {
+        case 202:
+            errorMessage = "用户名已经被占用。"
+        case 203:
+            errorMessage = "电子邮箱地址已经被占用。"
+        case 204:
+            errorMessage = "没有提供电子邮箱地址。"
+        default:
+            errorMessage = "注册失败"
+    }
+    return errorMessage
+}

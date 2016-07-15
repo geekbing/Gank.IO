@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         setupGlobalStyle()          // 配置全局样式
         setupGlobalData()           // 配置全局数据
+        setupLeanCloud()            // 配置LeanCloud
         setupRootViewController()   // 配置根控制器
         setupShareSDK()             // 配置shareSDK
        
@@ -36,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let backImg = UIImage(named: "Back")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 30, 0, 0))
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal, barMetrics: .Default)
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-100.0, -100.0), forBarMetrics: UIBarMetrics.Default)
+        
+        // 配置SVProgressHUDStyle
+        SVProgressHUD.setMinimumDismissTimeInterval(1.5)
     }
     
     // 配置全局数据
@@ -44,13 +49,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
     }
     
+    // 配置LeanCloud
+    func setupLeanCloud()
+    {
+        let AppID = "TWpjtxh1X7AWkS0RIz7tz2MW-gzGzoHsz"
+        let AppKey = "ihT09VMyr4sY0naf833CTnqA"
+        // 注册LeanCloud
+        AVOSCloud.setApplicationId(AppID, clientKey: AppKey)
+    }
+    
     // 配置根控制器
     func setupRootViewController()
     {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
-        // 如果有新版本，则进入用户引导界面；否则进入主界面
-        window?.rootViewController = isNewVersion() ? Guide() : Main()
+        
+        // 如果有新版本，则进入用户引导界面
+        if isNewVersion()
+        {
+            window?.rootViewController = Guide()
+        }
+        else
+        {
+            // 如果当前用户没登录则进入登录界面
+            if AVUser.currentUser() == nil
+            {
+                window?.rootViewController = UINavigationController(rootViewController: Login())
+            }
+            else
+            {
+                // 否则直接进入主界面
+                let vc = Main()
+                window?.rootViewController = vc
+            }
+        }
         window?.makeKeyAndVisible()
     }
     
@@ -137,7 +169,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
