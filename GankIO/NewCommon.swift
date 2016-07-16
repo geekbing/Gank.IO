@@ -16,6 +16,8 @@ class NewCommon: UIViewController
     
     var collectionView: UICollectionView!
     
+    // 分享第几条数据
+    var shareIndex = 0
     // 是否赞
     var isZan = false
     // 是否收藏
@@ -41,7 +43,7 @@ class NewCommon: UIViewController
         
         prepareUI()
         
-        showLoding("加载数据中...")
+        showLoding("")
         API.getDataByTypeAndParams(type, limit: 10, skip: 0, successCall: { (results) in
             self.dataArr = results
             self.collectionView.reloadData()
@@ -149,43 +151,45 @@ extension NewCommon: ToolBarViewDelegate
     func clickShare(btn: UIButton, event: UIEvent)
     {
         // 获取点击位置所在的行
-        //        let indexPath = getIndexByTouch(event)
+        let indexPath = getIndexByTouch(event)
+        self.shareIndex = (indexPath?.item)!
         
-        let imagePath = NSBundle.mainBundle().pathForResource("ShareTest", ofType: "png")
-        let shareImage = UIImage(contentsOfFile: imagePath!)
-        
-        
-        let shareParames = NSMutableDictionary()
-        
-        shareParames.SSDKSetupShareParamsByText("分享测试",
-                                                images : shareImage,
-                                                url : NSURL(string:"http://geekbing.com"),
-                                                title : "分享标题",
-                                                type : SSDKContentType.Image)
-        
-        ShareSDK.share(SSDKPlatformType.TypeQQ, parameters: shareParames) { (state: SSDKResponseState, userData: [NSObject : AnyObject]!, contentEntity: SSDKContentEntity!, error: NSError!) in
-            switch state
+        // 初始化分享弹出菜单
+        let shareMenuView = LYShareMenuView()
+        shareMenuView.delegate = self
+        let window = ((UIApplication.sharedApplication().delegate?.window)!)! as UIWindow
+        window.addSubview(shareMenuView)
+        // 配置分享菜单项
+        var itemArr = [LYShareMenuItem]()
+        for i in 0...7
+        {
+            var item:LYShareMenuItem
+            switch i
             {
-            case SSDKResponseState.Success:
-                print("分享成功")
-                let alert = UIAlertController(title: nil, message: "分享成功", preferredStyle: .Alert)
-                let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
-                })
-                alert.addAction(sure)
-                self.presentViewController(alert, animated: true, completion: nil)
-            case SSDKResponseState.Fail:
-                print("分享失败,错误描述:\(error)")
-                let alert = UIAlertController(title: nil, message: "分享失败", preferredStyle: .Alert)
-                let sure = UIAlertAction(title: "确定", style: .Default, handler: { (action) in
-                })
-                alert.addAction(sure)
-                self.presentViewController(alert, animated: true, completion: nil)
-            case SSDKResponseState.Cancel:
-                print("分享取消")
-            default:
-                break
+                case 0:
+                    item = LYShareMenuItem(imageName: "WeChat", itemTitle: "微信好友")
+                case 1:
+                    item = LYShareMenuItem(imageName: "Moments", itemTitle: "朋友圈")
+                case 2:
+                    item = LYShareMenuItem(imageName: "QQ", itemTitle: "QQ好友")
+                case 3:
+                    item = LYShareMenuItem(imageName: "QQSpace", itemTitle: "QQ空间")
+                case 4:
+                    item = LYShareMenuItem(imageName: "Weibo", itemTitle: "新浪微博")
+                case 5:
+                    item = LYShareMenuItem(imageName: "Email", itemTitle: "发送邮件")
+                case 6:
+                    item = LYShareMenuItem(imageName: "SMS", itemTitle: "发送短信")
+                case 7:
+                    item = LYShareMenuItem(imageName: "Copy", itemTitle: "复制")
+                default:
+                    item = LYShareMenuItem(imageName: "QQ", itemTitle: "QQ")
             }
+            itemArr.append(item)
         }
+        shareMenuView.shareMenuItems = itemArr
+        // 显示分享弹出菜单
+        shareMenuView.show()
     }
     
     // 点击评论按钮
@@ -220,7 +224,7 @@ extension NewCommon: ToolBarViewDelegate
     func clickCollection(btn: UIButton, event: UIEvent)
     {
         // 获取点击位置所在的行
-        //        let indexPath = getIndexByTouch(event)
+        // let indexPath = getIndexByTouch(event)
         if isCollection == false
         {
             isCollection = true
@@ -230,6 +234,46 @@ extension NewCommon: ToolBarViewDelegate
         {
             isCollection = false
             btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+    }
+}
+
+extension NewCommon: LYShareMenuViewDelegate
+{
+    func shareMenuView(shareMenuView: LYShareMenuView!, didSelecteShareMenuItem shareMenuItem: LYShareMenuItem!, atIndex index: Int)
+    {
+        let object = dataArr[shareIndex]
+        let text = (object["desc"] as? String)! + "\n" + (object["url"] as? String)!
+        let url = NSURL(string: (object["url"] as? String)!)
+        let title = (object["desc"] as? String)! + "\n" + (object["url"] as? String)!
+        let platformType = Common.getPlatformTypeByIndex(index)
+        
+        // 进行分享
+        API.share(text, images: nil, url: url!, title: title, contentType: .Auto, platformType: platformType, successCall: {
+            var message = ""
+            if platformType == .TypeCopy
+            {
+                message = "复制成功。"
+            }
+            else
+            {
+                message = "分享成功。"
+            }
+            // 分享成功弹出框
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
+            let sure = UIAlertAction(title: "确定", style: .Default, handler: nil)
+            alert.addAction(sure)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }, failCall: { (error) in
+            print(error.description)
+            print(error.localizedDescription)
+            // 分享失败弹出框
+            let alert = UIAlertController(title: nil, message: "分享失败，请稍后再试.", preferredStyle: .Alert)
+            let sure = UIAlertAction(title: "确定", style: .Default, handler: nil)
+            alert.addAction(sure)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }) { 
+            print("取消分享")
         }
     }
 }

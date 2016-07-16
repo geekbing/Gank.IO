@@ -101,21 +101,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate
          */
         
         ShareSDK.registerApp(AppKey, activePlatforms: [
-            SSDKPlatformType.TypeSinaWeibo.rawValue,
-            SSDKPlatformType.SubTypeWechatSession.rawValue,
             SSDKPlatformType.TypeWechat.rawValue,
-            SSDKPlatformType.SubTypeQZone.rawValue,
+            SSDKPlatformType.SubTypeWechatSession.rawValue,
+            SSDKPlatformType.SubTypeWechatTimeline.rawValue,
             SSDKPlatformType.TypeQQ.rawValue,
-            SSDKPlatformType.SubTypeQQFriend.rawValue
+            SSDKPlatformType.SubTypeQQFriend.rawValue,
+            SSDKPlatformType.SubTypeQZone.rawValue,
+            SSDKPlatformType.TypeSinaWeibo.rawValue,
+            SSDKPlatformType.TypeMail.rawValue,
+            SSDKPlatformType.TypeSMS.rawValue,
+            SSDKPlatformType.TypeCopy.rawValue
         ], onImport: { (platform: SSDKPlatformType) in
             switch platform
             {
-                case SSDKPlatformType.TypeWechat:
+                // 微信
+                case .TypeWechat:
                     ShareSDKConnector.connectWeChat(WXApi.classForCoder())
-                case SSDKPlatformType.TypeSinaWeibo:
+                // 新浪微博
+                case .TypeSinaWeibo:
                     ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
-                case SSDKPlatformType.TypeQQ:
+                // QQ
+                case .TypeQQ:
                     ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+//                case .TypeSMS:
+                
+                // 拷贝
+//                case .TypeCopy:
+//                    ShareSDKConnector.
                 default:
                     break
             }
@@ -131,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                     break
                 // 设置微信应用信息
                 case SSDKPlatformType.TypeWechat:
-                    appInfo.SSDKSetupWeChatByAppId("wx4868b35061f87885", appSecret:     "64020361b8ec4c99936c0e3999a9f249")
+                    appInfo.SSDKSetupWeChatByAppId("wxcd9fa91650ef51d5", appSecret:     "485a163937c314453d7ca797119ac3e6")
                     break
                 // 设置QQ应用信息
                 case SSDKPlatformType.TypeQQ:

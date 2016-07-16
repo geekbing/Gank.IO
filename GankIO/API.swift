@@ -26,9 +26,39 @@ enum ClassType
         return String(self)
     }
 }
+struct Common
+{
+    static func getPlatformTypeByIndex(index: Int) -> SSDKPlatformType
+    {
+        var platformType: SSDKPlatformType
+        switch index
+        {
+            case 0:
+                platformType = .SubTypeWechatSession
+            case 1:
+                platformType = .SubTypeWechatTimeline
+            case 2:
+                platformType = .SubTypeQQFriend
+            case 3:
+                platformType = .SubTypeQZone
+            case 4:
+                platformType = .TypeSinaWeibo
+            case 5:
+                platformType = .TypeMail
+            case 6:
+                platformType = .TypeSMS
+            case 7:
+                platformType = .TypeCopy
+            default:
+                platformType = .TypeCopy
+        }
+        return platformType
+    }
+}
 
 struct API
 {
+    
     // 根据请求类型获取数据
     static func getDataByTypeAndParams(type: ClassType, limit: Int, skip: Int, successCall: (results: [AVObject]) -> (), failCall: (error: NSError) -> ())
     {
@@ -93,6 +123,39 @@ struct API
             else
             {
                 failCall(error: error)
+            }
+        }
+    }
+    
+    // 分享内容
+    static func share(text: String, images: [UIImage]?, url: NSURL, title: String, contentType: SSDKContentType, platformType: SSDKPlatformType, successCall: () -> (), failCall: (error: NSError) -> (), cancelCall: () -> ())
+    {
+        // 创建分享参数
+        let shareParames = NSMutableDictionary()
+        // QQ空间
+        if platformType == .SubTypeQZone
+        {
+            shareParames.SSDKSetupQQParamsByText(text, title: title, url: url, thumbImage: UIImage(named: "Logo"), image: UIImage(named: "Logo"), type: .Auto, forPlatformSubType: .SubTypeQZone)
+        }
+        else
+        {
+            shareParames.SSDKSetupShareParamsByText(text, images: images, url: url, title: title, type: contentType)
+        }
+        // 分享
+        ShareSDK.share(platformType, parameters: shareParames) { (state: SSDKResponseState, userData: [NSObject : AnyObject]!, contentEntity: SSDKContentEntity!, error: NSError!) in
+            switch state
+            {
+                case .Success:
+                    // 执行分享成功的回调
+                    successCall()
+                case .Fail:
+                    // 执行分享失败的回调
+                    failCall(error: error)
+                case .Cancel:
+                    // 执行分享取消的回调
+                    cancelCall()
+                default:
+                    break
             }
         }
     }
