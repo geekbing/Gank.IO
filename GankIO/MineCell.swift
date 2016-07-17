@@ -27,7 +27,7 @@ class MineCell: UITableViewCell
         // 中间的标题
         title = UILabel()
         title?.textColor = UIColor.flatBlackColor()
-        title?.font = font16
+        title?.font = Common.font16
         self.contentView.addSubview(title!)
         
         // 右边的右箭头

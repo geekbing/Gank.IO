@@ -53,7 +53,7 @@ class Register: UIViewController
         username.dividerActiveColor = UIColor.flatWhiteColor()
         username.textColor = UIColor.flatWhiteColor()
         username.placeholder = "用户名"
-        username.font = font14
+        username.font = Common.font14
         username.returnKeyType = .Next
         username.delegate = self
         view.addSubview(username)
@@ -68,7 +68,7 @@ class Register: UIViewController
         password.textColor = UIColor.flatWhiteColor()
         password.secureTextEntry = true
         password.placeholder = "密码"
-        password.font = font14
+        password.font = Common.font14
         password.returnKeyType = .Next
         password.delegate = self
         view.addSubview(password)
@@ -90,7 +90,7 @@ class Register: UIViewController
         email.textColor = UIColor.flatWhiteColor()
         email.secureTextEntry = true
         email.placeholder = "邮箱"
-        email.font = font14
+        email.font = Common.font14
         email.returnKeyType = .Done
         email.delegate = self
         view.addSubview(email)
@@ -99,7 +99,7 @@ class Register: UIViewController
         let register = UIButton()
         register.layer.masksToBounds = true
         register.layer.cornerRadius = 20
-        register.titleLabel?.font = font16
+        register.titleLabel?.font = Common.font16
         register.setTitle("注册", forState: .Normal)
         register.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         register.backgroundColor = UIColor(red:0.24, green:0.28, blue:0.31, alpha:1.00)
@@ -185,7 +185,7 @@ class Register: UIViewController
             SVProgressHUD.showErrorWithStatus("邮箱不能为空!")
             return
         }
-        if !isValidateEmail(emailStr!)
+        if !Common.isValidateEmail(emailStr!)
         {
             SVProgressHUD.showErrorWithStatus("邮箱格式不合理!")
             return
@@ -206,11 +206,11 @@ class Register: UIViewController
                 UIApplication.sharedApplication().keyWindow?.rootViewController = Main()
                 self.stopActivityAnimating()
             }, failCall: { (error) in
-                SVProgressHUD.showSuccessWithStatus(getErrorMessageByCode(error.code))
+                SVProgressHUD.showSuccessWithStatus(Common.getErrorMessageByCode(error.code))
                 self.stopActivityAnimating()
             })
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus(getErrorMessageByCode(error.code))
+            SVProgressHUD.showErrorWithStatus(Common.getErrorMessageByCode(error.code))
             self.stopActivityAnimating()
         }
     }

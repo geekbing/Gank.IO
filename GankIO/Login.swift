@@ -46,7 +46,7 @@ class Login: UIViewController
         username.dividerActiveColor = UIColor.flatWhiteColor()
         username.textColor = UIColor.flatWhiteColor()
         username.placeholder = "用户名"
-        username.font = font14
+        username.font = Common.font14
         username.returnKeyType = .Next
         username.delegate = self
         view.addSubview(username)
@@ -61,7 +61,7 @@ class Login: UIViewController
         password.textColor = UIColor.flatWhiteColor()
         password.secureTextEntry = true
         password.placeholder = "密码"
-        password.font = font14
+        password.font = Common.font14
         password.returnKeyType = .Done
         password.delegate = self
         view.addSubview(password)
@@ -78,7 +78,7 @@ class Login: UIViewController
         login.layer.masksToBounds = true
         login.layer.cornerRadius = 20
         login.setTitle("登录", forState: .Normal)
-        login.titleLabel?.font = font16
+        login.titleLabel?.font = Common.font16
         login.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         login.backgroundColor = UIColor(red:0.24, green:0.28, blue:0.31, alpha:1.00)
         login.pulseColor = UIColor.whiteColor()
@@ -88,14 +88,14 @@ class Login: UIViewController
         // 找回密码
         let foundPassword = FlatButton()
         foundPassword.setTitle("找回密码", forState: .Normal)
-        foundPassword.titleLabel?.font = font16
+        foundPassword.titleLabel?.font = Common.font16
         foundPassword.setTitleColor(UIColor.flatGrayColor(), forState: .Normal)
         foundPassword.addTarget(self, action: .foundPasswordClick, forControlEvents: .TouchUpInside)
         view.addSubview(foundPassword)
         
         // 注册按钮
         let register = FlatButton()
-        register.titleLabel?.font = font16
+        register.titleLabel?.font = Common.font16
         register.setTitle("去注册", forState: .Normal)
         register.setTitleColor(UIColor.flatGrayColor(), forState: .Normal)
         register.addTarget(self, action: .registerClick, forControlEvents: .TouchUpInside)
@@ -184,7 +184,7 @@ class Login: UIViewController
             self.stopActivityAnimating()
         }) { (error) in
             self.stopActivityAnimating()
-            SVProgressHUD.showErrorWithStatus(getErrorMessageByCode(error.code))
+            SVProgressHUD.showErrorWithStatus(Common.getErrorMessageByCode(error.code))
         }
     }
     

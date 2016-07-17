@@ -32,9 +32,9 @@ class Comment: UIViewController
         self.automaticallyAdjustsScrollViewInsets = false
         
         // 内容的高度
-        let descHeight = (result["desc"] as? String)!.stringHeightWith(font16, width: screenWidth - 30)
+        let descHeight = (result["desc"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 30)
         let upViewHeight = descHeight + 80
-        upView = CommentUpView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: upViewHeight))
+        upView = CommentUpView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: upViewHeight))
         // upView.layer.borderWidth = 1
         // upView.layer.borderColor = UIColor.flatRedColor().CGColor
         upView.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (result["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
@@ -44,16 +44,16 @@ class Comment: UIViewController
         view.addSubview(upView)
         
         // 评论表格
-        let tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 30))
+        let tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: 30))
         
         let newCommentLabel = UILabel(frame: CGRect(x: 10, y: 10, width: 100, height: 20))
         newCommentLabel.textAlignment = .Left
-        newCommentLabel.font = font14
+        newCommentLabel.font = Common.font14
         newCommentLabel.text = "最新评论"
         newCommentLabel.textColor = UIColor.flatBlackColor()
         tableHeaderView.addSubview(newCommentLabel)
         
-        tableView = UITableView(frame: CGRect(x: 0, y: upViewHeight + 10, width: screenWidth, height: screenHeight - upViewHeight - 114))
+        tableView = UITableView(frame: CGRect(x: 0, y: upViewHeight + 10, width: Common.screenWidth, height: Common.screenHeight - upViewHeight - 114))
         tableView.tableHeaderView = tableHeaderView
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
@@ -64,7 +64,7 @@ class Comment: UIViewController
         view.addSubview(tableView)
         
         // 底部的评论工具条
-        commentToolBar = CommentToolBar(frame: CGRect(x: 0, y: screenHeight - 104, width: screenWidth, height: 40))
+        commentToolBar = CommentToolBar(frame: CGRect(x: 0, y: Common.screenHeight - 104, width: Common.screenWidth, height: 40))
         view.addSubview(commentToolBar)
         
         // TODO

@@ -12,16 +12,12 @@ import SVProgressHUD
 
 class NewCommon: UIViewController
 {
-    var dataArr = [AVObject]()
+    var dataArr = [NewCommonModel]()
     
     var collectionView: UICollectionView!
     
     // 分享第几条数据
     var shareIndex = 0
-    // 是否赞
-    var isZan = false
-    // 是否收藏
-    var isCollection = true
     
     var type: ClassType
     
@@ -61,7 +57,7 @@ class NewCommon: UIViewController
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 64), collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 64), collectionViewLayout: layout)
         collectionView.registerClass(NewCommonCell.classForCoder(), forCellWithReuseIdentifier: "NewCommonCell")
         
         collectionView.backgroundColor = UIColor.flatWhiteColor()
@@ -74,6 +70,7 @@ class NewCommon: UIViewController
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: .headerRefresh)
         collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: .footerRefresh)
     }
+    
     
     // 下拉刷新
     func headerRefresh()
@@ -123,13 +120,20 @@ extension NewCommon: UICollectionViewDataSource
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommonCell", forIndexPath: indexPath) as! NewCommonCell
         
         cell.backgroundColor = UIColor.whiteColor()
-        let result = dataArr[indexPath.row]
+        let result = dataArr[indexPath.row].avObject
+        let isZan = dataArr[indexPath.row].isZan
+        let isCollection = dataArr[indexPath.row].isCollection
+        
         cell.who?.text = result["who"] as? String
         cell.publishedAt?.text = result["publishedAt"] as? String
         cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (result["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
         cell.desc?.text = result["desc"] as? String
-        
         cell.toolBar?.delegate = self
+        
+        // 设置赞的图标
+        cell.toolBar?.isZanOrNot(isZan)
+        // 设置收藏图标
+        cell.toolBar?.isCollectionOrNot(isCollection)
         
         return cell
     }
@@ -197,7 +201,7 @@ extension NewCommon: ToolBarViewDelegate
     {
         // 获取点击位置所在的行
         let indexPath = getIndexByTouch(event)
-        let result = dataArr[indexPath!.row]
+        let result = dataArr[indexPath!.row].avObject
         let vc = Comment()
         vc.result = result
         self.navigationController?.pushViewController(vc, animated: true)
@@ -206,34 +210,90 @@ extension NewCommon: ToolBarViewDelegate
     // 点击赞按钮
     func clickZan(btn: UIButton, event: UIEvent)
     {
-        // 获取点击位置所在的行
-        // let indexPath = getIndexByTouch(event)
-        if isZan == false
+        // 先禁用按钮
+        btn.enabled = false
+        
+        // 获取点击位置所在的行对应的model
+        let indexPath = getIndexByTouch(event)
+        let model = dataArr[(indexPath?.item)!]
+        
+        // 当前是点赞状态
+        if model.isZan
         {
-            isZan = true
-            btn.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            // 进行删除点赞操作
+            API.userDelZan(type, objectId: model.avObject.objectId, successCall: {
+                // 更新model
+                self.dataArr[(indexPath?.item)!].isZan = false
+                // 按钮恢复可点击
+                btn.enabled = true
+                // 当前按钮设置为取消赞状态
+                btn.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            }, failCall: { (error) in
+                print("清除赞错误，原因是：" + error.localizedDescription)
+                // 按钮恢复可点击
+                btn.enabled = true
+            })
         }
         else
         {
-            isZan = false
-            btn.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            // 进行点赞操作
+            API.userZan(type, objectId: model.avObject.objectId, successCall: { 
+                // 更新model
+                self.dataArr[(indexPath?.item)!].isZan = true
+                // 按钮恢复可点击
+                btn.enabled = true
+                // 当前按钮设置为赞状态
+                btn.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            }, failCall: { (error) in
+                print("点赞出错，原因是：" + error.localizedDescription)
+                // 按钮恢复可点击
+                btn.enabled = true
+            })
         }
     }
     
     // 点击收藏按钮
     func clickCollection(btn: UIButton, event: UIEvent)
     {
-        // 获取点击位置所在的行
-        // let indexPath = getIndexByTouch(event)
-        if isCollection == false
+        // 先禁用按钮
+        btn.enabled = false
+
+        // 获取点击位置所在的行对应的model
+        let indexPath = getIndexByTouch(event)
+        let model = dataArr[(indexPath?.item)!]
+        
+        // 当前是收藏状态
+        if model.isCollection
         {
-            isCollection = true
-            btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            // 进行清除收藏操作
+            API.userDelCollection(type, objectId: model.avObject.objectId, successCall: {
+                // 更新model
+                self.dataArr[(indexPath?.item)!].isCollection = true
+                // 按钮恢复可点击
+                btn.enabled = true
+                // 当前按钮设置为取消收藏状态
+                btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            }, failCall: { (error) in
+                print("清除收藏错误，原因是：" + error.localizedDescription)
+                // 按钮恢复可点击
+                btn.enabled = true
+            })
         }
         else
         {
-            isCollection = false
-            btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            // 进行收藏操作
+            API.userCollection(type, objectId: model.avObject.objectId, successCall: { 
+                // 更新model
+                self.dataArr[(indexPath?.item)!].isCollection = true
+                // 按钮恢复可点击
+                btn.enabled = true
+                // 当前按钮设置为赞状态
+                btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            }, failCall: { (error) in
+                print("收藏出错，原因是：" + error.localizedDescription)
+                // 按钮恢复可点击
+                btn.enabled = true
+            })
         }
     }
 }
@@ -242,7 +302,7 @@ extension NewCommon: LYShareMenuViewDelegate
 {
     func shareMenuView(shareMenuView: LYShareMenuView!, didSelecteShareMenuItem shareMenuItem: LYShareMenuItem!, atIndex index: Int)
     {
-        let object = dataArr[shareIndex]
+        let object = dataArr[shareIndex].avObject
         let text = (object["desc"] as? String)! + "\n" + (object["url"] as? String)!
         let url = NSURL(string: (object["url"] as? String)!)
         let title = (object["desc"] as? String)! + "\n" + (object["url"] as? String)!
@@ -282,7 +342,7 @@ extension NewCommon: UICollectionViewDelegate
 {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        let result = dataArr[indexPath.item]
+        let result = dataArr[indexPath.item].avObject
         let vc = ArticleDetail(URLString: result["url"] as? String)
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -292,8 +352,8 @@ extension NewCommon: UICollectionViewDelegateFlowLayout
 {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        let result = dataArr[indexPath.item]
-        let contentHeight = (result["desc"] as? String)!.stringHeightWith(font16, width: screenWidth - 20)
-        return CGSize(width: screenWidth, height: contentHeight + 80 + 40)
+        let result = dataArr[indexPath.item].avObject
+        let contentHeight = (result["desc"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
+        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 40)
     }
 }

@@ -29,20 +29,20 @@ class CommentCell: UITableViewCell
         
         // 发布人名称
         who = UILabel()
-        who?.font = font16
+        who?.font = Common.font16
         who?.textColor = UIColor.flatGrayColor()
         self.contentView.addSubview(who!)
         
         // 发布时间
         publishedAt = UILabel()
-        publishedAt?.font = font10
+        publishedAt?.font = Common.font10
         publishedAt?.textColor = UIColor.flatGrayColor()
         self.contentView.addSubview(publishedAt!)
         
         // 描述
         desc = UILabel()
         desc?.numberOfLines = 0
-        desc?.font = font16
+        desc?.font = Common.font16
         desc?.textColor = UIColor.flatBlackColor()
         self.contentView.addSubview(desc!)
         
@@ -64,7 +64,7 @@ class CommentCell: UITableViewCell
             make.top.equalTo(who!.snp_bottom)
         })
         desc?.snp_makeConstraints(closure: { (make) in
-            make.width.equalTo(screenWidth - 20)
+            make.width.equalTo(Common.screenWidth - 20)
             make.top.equalTo(avatar!.snp_bottom).offset(10)
             make.left.equalTo(avatar!)
             make.bottom.equalTo(self.contentView).offset(-10)

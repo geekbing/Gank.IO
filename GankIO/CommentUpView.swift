@@ -32,20 +32,20 @@ class CommentUpView: UIView
         
         // 发布人名称
         who = UILabel()
-        who?.font = font16
+        who?.font = Common.font16
         who?.textColor = UIColor.flatGrayColor()
         self.addSubview(who!)
         
         // 发布时间
         publishedAt = UILabel()
-        publishedAt?.font = font10
+        publishedAt?.font = Common.font10
         publishedAt?.textColor = UIColor.flatGrayColor()
         self.addSubview(publishedAt!)
         
         // 描述
         desc = UILabel()
         desc?.numberOfLines = 0
-        desc?.font = font16
+        desc?.font = Common.font16
         desc?.textColor = UIColor.flatBlackColor()
         self.addSubview(desc!)
         
@@ -67,7 +67,7 @@ class CommentUpView: UIView
             make.top.equalTo(who!.snp_bottom)
         })
         desc?.snp_makeConstraints(closure: { (make) in
-            make.width.equalTo(screenWidth - 30)
+            make.width.equalTo(Common.screenWidth - 30)
             make.left.equalTo(avatar!)
             make.top.equalTo(avatar!.snp_bottom).offset(15)
             make.bottom.equalTo(self.snp_bottom)

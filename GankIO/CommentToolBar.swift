@@ -23,13 +23,13 @@ class CommentToolBar: UIView
         // 输入框
         input = UITextField()
         input.borderStyle = UITextBorderStyle.RoundedRect
-        input.font = font14
+        input.font = Common.font14
         input.placeholder = "我来评论几句"
         self.addSubview(input)
         
         // 评论按钮
         comment = UIButton()
-        comment.titleLabel?.font = font14
+        comment.titleLabel?.font = Common.font14
         comment.setTitle("发送", forState: .Normal)
         comment.setTitleColor(UIColor.flatBlackColor(), forState: .Normal)
         self.addSubview(comment)

@@ -15,7 +15,7 @@ import SafariServices
 class IOSVC: UIViewController
 {
     var tableView: UITableView!
-    var dataArr = [Result]()
+    var dataArr = [AVObject]()
     // 当前页数
     var currentPage = 1
     
@@ -35,7 +35,7 @@ class IOSVC: UIViewController
     
     func prepareUI()
     {
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 20 - 49))
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 20 - 49))
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
         tableView.dataSource = self
@@ -96,11 +96,11 @@ extension IOSVC: UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("ArticleCell", forIndexPath: indexPath) as! ArticleCell
         let result = dataArr[indexPath.row]
         
-        cell.who?.text = result.who
-        cell.publishedAt?.text = result.publishedAt
+        cell.who?.text = result["who"] as? String
+        cell.publishedAt?.text = result["publishedAt"] as? String
         
-        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: result.who ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
-        cell.desc?.text = result.desc
+        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (result["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+        cell.desc?.text = result["desc"] as? String
         
         return cell
     }
@@ -112,7 +112,7 @@ extension IOSVC: UITableViewDelegate
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let result = dataArr[indexPath.row]
-        let vc = ArticleDetail(URLString: result.url)
+        let vc = ArticleDetail(URLString: result["url"] as? String)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

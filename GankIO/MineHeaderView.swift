@@ -45,7 +45,7 @@ class MineHeaderView: UIView
         
         // 用户名
         username = UILabel()
-        username.font = font16
+        username.font = Common.font16
         username.text = "每日黑大熊"
         username.textAlignment = .Center
         username.textColor = UIColor.flatWhiteColor()
@@ -67,7 +67,7 @@ class MineHeaderView: UIView
             make.center.equalTo(self.snp_center)
         }
         username.snp_makeConstraints { (make) in
-            make.width.equalTo(screenWidth)
+            make.width.equalTo(Common.screenWidth)
             make.height.equalTo(20)
             make.top.equalTo(avatar.snp_bottom).offset(20)
             make.centerX.equalTo(self.snp_centerX)

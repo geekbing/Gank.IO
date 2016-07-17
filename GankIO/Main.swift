@@ -15,7 +15,7 @@ class Main: UITabBarController
         super.viewDidLoad()
         
         // 配置tabBar图标颜色
-        tabBar.tintColor = mainColor
+        tabBar.tintColor = Common.mainColor
         // 配置delegate
         delegate = self
         // 添加所有子控制器
@@ -53,8 +53,8 @@ class Main: UITabBarController
         childController.title = title
         childController.tabBarItem.title = title
         // childController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -3)
-        childController.tabBarItem.setTitleTextAttributes([NSFontAttributeName: font10, NSForegroundColorAttributeName: tabbarColor], forState: .Normal)
-        childController.tabBarItem.setTitleTextAttributes([NSFontAttributeName: font10, NSForegroundColorAttributeName: mainColor], forState: .Selected)
+        childController.tabBarItem.setTitleTextAttributes([NSFontAttributeName: Common.font10, NSForegroundColorAttributeName: Common.tabbarColor], forState: .Normal)
+        childController.tabBarItem.setTitleTextAttributes([NSFontAttributeName: Common.font10, NSForegroundColorAttributeName: Common.mainColor], forState: .Selected)
         childController.tabBarItem.image = UIImage(named: imageName)?.imageWithRenderingMode(.AlwaysTemplate)
         childController.tabBarItem.selectedImage = UIImage(named: imageName)?.imageWithRenderingMode(.AlwaysTemplate)
         addChildViewController(childController)

@@ -15,7 +15,7 @@ class Category: UIViewController
     // 图片
     let imageArr = ["福利", "iOS", "Android", "前端", "App", "拓展资源", "休息视频", "瞎推荐"]
     // 颜色
-    let colorArr = [cateColor1, cateColor2, cateColor3, cateColor4, cateColor5, cateColor6, cateColor7, cateColor8]
+    let colorArr = [Common.cateColor1, Common.cateColor2, Common.cateColor3, Common.cateColor4, Common.cateColor5, Common.cateColor6, Common.cateColor7, Common.cateColor8]
     
     var tableView: UITableView!
     
@@ -24,7 +24,7 @@ class Category: UIViewController
         super.viewDidLoad()
         self.title = "分类"
         self.automaticallyAdjustsScrollViewInsets = false
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 64 - 49))
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 64 - 49))
         tableView.separatorStyle = .None
         tableView.dataSource = self
         tableView.delegate = self

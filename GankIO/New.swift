@@ -72,7 +72,7 @@ extension New: VTMagicViewDataSource
 
             menuItem.setTitleColor(UIColor(red: 50.0 / 255.0, green: 50.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0), forState: .Normal)
             menuItem.setTitleColor(UIColor(red: 169.0 / 255.0, green: 37.0 / 255.0, blue: 37.0 / 255.0, alpha: 1.0), forState: .Selected)
-            menuItem.titleLabel!.font = font16
+            menuItem.titleLabel!.font = Common.font16
         }
         return menuItem
     }

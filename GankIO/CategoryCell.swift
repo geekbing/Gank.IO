@@ -18,10 +18,10 @@ class CategoryCell: UITableViewCell
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        imgView = UIImageView(frame: CGRect(x: screenWidth / 2 - 32, y: (screenHeight - 64 - 49) / 6 - 48, width: 64, height: 64))
+        imgView = UIImageView(frame: CGRect(x: Common.screenWidth / 2 - 32, y: (Common.screenHeight - 64 - 49) / 6 - 48, width: 64, height: 64))
         self.addSubview(imgView!)
         
-        title = LTMorphingLabel(frame: CGRect(x: screenWidth / 2 - 100, y: (screenHeight - 64 - 49) / 6 + 16, width: 200, height: 40))
+        title = LTMorphingLabel(frame: CGRect(x: Common.screenWidth / 2 - 100, y: (Common.screenHeight - 64 - 49) / 6 + 16, width: 200, height: 40))
         title?.textAlignment = .Center
         title?.textColor = UIColor.whiteColor()
         title?.font = UIFont.boldSystemFontOfSize(20)

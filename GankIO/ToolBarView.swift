@@ -70,6 +70,34 @@ class ToolBarView: UIView
         }
     }
     
+    // 设置是否点赞
+    func isZanOrNot(isZan: Bool)
+    {
+        let zanBtn = self.viewWithTag(0) as? UIButton
+        if isZan
+        {
+            zanBtn?.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+        else
+        {
+            zanBtn?.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+    }
+    
+    // 设置是否收藏
+    func isCollectionOrNot(isCollection: Bool)
+    {
+        let collectionBtn = self.viewWithTag(2) as? UIButton
+        if isCollection
+        {
+            collectionBtn?.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+        else
+        {
+            collectionBtn?.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")

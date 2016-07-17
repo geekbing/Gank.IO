@@ -29,7 +29,7 @@ class NewSubVC: UIViewController
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight - 64), collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 64), collectionViewLayout: layout)
         collectionView.registerClass(NewSubVCCell.classForCoder(), forCellWithReuseIdentifier: "NewSubVCCell")
         
         collectionView.backgroundColor = UIColor.flatWhiteColor()
@@ -250,7 +250,7 @@ extension NewSubVC: UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         let result = dataArr[indexPath.item]
-        let contentHeight = (result["desc"] as? String)!.stringHeightWith(font16, width: screenWidth - 20)
-        return CGSize(width: screenWidth, height: contentHeight + 80 + 40)
+        let contentHeight = (result["desc"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
+        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 40)
     }
 }

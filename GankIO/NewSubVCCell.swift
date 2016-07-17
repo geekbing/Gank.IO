@@ -36,24 +36,24 @@ class NewSubVCCell: UICollectionViewCell
         
         // 发布人名称
         who = UILabel()
-        who?.font = font16
+        who?.font = Common.font16
         who?.textColor = UIColor.flatGrayColor()
         self.contentView.addSubview(who!)
         
         // 发布时间
         publishedAt = UILabel()
-        publishedAt?.font = font10
+        publishedAt?.font = Common.font10
         publishedAt?.textColor = UIColor.flatGrayColor()
         self.contentView.addSubview(publishedAt!)
         
         // 描述
         desc = UILabel()
         desc?.numberOfLines = 0
-        desc?.font = font16
+        desc?.font = Common.font16
         desc?.textColor = UIColor.flatBlackColor()
         self.contentView.addSubview(desc!)
         
-        toolBar = ToolBarView(frame: CGRect(x: 0, y: frame.height - 40, width: screenWidth, height: 40))
+        toolBar = ToolBarView(frame: CGRect(x: 0, y: frame.height - 40, width: Common.screenWidth, height: 40))
         self.contentView.addSubview(toolBar!)
         
         // 布局
@@ -79,7 +79,7 @@ class NewSubVCCell: UICollectionViewCell
             make.bottom.equalTo(self.contentView)
         })
         desc?.snp_makeConstraints(closure: { (make) in
-            make.width.equalTo(screenWidth - 30)
+            make.width.equalTo(Common.screenWidth - 30)
             make.left.equalTo(avatar!)
             make.top.equalTo(avatar!.snp_bottom).offset(15)
             make.bottom.equalTo((self.toolBar?.snp_top)!).offset(-15)

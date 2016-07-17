@@ -4,7 +4,7 @@
 // 下拉刷新
 #import <MJRefresh/MJRefresh.h>
 
-// 网易云样式的页空间
+// 网易云样式的页控件
 #import <VTMagic/VTMagic.h>
 
 // 类似微信内置浏览器

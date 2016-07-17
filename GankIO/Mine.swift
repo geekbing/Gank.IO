@@ -33,7 +33,7 @@ class Mine: UIViewController
         
         // 布局
         headerView.snp_makeConstraints { (make) in
-            make.width.equalTo(screenWidth)
+            make.width.equalTo(Common.screenWidth)
             make.top.equalTo(-20)
             make.left.equalTo(0)
             make.height.equalTo(220)
@@ -44,7 +44,7 @@ class Mine: UIViewController
         tableView.snp_makeConstraints { (make) in
             make.top.equalTo(headerView.snp_bottom)
             make.left.equalTo(0)
-            make.width.equalTo(screenWidth)
+            make.width.equalTo(Common.screenWidth)
             make.bottom.equalTo(view)
         }
     }

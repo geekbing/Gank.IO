@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UIApplication.sharedApplication().statusBarHidden = false
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         UINavigationBar.appearance().translucent = false
-        UINavigationBar.appearance().barTintColor = mainColor
+        UINavigationBar.appearance().barTintColor = Common.mainColor
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: font18, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: Common.font18, NSForegroundColorAttributeName: UIColor.whiteColor()]
         // 设置导航条返回按钮
         let backImg = UIImage(named: "Back")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 30, 0, 0))
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal, barMetrics: .Default)
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         window?.backgroundColor = UIColor.whiteColor()
         
         // 如果有新版本，则进入用户引导界面
-        if isNewVersion()
+        if Common.isNewVersion()
         {
             window?.rootViewController = Guide()
         }

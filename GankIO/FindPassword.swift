@@ -50,7 +50,7 @@ class FindPassword: UIViewController
         email.textColor = UIColor.flatWhiteColor()
         email.secureTextEntry = true
         email.placeholder = "邮箱"
-        email.font = font14
+        email.font = Common.font14
         email.returnKeyType = .Done
         email.delegate = self
         view.addSubview(email)
@@ -59,7 +59,7 @@ class FindPassword: UIViewController
         let sureSend = UIButton()
         sureSend.layer.masksToBounds = true
         sureSend.layer.cornerRadius = 20
-        sureSend.titleLabel?.font = font16
+        sureSend.titleLabel?.font = Common.font16
         sureSend.setTitle("确认发送邮件", forState: .Normal)
         sureSend.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         sureSend.backgroundColor = UIColor(red:0.24, green:0.28, blue:0.31, alpha:1.00)
@@ -109,7 +109,7 @@ class FindPassword: UIViewController
             SVProgressHUD.showErrorWithStatus("邮箱不能为空。")
             return
         }
-        if !isValidateEmail(emailStr)
+        if !Common.isValidateEmail(emailStr)
         {
             SVProgressHUD.showErrorWithStatus("邮箱不合法。")
             return
@@ -122,7 +122,7 @@ class FindPassword: UIViewController
             SVProgressHUD.showSuccessWithStatus("邮件发送成功。")
         }) { (error) in
             self.stopActivityAnimating()
-            SVProgressHUD.showErrorWithStatus(getErrorMessageByCode(error.code))
+            SVProgressHUD.showErrorWithStatus(Common.getErrorMessageByCode(error.code))
         }
     }
     
