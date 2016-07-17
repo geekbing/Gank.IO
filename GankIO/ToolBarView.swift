@@ -40,13 +40,14 @@ class ToolBarView: UIView
     {
         super.init(frame: frame)
         self.backgroundColor = UIColor.whiteColor()
-        let imgNames = ["Zan-Fill", "Comment", "Collection-Fill", "Share"]
+        let imgNames = ["Zan", "Comment", "Collection", "Share"]
         for i in 0...3
         {
             let btn = UIButton(frame: CGRect(x: CGFloat(i) * frame.size.width / 4, y: 0, width: frame.size.width / 4, height: frame.size.height))
+            btn.tag = i + 1
             btn.setImage(UIImage(named: imgNames[i])?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
             btn.tintColor = UIColor.flatGrayColor()
-            btn.tag = i
+            
             btn.addTarget(self, action: .toolBarViewAction, forControlEvents: .TouchUpInside)
             self.addSubview(btn)
         }
@@ -57,13 +58,13 @@ class ToolBarView: UIView
     {
         switch btn.tag
         {
-            case 0:
-                delegate.clickZan(btn, event: event)
             case 1:
-                delegate.clickComment(btn, event: event)
+                delegate.clickZan(btn, event: event)
             case 2:
-                delegate.clickCollection(btn, event: event)
+                delegate.clickComment(btn, event: event)
             case 3:
+                delegate.clickCollection(btn, event: event)
+            case 4:
                 delegate.clickShare(btn, event: event)
             default:
                 break
@@ -73,7 +74,7 @@ class ToolBarView: UIView
     // 设置是否点赞
     func isZanOrNot(isZan: Bool)
     {
-        let zanBtn = self.viewWithTag(0) as? UIButton
+        let zanBtn = self.viewWithTag(1) as? UIButton
         if isZan
         {
             zanBtn?.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
@@ -87,7 +88,7 @@ class ToolBarView: UIView
     // 设置是否收藏
     func isCollectionOrNot(isCollection: Bool)
     {
-        let collectionBtn = self.viewWithTag(2) as? UIButton
+        let collectionBtn = self.viewWithTag(3) as? UIButton
         if isCollection
         {
             collectionBtn?.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)

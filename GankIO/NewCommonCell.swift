@@ -25,6 +25,7 @@ class NewCommonCell: UICollectionViewCell
     override init(frame: CGRect)
     {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.whiteColor()
         
         // 发布人头像
         avatar = UIImageView()

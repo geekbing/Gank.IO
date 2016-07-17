@@ -63,7 +63,6 @@ class NewCommon: UIViewController
         collectionView.backgroundColor = UIColor.flatWhiteColor()
         collectionView.dataSource = self
         collectionView.delegate = self
-        
         view.addSubview(collectionView)
         
         // 下拉刷新和上拉加载
@@ -71,13 +70,13 @@ class NewCommon: UIViewController
         collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: .footerRefresh)
     }
     
-    
     // 下拉刷新
     func headerRefresh()
     {
         API.getDataByTypeAndParams(type, limit: 10, skip: 0, successCall: { (results) in
             self.collectionView.mj_header.endRefreshing()
-            self.dataArr = results
+            self.dataArr.removeAll()
+            self.dataArr.appendContentsOf(results)
             self.collectionView.reloadData()
         }) { (error) in
             SVProgressHUD.showErrorWithStatus("获取数据出错。")
@@ -119,15 +118,15 @@ extension NewCommon: UICollectionViewDataSource
     {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommonCell", forIndexPath: indexPath) as! NewCommonCell
         
-        cell.backgroundColor = UIColor.whiteColor()
-        let result = dataArr[indexPath.row].avObject
-        let isZan = dataArr[indexPath.row].isZan
-        let isCollection = dataArr[indexPath.row].isCollection
+        let model = dataArr[indexPath.row]
+        let object = model.avObject
+        let isZan = model.isZan
+        let isCollection = model.isCollection
         
-        cell.who?.text = result["who"] as? String
-        cell.publishedAt?.text = result["publishedAt"] as? String
-        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (result["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
-        cell.desc?.text = result["desc"] as? String
+        cell.who?.text = object["who"] as? String
+        cell.publishedAt?.text = object["publishedAt"] as? String
+        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+        cell.desc?.text = object["desc"] as? String
         cell.toolBar?.delegate = self
         
         // 设置赞的图标
