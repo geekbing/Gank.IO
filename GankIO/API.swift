@@ -26,16 +26,10 @@ enum ClassType
         return String(self)
     }
     
-    // 获取对应的点赞表
-    func getZanClass() -> String
+    // 获取对应的点赞收藏表
+    func getZanAndCollection() -> String
     {
-        return "Zan_\(self)"
-    }
-    
-    // 获取收藏表的表名
-    func getCollectionClass() -> String
-    {
-        return "Collection_\(self)"
+        return "ZanAndCollection_\(self)"
     }
     
     // 获取该类型在点赞表和收藏表的列字段名
@@ -62,8 +56,7 @@ struct API
                 for item in results
                 {
                     let object = item as! AVObject
-                    let isZan = API.isZan(type, objectId: object.objectId)
-                    let isCollection = API.isCollection(type, objectId: object.objectId)
+                    let (isZan, isCollection) = API.isZanOrCollection(type, objectId: object.objectId)
                     let model = NewCommonModel(avObject: object, isZan: isZan, isCollection: isCollection)
                     dataArr.append(model)
                 }
@@ -159,37 +152,44 @@ struct API
     }
 
     // 用户对某一条内容点赞
-    static func Zan(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
-    {
-        let object = AVObject(className: classType.getZanClass())
-        object.setValue(AVUser.currentUser().objectId, forKey: "userId")
-        object.setValue(objectId, forKey: classType.getColName())
-        object.saveInBackgroundWithBlock { (success: Bool, error: NSError!) in
-            if success
-            {
-                successCall()
-            }
-            else
-            {
-                failCall(error: error)
-            }
-        }
-    }
-    
-    // 用户对某一条内容点赞
     static func userZan(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
     {
-        let object = AVObject(className: classType.getZanClass())
-        object.setObject(AVUser.currentUser().objectId, forKey: "userId")
-        object.setObject(objectId, forKey: classType.getColName())
-        object.saveInBackgroundWithBlock { (success: Bool, error: NSError!) in
-            if success
+        let query = AVQuery(className: classType.getZanAndCollection())
+        query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
+        query.whereKey(classType.getColName(), equalTo: objectId)
+        query.getFirstObjectInBackgroundWithBlock { (object: AVObject!, error: NSError!) in
+            if object == nil
             {
-                successCall()
+                // 新插入一条数据
+                let object = AVObject(className: classType.getZanAndCollection())
+                object.setObject(AVUser.currentUser().objectId, forKey: "userId")
+                object.setObject(objectId, forKey: classType.getColName())
+                object.setObject(true, forKey: "isZan")
+                object.setObject(false, forKey: "isCollection")
+                object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                    if success
+                    {
+                        successCall()
+                    }
+                    else
+                    {
+                        failCall(error: error)
+                    }
+                })
             }
             else
             {
-                failCall(error: error)
+                object.setObject(true, forKey: "isZan")
+                object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                    if success
+                    {
+                        successCall()
+                    }
+                    else
+                    {
+                        failCall(error: error)
+                    }
+                })
             }
         }
     }
@@ -197,26 +197,44 @@ struct API
     // 用户对某一条内容删除点赞
     static func userDelZan(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
     {
-        let query = AVQuery(className: classType.getZanClass())
+        let query = AVQuery(className: classType.getZanAndCollection())
         query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
         query.whereKey(classType.getColName(), equalTo: objectId)
         query.getFirstObjectInBackgroundWithBlock { (object: AVObject!, error: NSError!) in
-            if error == nil
+            if object == nil
             {
-                object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) in
-                    if success
-                    {
-                        successCall()
-                    }
-                    else
-                    {
-                        failCall(error: error)
-                    }
-                })
+                successCall()
             }
             else
             {
-                failCall(error: error)
+                let isCollection = object["isCollection"] as! Bool
+                if isCollection
+                {
+                    object.setObject(false, forKey: "isZan")
+                    object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                        if success
+                        {
+                            successCall()
+                        }
+                        else
+                        {
+                            failCall(error: error)
+                        }
+                    })
+                }
+                else
+                {
+                    object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                        if success
+                        {
+                            successCall()
+                        }
+                        else
+                        {
+                            failCall(error: error)
+                        }
+                    })
+                }
             }
         }
     }
@@ -224,31 +242,19 @@ struct API
     // 用户对某一条内容收藏
     static func userCollection(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
     {
-        let object = AVObject(className: classType.getCollectionClass())
-        object.setObject(AVUser.currentUser().objectId, forKey: "userId")
-        object.setObject(objectId, forKey: classType.getColName())
-        object.saveInBackgroundWithBlock { (success: Bool, error: NSError!) in
-            if success
-            {
-                successCall()
-            }
-            else
-            {
-                failCall(error: error)
-            }
-        }
-    }
-    
-    // 用户删除对某一条内容的收藏
-    static func userDelCollection(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
-    {
-        let query = AVQuery(className: classType.getCollectionClass())
+        let query = AVQuery(className: classType.getZanAndCollection())
         query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
         query.whereKey(classType.getColName(), equalTo: objectId)
         query.getFirstObjectInBackgroundWithBlock { (object: AVObject!, error: NSError!) in
-            if error == nil
+            if object == nil
             {
-                object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                // 新插入一条数据
+                let object = AVObject(className: classType.getZanAndCollection())
+                object.setObject(AVUser.currentUser().objectId, forKey: "userId")
+                object.setObject(objectId, forKey: classType.getColName())
+                object.setObject(true, forKey: "isCollection")
+                object.setObject(false, forKey: "isZan")
+                object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                     if success
                     {
                         successCall()
@@ -261,44 +267,81 @@ struct API
             }
             else
             {
-                failCall(error: error)
+                object.setObject(true, forKey: "isCollection")
+                object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                    if success
+                    {
+                        successCall()
+                    }
+                    else
+                    {
+                        failCall(error: error)
+                    }
+                })
             }
         }
     }
     
-    // 获取用户是否对一条内容收藏
-    static func isZan(classType: ClassType, objectId: String) -> Bool
+    // 用户删除对某一条内容的收藏
+    static func userDelCollection(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
     {
-        let query = AVQuery(className: classType.getZanClass())
+        let query = AVQuery(className: classType.getZanAndCollection())
         query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
         query.whereKey(classType.getColName(), equalTo: objectId)
-        let results = query.findObjects()
-        // 有记录，说明已经点赞
-        if results != nil && results.count != 0
-        {
-            return true
-        }
-        else
-        {
-            return false
+        query.getFirstObjectInBackgroundWithBlock { (object: AVObject!, error: NSError!) in
+            if object == nil
+            {
+                successCall()
+            }
+            else
+            {
+                let isZan = object["isZan"] as! Bool
+                if isZan
+                {
+                    object.setObject(false, forKey: "isCollection")
+                    object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                        if success
+                        {
+                            successCall()
+                        }
+                        else
+                        {
+                            failCall(error: error)
+                        }
+                    })
+                }
+                else
+                {
+                    object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                        if success
+                        {
+                            successCall()
+                        }
+                        else
+                        {
+                            failCall(error: error)
+                        }
+                    })
+                }
+            }
         }
     }
     
-    // 获取用户是否对一条内容收藏
-    static func isCollection(classType: ClassType, objectId: String) -> Bool
+    // 获取用户是否对一条内容点赞和收藏
+    static func isZanOrCollection(classType: ClassType, objectId: String) -> (Bool, Bool)
     {
-        let query = AVQuery(className: classType.getCollectionClass())
+        let query = AVQuery(className: classType.getZanAndCollection())
         query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
         query.whereKey(classType.getColName(), equalTo: objectId)
-        let results = query.findObjects()
-        // 有记录，说明已经收藏
-        if results != nil && results.count != 0
+        let object = query.getFirstObject()
+        // 没有记录，说明没有点赞或者收藏
+        if object == nil
         {
-            return true
+            return (false, false)
         }
         else
         {
-            return false
+            return (object["isZan"] as! Bool, object["isCollection"] as! Bool)
         }
     }
 }
