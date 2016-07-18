@@ -37,38 +37,16 @@ enum ClassType
     {
         return "\(self)Id"
     }
+    
+    // 获取对应的评论表的表名
+    func getCommentName() -> String
+    {
+        return "Comment_\(self)"
+    }
 }
 
 struct API
 {
-    
-    // 根据请求类型获取数据
-    static func getDataByTypeAndParams(type: ClassType, limit: Int, skip: Int, successCall: (results: [NewCommonModel]) -> (), failCall: (error: NSError) -> ())
-    {
-        let query = AVQuery(className: type.desc())
-        query.orderByDescending("publishedAt")
-        query.limit = limit
-        query.skip = skip
-        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in
-            if error == nil
-            {
-                var dataArr = [NewCommonModel]()
-                for item in results
-                {
-                    let object = item as! AVObject
-                    let (isZan, isCollection) = API.isZanOrCollection(type, objectId: object.objectId)
-                    let model = NewCommonModel(avObject: object, isZan: isZan, isCollection: isCollection)
-                    dataArr.append(model)
-                }
-                successCall(results: dataArr)
-            }
-            else
-            {
-                failCall(error: error)
-            }
-        }
-    }
-    
     // 注册
     static func register(username: String, password: String, email: String, successCall: () -> (), failCall: (error: NSError) -> ())
     {
@@ -150,6 +128,60 @@ struct API
             }
         }
     }
+    
+    // 根据请求类型获取数据
+    static func getDataByTypeAndParams(type: ClassType, limit: Int, skip: Int, successCall: (results: [NewCommonModel]) -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: type.desc())
+        query.orderByDescending("publishedAt")
+        query.limit = limit
+        query.skip = skip
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in
+            if error == nil
+            {
+                // 首先从结果results数组中抽取出文章ID，组成文章ID数组
+                var ids = [String]()
+                for item in results
+                {
+                    let object = item as! AVObject
+                    ids.append(object["objectId"] as! String)
+                }
+                
+                // 需要返回的model数组
+                var dataArr = [NewCommonModel]()
+                
+                // 根据文章ID数组，查询是否点赞和收藏
+                API.getAllZanOrCollectionByIds(type, ids: ids, successCall: { (dict) in
+                    for item in results
+                    {
+                        let object = item as! AVObject
+                        
+                        let id = object["objectId"] as! String
+                        
+                        let model: NewCommonModel
+                        
+                        if dict[id] != nil
+                        {
+                            let boolArr = dict[id]! as [Bool]
+                            model = NewCommonModel(avObject: object, isZan: boolArr[0], isCollection: boolArr[1])
+                        }
+                        else
+                        {
+                            model = NewCommonModel(avObject: object, isZan: false, isCollection: false)
+                        }
+                        dataArr.append(model)
+                    }
+                    successCall(results: dataArr)
+                }, failCall: { (error) in
+                    failCall(error: error)
+                })
+            }
+            else
+            {
+                failCall(error: error)
+            }
+        }
+    }
 
     // 用户对某一条内容点赞
     static func userZan(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
@@ -190,6 +222,37 @@ struct API
                         failCall(error: error)
                     }
                 })
+            }
+        }
+    }
+    
+    // 根据文章ID，获取用户赞和收藏的数组
+    static func getAllZanOrCollectionByIds(type: ClassType, ids: [String], successCall: (dict: [String: [Bool]]) -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: type.getZanAndCollection())
+        query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
+        query.whereKey(type.getColName(), containedIn: ids)
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in
+            if error == nil
+            {
+                // 将所有赞或收藏的结果数组转换成[文章ID：（isZan, isCollection）]的字典
+                var dict = [String: [Bool]]()
+                for item in results
+                {
+                    let object = item as! AVObject
+                    // 获取文章ID
+                    let id = object[type.getColName()] as! String
+                    // 获取是否赞，是否收藏
+                    let isZan = object["isZan"] as! Bool
+                    let isCollection = object["isCollection"] as! Bool
+                    // 构建字典
+                    dict[id] = [isZan, isCollection]
+                }
+                successCall(dict: dict)
+            }
+            else
+            {
+                failCall(error: error)
             }
         }
     }
@@ -342,6 +405,46 @@ struct API
         else
         {
             return (object["isZan"] as! Bool, object["isCollection"] as! Bool)
+        }
+    }
+    
+    // 分页获取用户针对某一内容的评论数据
+    static func getCommentByTypeAndParams(type: ClassType, object: AVObject, limit: Int, skip: Int, successCall: (results: [AVObject]) -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: type.getCommentName())
+        query.limit = limit
+        query.skip = skip
+        query.whereKey("target", equalTo: object)
+        query.includeKey("user")
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in
+            if error == nil
+            {
+                successCall(results: results as! [AVObject])
+            }
+            else
+            {
+                print(error.localizedDescription)
+                failCall(error: error)
+            }
+        }
+    }
+    
+    // 用户评论某一文章
+    static func userComment(type: ClassType, target: AVObject, content: String, successCall: () -> (), failCall: (error: NSError) -> ())
+    {
+        let object = AVObject(className: type.getCommentName())
+        object.setObject(AVUser.currentUser(), forKey: "user")
+        object.setObject(target, forKey: "target")
+        object.setObject(content, forKey: "content")
+        object.saveInBackgroundWithBlock { (success: Bool, error: NSError!) in
+            if success
+            {
+                successCall()
+            }
+            else
+            {
+                failCall(error: error)
+            }
         }
     }
 }

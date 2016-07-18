@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol CommentToolBarDelegate
+{
+    func commentBtnClick(content: String)
+}
+
 class CommentToolBar: UIView
 {
     // 输入框
     var input: UITextField!
     // 评论按钮
     var comment: UIButton!
+    
+    var delegate: CommentToolBarDelegate!
     
     override init(frame: CGRect)
     {
@@ -32,6 +39,7 @@ class CommentToolBar: UIView
         comment.titleLabel?.font = Common.font14
         comment.setTitle("发送", forState: .Normal)
         comment.setTitleColor(UIColor.flatBlackColor(), forState: .Normal)
+        comment.addTarget(self, action: .commentBtnClick, forControlEvents: .TouchUpInside)
         self.addSubview(comment)
         
         // 布局
@@ -44,8 +52,20 @@ class CommentToolBar: UIView
         }
     }
     
+    // 点击评论按钮
+    func commentBtnClick()
+    {
+        let content = self.input.text
+        delegate.commentBtnClick(content!)
+    }
+    
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+private extension Selector
+{
+    static let commentBtnClick = #selector(CommentToolBar.commentBtnClick)
 }

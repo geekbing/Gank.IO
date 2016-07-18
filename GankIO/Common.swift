@@ -131,13 +131,10 @@ struct Common
     }
     
     // 格式化日期字符串
-    
-//    -(NSDate*) getDateWithDateString:(NSString*) dateString{
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//    NSDate *date = [dateFormat dateFromString:dateString];
-//    return date;
-//    }
-    
-    //func getDateWithDateString(dateString: String) ->
+    static func getStringWithDate(date: NSDate) -> String
+    {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter.stringFromDate(date)
+    }
 }

@@ -123,10 +123,10 @@ extension NewCommon: UICollectionViewDataSource
         let isZan = model.isZan
         let isCollection = model.isCollection
         
-        cell.who?.text = object["who"] as? String
-        cell.publishedAt?.text = object["publishedAt"] as? String
-        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["who"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
-        cell.desc?.text = object["desc"] as? String
+        cell.who?.text = object["author"] as? String
+        cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
+        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+        cell.desc?.text = object["title"] as? String
         cell.toolBar?.delegate = self
         
         // 设置赞的图标
@@ -202,7 +202,9 @@ extension NewCommon: ToolBarViewDelegate
         let indexPath = getIndexByTouch(event)
         let result = dataArr[indexPath!.row].avObject
         let vc = Comment()
+        
         vc.result = result
+        vc.type = type
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -352,7 +354,7 @@ extension NewCommon: UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         let result = dataArr[indexPath.item].avObject
-        let contentHeight = (result["desc"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
+        let contentHeight = (result["title"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
         return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 40)
     }
 }
