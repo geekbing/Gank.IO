@@ -162,6 +162,7 @@ extension NewCommon: ToolBarViewDelegate
         shareMenuView.delegate = self
         let window = ((UIApplication.sharedApplication().delegate?.window)!)! as UIWindow
         window.addSubview(shareMenuView)
+        
         // 配置分享菜单项
         var itemArr = [LYShareMenuItem]()
         for i in 0...7
@@ -225,10 +226,13 @@ extension NewCommon: ToolBarViewDelegate
             API.userDelZan(type, objectId: model.avObject.objectId, successCall: {
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isZan = false
-                // 按钮恢复可点击
-                btn.enabled = true
+                
                 // 当前按钮设置为取消赞状态
                 btn.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                btn.tintColor = UIColor.flatGrayColor()
+                
+                // 按钮恢复可点击
+                btn.enabled = true
             }, failCall: { (error) in
                 print("清除赞错误，原因是：" + error.localizedDescription)
                 // 按钮恢复可点击
@@ -241,10 +245,13 @@ extension NewCommon: ToolBarViewDelegate
             API.userZan(type, objectId: model.avObject.objectId, successCall: { 
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isZan = true
-                // 按钮恢复可点击
-                btn.enabled = true
+                
                 // 当前按钮设置为赞状态
                 btn.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                btn.tintColor = Common.zanColor
+                
+                // 按钮恢复可点击
+                btn.enabled = true
             }, failCall: { (error) in
                 print("点赞出错，原因是：" + error.localizedDescription)
                 // 按钮恢复可点击
@@ -270,10 +277,13 @@ extension NewCommon: ToolBarViewDelegate
             API.userDelCollection(type, objectId: model.avObject.objectId, successCall: {
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isCollection = true
-                // 按钮恢复可点击
-                btn.enabled = true
+                
                 // 当前按钮设置为取消收藏状态
                 btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                btn.tintColor = UIColor.flatGrayColor()
+                
+                // 按钮恢复可点击
+                btn.enabled = true
             }, failCall: { (error) in
                 print("清除收藏错误，原因是：" + error.localizedDescription)
                 // 按钮恢复可点击
@@ -286,10 +296,13 @@ extension NewCommon: ToolBarViewDelegate
             API.userCollection(type, objectId: model.avObject.objectId, successCall: { 
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isCollection = true
+                
+                // 当前按钮设置为收藏状态
+                btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+                btn.tintColor = Common.zanColor
+                
                 // 按钮恢复可点击
                 btn.enabled = true
-                // 当前按钮设置为赞状态
-                btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
             }, failCall: { (error) in
                 print("收藏出错，原因是：" + error.localizedDescription)
                 // 按钮恢复可点击
@@ -304,9 +317,9 @@ extension NewCommon: LYShareMenuViewDelegate
     func shareMenuView(shareMenuView: LYShareMenuView!, didSelecteShareMenuItem shareMenuItem: LYShareMenuItem!, atIndex index: Int)
     {
         let object = dataArr[shareIndex].avObject
-        let text = (object["desc"] as? String)! + "\n" + (object["url"] as? String)!
+        let text = (object["title"] as? String)! + "\n" + (object["url"] as? String)!
         let url = NSURL(string: (object["url"] as? String)!)
-        let title = (object["desc"] as? String)! + "\n" + (object["url"] as? String)!
+        let title = (object["title"] as? String)! + "\n" + (object["url"] as? String)!
         let platformType = Common.getPlatformTypeByIndex(index)
         
         // 进行分享
@@ -355,6 +368,6 @@ extension NewCommon: UICollectionViewDelegateFlowLayout
     {
         let result = dataArr[indexPath.item].avObject
         let contentHeight = (result["title"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
-        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 40)
+        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 50)
     }
 }

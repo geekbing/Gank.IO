@@ -78,10 +78,12 @@ class ToolBarView: UIView
         if isZan
         {
             zanBtn?.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            zanBtn?.tintColor = Common.zanColor
         }
         else
         {
             zanBtn?.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            zanBtn?.tintColor = UIColor.flatGrayColor()
         }
     }
     
@@ -92,10 +94,12 @@ class ToolBarView: UIView
         if isCollection
         {
             collectionBtn?.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            collectionBtn?.tintColor = Common.zanColor
         }
         else
         {
             collectionBtn?.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            collectionBtn?.tintColor = UIColor.flatGrayColor()
         }
     }
     
