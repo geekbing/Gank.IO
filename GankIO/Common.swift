@@ -15,7 +15,7 @@ struct Common
     static let screenHeight = UIScreen.mainScreen().bounds.size.height
     
     // 应用主颜色
-    static let mainColor = UIColor(red: 97.0 / 255.0, green: 197.0 / 255.0, blue: 170.0 / 255.0, alpha: 1.0)
+    static let mainColor = UIColor(red: 101.0 / 255.0, green: 196.0 / 255.0, blue: 170.0 / 255.0, alpha: 1.0)
     static let tabbarColor = UIColor(red: 146.0 / 255.0, green: 146.0 / 255.0, blue: 146.0 / 255.0, alpha: 1.0)
     // 点赞状态颜色,桃红色
     static let zanColor = UIColor(hexString: "FF6E7C")

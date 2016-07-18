@@ -167,21 +167,25 @@ class Login: UIViewController
         let usernameStr = username.text!
         if usernameStr == ""
         {
-            SVProgressHUD.showErrorWithStatus("用户名不能为空!")
+            SVProgressHUD.showErrorWithStatus("用户名不能为空")
             return
         }
         let passwordStr = password.text!
         if passwordStr == ""
         {
-            SVProgressHUD.showErrorWithStatus("密码不能为空!")
+            self.view.makeToast("密码不能为空")
             return
         }
-        self.showLoding("登录中...")
+        self.showLoding("")
         // 开始登录
-       API.login(usernameStr, password: passwordStr, successCall: {_ in
+        API.login(usernameStr, password: passwordStr, successCall: {_ in
             let vc = Main()
-            UIApplication.sharedApplication().keyWindow?.rootViewController = vc
-            self.stopActivityAnimating()
+            UIView.animateWithDuration(1.0, animations: { 
+                self.view.alpha = 0.3
+            }, completion: { (finish: Bool) in
+                UIApplication.sharedApplication().keyWindow?.rootViewController = vc
+                self.stopActivityAnimating()
+            })
         }) { (error) in
             self.stopActivityAnimating()
             SVProgressHUD.showErrorWithStatus(Common.getErrorMessageByCode(error.code))

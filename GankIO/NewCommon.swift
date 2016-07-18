@@ -47,7 +47,7 @@ class NewCommon: UIViewController
         }) { (error) in
             self.stopActivityAnimating()
             print(error.localizedDescription)
-            SVProgressHUD.showErrorWithStatus("获取数据出错。")
+            SVProgressHUD.showErrorWithStatus("获取数据出错")
         }
     }
     
@@ -79,7 +79,7 @@ class NewCommon: UIViewController
             self.dataArr.appendContentsOf(results)
             self.collectionView.reloadData()
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus("获取数据出错。")
+            SVProgressHUD.showErrorWithStatus("获取数据出错")
         }
     }
     
@@ -91,7 +91,7 @@ class NewCommon: UIViewController
             self.dataArr.appendContentsOf(results)
             self.collectionView.reloadData()
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus("获取数据出错。")
+            SVProgressHUD.showErrorWithStatus("获取数据出错")
         }
     }
     
@@ -129,10 +129,10 @@ extension NewCommon: UICollectionViewDataSource
         cell.desc?.text = object["title"] as? String
         cell.toolBar?.delegate = self
         
-        // 设置赞的图标
-        cell.toolBar?.isZanOrNot(isZan)
-        // 设置收藏图标
-        cell.toolBar?.isCollectionOrNot(isCollection)
+        // 设置赞的图标和数量
+        cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
+        // 设置收藏图标和数量
+        cell.toolBar?.isCollectionOrNot(isCollection, collectionNum: object["CollectionNum"] as! Int)
         
         return cell
     }
@@ -227,10 +227,14 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isZan = false
                 
+                // 获取赞数量
+                let model = self.dataArr[(indexPath?.item)!]
+                let zanNum = model.avObject["ZanNum"] as! Int
+                
                 // 当前按钮设置为取消赞状态
                 btn.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = UIColor.flatGrayColor()
-                
+                btn.setTitle("\(zanNum - 1)", forState: .Normal)
                 // 按钮恢复可点击
                 btn.enabled = true
             }, failCall: { (error) in
@@ -246,10 +250,14 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isZan = true
                 
+                // 获取赞数量
+                let model = self.dataArr[(indexPath?.item)!]
+                let zanNum = model.avObject["ZanNum"] as! Int
+
                 // 当前按钮设置为赞状态
                 btn.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = Common.zanColor
-                
+                btn.setTitle("\(zanNum+1)", forState: .Normal)
                 // 按钮恢复可点击
                 btn.enabled = true
             }, failCall: { (error) in
@@ -278,9 +286,14 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isCollection = true
                 
+                // 获取赞数量
+                let model = self.dataArr[(indexPath?.item)!]
+                let colectionNum = model.avObject["ColectionNum"] as! Int
+                
                 // 当前按钮设置为取消收藏状态
                 btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = UIColor.flatGrayColor()
+                btn.setTitle("\(colectionNum - 1)", forState: .Normal)
                 
                 // 按钮恢复可点击
                 btn.enabled = true
@@ -297,9 +310,14 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isCollection = true
                 
+                // 获取赞数量
+                let model = self.dataArr[(indexPath?.item)!]
+                let colectionNum = model.avObject["ColectionNum"] as! Int
+                
                 // 当前按钮设置为收藏状态
                 btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = Common.zanColor
+                btn.setTitle("\(colectionNum + 1)", forState: .Normal)
                 
                 // 按钮恢复可点击
                 btn.enabled = true
@@ -368,6 +386,6 @@ extension NewCommon: UICollectionViewDelegateFlowLayout
     {
         let result = dataArr[indexPath.item].avObject
         let contentHeight = (result["title"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
-        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 50)
+        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 60)
     }
 }

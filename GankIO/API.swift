@@ -8,6 +8,20 @@
 
 import Alamofire
 
+// 操作类型
+enum OperType
+{
+    case Zan        // 点赞
+    case Collection // 收藏
+    case Comment    // 评论
+    case Share      // 分享
+    
+    func getColName() -> String
+    {
+        return "\(self)Num"
+    }
+}
+
 // LeanCloud后台存储的表的类型
 enum ClassType
 {
@@ -20,7 +34,7 @@ enum ClassType
     case Web
     case Welfare
     
-    // 转换为字符串
+    // 获取对应的表名
     func desc() -> String
     {
         return String(self)
@@ -183,21 +197,18 @@ struct API
         }
     }
 
-    // 用户对某一条内容点赞
-    static func userZan(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
+    // 某条内容点赞 / 收藏 / 评论 / 分享次数增加数字amount(可为负数)
+    static func operIncrementByAmount(classType: ClassType, objectId: String, amount: Int, operType: OperType, successCall: () -> (), failCall: (error: NSError) -> ())
     {
-        let query = AVQuery(className: classType.getZanAndCollection())
-        query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
-        query.whereKey(classType.getColName(), equalTo: objectId)
-        query.getFirstObjectInBackgroundWithBlock { (object: AVObject!, error: NSError!) in
-            if object == nil
+        // 先根据ID获取最新的对象
+        let object = AVObject(className: classType.desc(), objectId: objectId)
+        object.fetchInBackgroundWithBlock({ (object: AVObject!, error: NSError!) in
+            if error == nil
             {
-                // 新插入一条数据
-                let object = AVObject(className: classType.getZanAndCollection())
-                object.setObject(AVUser.currentUser().objectId, forKey: "userId")
-                object.setObject(objectId, forKey: classType.getColName())
-                object.setObject(true, forKey: "isZan")
-                object.setObject(false, forKey: "isCollection")
+                // 原子增加查看的次数amount
+                object.incrementKey(operType.getColName(), byAmount: amount)
+                // 保存时自动取回云端最新数据
+                object.fetchWhenSave = true
                 object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                     if success
                     {
@@ -211,11 +222,53 @@ struct API
             }
             else
             {
+                failCall(error: error)
+            }
+        })
+    }
+    
+    // 用户对某一条内容点赞
+    static func userZan(classType: ClassType, objectId: String, successCall: () -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: classType.getZanAndCollection())
+        query.whereKey("userId", equalTo: AVUser.currentUser().objectId)
+        query.whereKey(classType.getColName(), equalTo: objectId)
+        query.getFirstObjectInBackgroundWithBlock { (object: AVObject!, error: NSError!) in
+            if object == nil
+            {
+                // 新插入一条数据
+                let newObject = AVObject(className: classType.getZanAndCollection())
+                newObject.setObject(AVUser.currentUser().objectId, forKey: "userId")
+                newObject.setObject(objectId, forKey: classType.getColName())
+                newObject.setObject(true, forKey: "isZan")
+                newObject.setObject(false, forKey: "isCollection")
+                newObject.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                    if success
+                    {
+                        // 增加赞的数量
+                        API.operIncrementByAmount(classType, objectId: objectId, amount: 1, operType: .Zan, successCall: { 
+                            successCall()
+                        }, failCall: { (error) in
+                            failCall(error: error)
+                        })
+                    }
+                    else
+                    {
+                        failCall(error: error)
+                    }
+                })
+            }
+            else
+            {
                 object.setObject(true, forKey: "isZan")
                 object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                     if success
                     {
-                        successCall()
+                        API.operIncrementByAmount(classType, objectId: objectId, amount: 1, operType: .Zan, successCall: { 
+                            successCall()
+                        }, failCall: { (error) in
+                            failCall(error: error)
+                        })
                     }
                     else
                     {
@@ -277,7 +330,11 @@ struct API
                     object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                         if success
                         {
-                            successCall()
+                            API.operIncrementByAmount(classType, objectId: objectId, amount: -1, operType: .Zan, successCall: {
+                                successCall()
+                            }, failCall: { (error) in
+                                failCall(error: error)
+                            })
                         }
                         else
                         {
@@ -290,7 +347,11 @@ struct API
                     object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                         if success
                         {
-                            successCall()
+                            API.operIncrementByAmount(classType, objectId: objectId, amount: -1, operType: .Zan, successCall: {
+                                successCall()
+                            }, failCall: { (error) in
+                                failCall(error: error)
+                            })
                         }
                         else
                         {
@@ -320,7 +381,11 @@ struct API
                 object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                     if success
                     {
-                        successCall()
+                        API.operIncrementByAmount(classType, objectId: objectId, amount: 1, operType: .Collection, successCall: {
+                            successCall()
+                        }, failCall: { (error) in
+                            failCall(error: error)
+                        })
                     }
                     else
                     {
@@ -334,7 +399,11 @@ struct API
                 object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                     if success
                     {
-                        successCall()
+                        API.operIncrementByAmount(classType, objectId: objectId, amount: 1, operType: .Collection, successCall: {
+                            successCall()
+                            }, failCall: { (error) in
+                                failCall(error: error)
+                        })
                     }
                     else
                     {
@@ -365,7 +434,11 @@ struct API
                     object.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                         if success
                         {
-                            successCall()
+                            API.operIncrementByAmount(classType, objectId: objectId, amount: -1, operType: .Collection, successCall: {
+                                successCall()
+                                }, failCall: { (error) in
+                                    failCall(error: error)
+                            })
                         }
                         else
                         {
@@ -378,7 +451,11 @@ struct API
                     object.deleteInBackgroundWithBlock({ (success: Bool, error: NSError!) in
                         if success
                         {
-                            successCall()
+                            API.operIncrementByAmount(classType, objectId: objectId, amount: -1, operType: .Collection, successCall: {
+                                successCall()
+                                }, failCall: { (error) in
+                                    failCall(error: error)
+                            })
                         }
                         else
                         {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 import SVProgressHUD
 
 @UIApplicationMain
@@ -29,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func setupGlobalStyle()
     {
         UIApplication.sharedApplication().statusBarHidden = false
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = Common.mainColor
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -39,8 +40,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal, barMetrics: .Default)
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-100.0, -100.0), forBarMetrics: UIBarMetrics.Default)
         
-        // 配置SVProgressHUDStyle
-        SVProgressHUD.setMinimumDismissTimeInterval(1.5)
+        // 去掉底部tabbar的分割线
+        UITabBar.appearance().clipsToBounds = true
+        UITabBar.appearance().tintColor = Common.mainColor
+
+        
+        // 配置SVProgressHUD样式
+        SVProgressHUD.setDefaultStyle(.Custom)
+        SVProgressHUD.setMinimumDismissTimeInterval(1.2)
+        SVProgressHUD.setFont(Common.font14)
+        SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: -Common.screenHeight / 2 + 150))
+        SVProgressHUD.setErrorImage(UIImage(named: "Close"))
+        SVProgressHUD.setInfoImage(UIImage(named: "Info"))
+        SVProgressHUD.setSuccessImage(UIImage(named: "Correct"))
+        SVProgressHUD.setBackgroundColor(UIColor.flatBlackColor())
+        SVProgressHUD.setForegroundColor(UIColor.flatWhiteColor())
+        
+        // 配置Toast样式
+        var style = ToastStyle()
+        style.horizontalPadding = 20
+        style.verticalPadding = 20
+        style.messageFont = Common.font14
+        ToastManager.shared.style = style
+        ToastManager.shared.duration = 1.5
+        ToastManager.shared.position = .Top
+        ToastManager.shared.queueEnabled = true
     }
     
     // 配置全局数据
@@ -90,8 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func setupShareSDK()
     {
         let AppKey = "14f69640aefab"
-//        let AppSecret = "c001df46d12a250316d7800ea4982eec"
-        
         /**
          *  设置ShareSDK的appKey，如果尚未在ShareSDK官网注册过App，请移步到http://mob.com/login 登录后台进行应用注册，
          *  在将生成的AppKey传入到此方法中。
@@ -123,11 +145,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 // QQ
                 case .TypeQQ:
                     ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
-//                case .TypeSMS:
-                
-                // 拷贝
-//                case .TypeCopy:
-//                    ShareSDKConnector.
                 default:
                     break
             }
@@ -182,4 +199,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-

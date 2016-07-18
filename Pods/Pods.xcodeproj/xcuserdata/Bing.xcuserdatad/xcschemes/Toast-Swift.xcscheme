@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "181D20824679DAEEB864906867D6C56E"
-               BuildableName = "Pods_GankIO.framework"
-               BlueprintName = "Pods-GankIO"
+               BlueprintIdentifier = "124E69BE59FEED64388C8368709AADFD"
+               BuildableName = "Toast_Swift.framework"
+               BlueprintName = "Toast-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "181D20824679DAEEB864906867D6C56E"
-            BuildableName = "Pods_GankIO.framework"
-            BlueprintName = "Pods-GankIO"
+            BlueprintIdentifier = "124E69BE59FEED64388C8368709AADFD"
+            BuildableName = "Toast_Swift.framework"
+            BlueprintName = "Toast-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

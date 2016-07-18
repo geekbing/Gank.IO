@@ -46,6 +46,13 @@ class ToolBarView: UIView
             let btn = UIButton(frame: CGRect(x: CGFloat(i) * frame.size.width / 4, y: 0, width: frame.size.width / 4, height: frame.size.height))
             btn.tag = i + 1
             btn.setImage(UIImage(named: imgNames[i])?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            if i < 2
+            {
+                btn.setTitle("0", forState: .Normal)
+                btn.imageEdgeInsets = UIEdgeInsets(top: 10, left: -16, bottom: 10, right: 0)
+            }
+            btn.titleLabel?.font = Common.font12
+            btn.setTitleColor(UIColor.flatGrayColor(), forState: .Normal)
             btn.tintColor = UIColor.flatGrayColor()
             
             btn.addTarget(self, action: .toolBarViewAction, forControlEvents: .TouchUpInside)
@@ -72,7 +79,7 @@ class ToolBarView: UIView
     }
     
     // 设置是否点赞
-    func isZanOrNot(isZan: Bool)
+    func isZanOrNot(isZan: Bool, zanNum: Int)
     {
         let zanBtn = self.viewWithTag(1) as? UIButton
         if isZan
@@ -85,10 +92,11 @@ class ToolBarView: UIView
             zanBtn?.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
             zanBtn?.tintColor = UIColor.flatGrayColor()
         }
+        zanBtn?.setTitle("\(zanNum)", forState: .Normal)
     }
     
     // 设置是否收藏
-    func isCollectionOrNot(isCollection: Bool)
+    func isCollectionOrNot(isCollection: Bool, collectionNum: Int)
     {
         let collectionBtn = self.viewWithTag(3) as? UIButton
         if isCollection
@@ -101,6 +109,7 @@ class ToolBarView: UIView
             collectionBtn?.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
             collectionBtn?.tintColor = UIColor.flatGrayColor()
         }
+        collectionBtn?.setTitle("\(collectionNum)", forState: .Normal)
     }
     
     required init?(coder aDecoder: NSCoder)

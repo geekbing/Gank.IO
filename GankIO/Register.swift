@@ -170,27 +170,27 @@ class Register: UIViewController
         let usernameStr = username.text
         if usernameStr == ""
         {
-            SVProgressHUD.showErrorWithStatus("用户名不能为空!")
+            SVProgressHUD.showErrorWithStatus("用户名不能为空")
             return
         }
         let passwordStr = password.text
         if passwordStr == ""
         {
-            SVProgressHUD.showErrorWithStatus("密码不能为空!")
+            SVProgressHUD.showErrorWithStatus("密码不能为空")
             return
         }
         let emailStr = email.text
         if emailStr == ""
         {
-            SVProgressHUD.showErrorWithStatus("邮箱不能为空!")
+            SVProgressHUD.showErrorWithStatus("邮箱不能为空")
             return
         }
         if !Common.isValidateEmail(emailStr!)
         {
-            SVProgressHUD.showErrorWithStatus("邮箱格式不合理!")
+            SVProgressHUD.showErrorWithStatus("邮箱格式不合理")
             return
         }
-        self.showLoding("注册中...")
+        self.showLoding("")
         // 进行注册
         API.register(usernameStr!, password: passwordStr!, email: emailStr!, successCall: {
             self.stopActivityAnimating()

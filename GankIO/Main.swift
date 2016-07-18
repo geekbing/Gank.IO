@@ -14,10 +14,9 @@ class Main: UITabBarController
     {
         super.viewDidLoad()
         
-        // 配置tabBar图标颜色
-        tabBar.tintColor = Common.mainColor
         // 配置delegate
         delegate = self
+        
         // 添加所有子控制器
         addAllChildViewController()
     }

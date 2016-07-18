@@ -17,6 +17,7 @@ PODS:
   - SnapKit (0.21.1)
   - SVProgressHUD (2.0.3)
   - SwiftyJSON (2.3.2)
+  - Toast-Swift (1.3.0)
   - VTMagic (1.2.3):
     - VTMagic/Core (= 1.2.3)
   - VTMagic/Core (1.2.3)
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - SnapKit
   - SVProgressHUD
   - SwiftyJSON
+  - Toast-Swift
   - VTMagic
 
 SPEC CHECKSUMS:
@@ -51,8 +53,9 @@ SPEC CHECKSUMS:
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Toast-Swift: 25c3d98db42dc70d9a77b5006ee000e0becb458e
   VTMagic: c69c1dd7481e0f3f4c0b2a6f27803dde55455c96
 
-PODFILE CHECKSUM: 64d5a63b9dc16fe9edd9a9642a3e63530caf1690
+PODFILE CHECKSUM: c42137e26777e538acdadfb1d8fe6d9be35bc515
 
 COCOAPODS: 1.0.1

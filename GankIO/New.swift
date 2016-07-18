@@ -20,7 +20,7 @@ class New: UIViewController
     {
         super.viewDidLoad()
         self.navigationController?.navigationBar.hidden = true
-
+        
         initMagicController()
     }
     
@@ -36,7 +36,9 @@ class New: UIViewController
         {
             magic = VTMagicController()
             magic.magicView.navigationColor = UIColor.whiteColor()
-            magic.magicView.sliderColor = UIColor.redColor()
+            magic.magicView.separatorColor = UIColor.flatWhiteColor()
+            magic.magicView.sliderColor = Common.mainColor
+            magic.magicView.sliderHeight = 1.5
             magic.magicView.layoutStyle = .Center
             magic.magicView.itemSpacing = 20
             magic.magicView.againstStatusBar = true
@@ -69,9 +71,8 @@ extension New: VTMagicViewDataSource
         if menuItem == nil
         {
             menuItem = UIButton(type: .Custom)
-
-            menuItem.setTitleColor(UIColor(red: 50.0 / 255.0, green: 50.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0), forState: .Normal)
-            menuItem.setTitleColor(UIColor(red: 169.0 / 255.0, green: 37.0 / 255.0, blue: 37.0 / 255.0, alpha: 1.0), forState: .Selected)
+            menuItem.setTitleColor(UIColor(red: 133.0 / 255.0, green: 133.0 / 255.0, blue: 144.0 / 255.0, alpha: 1.0), forState: .Normal)
+            menuItem.setTitleColor(Common.mainColor, forState: .Selected)
             menuItem.titleLabel!.font = Common.font16
         }
         return menuItem
@@ -79,6 +80,7 @@ extension New: VTMagicViewDataSource
     
     func magicView(magicView: VTMagicView!, viewControllerAtPage pageIndex: UInt) -> UIViewController!
     {
+        
 //        if (0 == pageIndex)
 //        {
 //            let recomViewController = magicView.dequeueReusablePageWithIdentifier("PageWithIdentifier")

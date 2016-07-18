@@ -80,7 +80,7 @@ class Comment: UIViewController
             self.dataArr = results
             self.tableView.reloadData()
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus("获取评论数据出错了。")
+            SVProgressHUD.showErrorWithStatus("获取评论数据出错了")
         }
     }
     
@@ -92,7 +92,7 @@ class Comment: UIViewController
             self.dataArr = results
             self.tableView.reloadData()
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus("获取评论数据出错了。")
+            SVProgressHUD.showErrorWithStatus("获取评论数据出错了")
         }
     }
     
@@ -104,7 +104,7 @@ class Comment: UIViewController
             self.dataArr.appendContentsOf(results)
             self.tableView.reloadData()
         }) { (error) in
-            SVProgressHUD.showErrorWithStatus("获取评论数据出错了。")
+            SVProgressHUD.showErrorWithStatus("获取评论数据出错了")
         }
     }
     
@@ -154,10 +154,10 @@ extension Comment: CommentToolBarDelegate
                     self.tableView.reloadData()
                     SVProgressHUD.showSuccessWithStatus("评论成功")
                 }) { (error) in
-                    SVProgressHUD.showErrorWithStatus("获取评论数据出错了。")
+                    SVProgressHUD.showErrorWithStatus("获取评论数据出错了")
                 }
             }, failCall: { (error) in
-                SVProgressHUD.showSuccessWithStatus("评论失败，原因是：\(error.localizedDescription)")
+                SVProgressHUD.showSuccessWithStatus("评论失败")
             })
         }
     }

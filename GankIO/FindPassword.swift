@@ -106,20 +106,20 @@ class FindPassword: UIViewController
         let emailStr = email.text!
         if emailStr == ""
         {
-            SVProgressHUD.showErrorWithStatus("邮箱不能为空。")
+            SVProgressHUD.showErrorWithStatus("邮箱不能为空")
             return
         }
         if !Common.isValidateEmail(emailStr)
         {
-            SVProgressHUD.showErrorWithStatus("邮箱不合法。")
+            SVProgressHUD.showErrorWithStatus("邮箱不合法")
             return
         }
-        self.showLoding("邮件发送中")
+        self.showLoding("")
         // 发送重置邮件
         API.resetPassWordByEmail(emailStr, successCall: {
             self.stopActivityAnimating()
             self.email.resignFirstResponder()
-            SVProgressHUD.showSuccessWithStatus("邮件发送成功。")
+            SVProgressHUD.showSuccessWithStatus("邮件发送成功")
         }) { (error) in
             self.stopActivityAnimating()
             SVProgressHUD.showErrorWithStatus(Common.getErrorMessageByCode(error.code))
