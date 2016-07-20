@@ -147,7 +147,7 @@ struct API
     static func getDataByTypeAndParams(type: ClassType, limit: Int, skip: Int, successCall: (results: [NewCommonModel]) -> (), failCall: (error: NSError) -> ())
     {
         let query = AVQuery(className: type.desc())
-        query.orderByDescending("publishedAt")
+        query.orderByDescending("resourcePublished")
         query.limit = limit
         query.skip = skip
         query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in

@@ -21,6 +21,13 @@ PODS:
   - VTMagic (1.2.3):
     - VTMagic/Core (= 1.2.3)
   - VTMagic/Core (1.2.3)
+  - YYCache (1.0.3)
+  - YYImage (1.0.3):
+    - YYImage/Core (= 1.0.3)
+  - YYImage/Core (1.0.3)
+  - YYWebImage (1.0.4):
+    - YYCache
+    - YYImage
 
 DEPENDENCIES:
   - Alamofire
@@ -38,6 +45,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - Toast-Swift
   - VTMagic
+  - YYWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
@@ -55,7 +63,10 @@ SPEC CHECKSUMS:
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Toast-Swift: 25c3d98db42dc70d9a77b5006ee000e0becb458e
   VTMagic: c69c1dd7481e0f3f4c0b2a6f27803dde55455c96
+  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+  YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
+  YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: c42137e26777e538acdadfb1d8fe6d9be35bc515
+PODFILE CHECKSUM: a35ba42844e7d210aed5edf142ec77a7224be5fe
 
 COCOAPODS: 1.0.1

@@ -27,3 +27,6 @@
 
 // 自定义分享UI
 #import "LYShareMenuView.h"
+
+// 导入YYWebImage
+#import <YYWebImage/YYWebImage.h>

@@ -49,6 +49,8 @@
 		37C152E11D37C5CB0006B111 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C152E01D37C5CB0006B111 /* ImageIO.framework */; };
 		37C152E31D37C5E00006B111 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 37C152E21D37C5E00006B111 /* libsqlite3.tbd */; };
 		37C152E61D37DC300006B111 /* ShareTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 37C152E51D37DC300006B111 /* ShareTest.png */; };
+		37C1581C1D3DFEAB001313DC /* NewCommentOneImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1581B1D3DFEAB001313DC /* NewCommentOneImageCell.swift */; };
+		37C1581E1D3DFEBC001313DC /* NewCommentTwoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C1581D1D3DFEBC001313DC /* NewCommentTwoImageCell.swift */; };
 		37F091531D3A59A400091F95 /* NewCommonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F091521D3A59A400091F95 /* NewCommonModel.swift */; };
 		37F549581D3638A4008A9C72 /* UIButton+WHE.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549461D3638A4008A9C72 /* UIButton+WHE.m */; };
 		37F549591D3638A4008A9C72 /* UIColor+WHE.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F549481D3638A4008A9C72 /* UIColor+WHE.m */; };
@@ -129,6 +131,7 @@
 		3747A0DE1D36129C001C69AE /* NewSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVC.swift; sourceTree = "<group>"; };
 		3747A0E11D3613C5001C69AE /* NewSubVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVCCell.swift; sourceTree = "<group>"; };
 		3747A0E81D3630F6001C69AE /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		378778A41D3F030100488627 /* YYWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYWebImage.framework; path = "../../Library/Developer/Xcode/DerivedData/GankIO-gxvmpcfigunlcsgwabhvcskdwxjo/Build/Products/Debug-iphonesimulator/YYWebImage/YYWebImage.framework"; sourceTree = "<group>"; };
 		3799BA2D1D38CD150092F003 /* NewCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommon.swift; sourceTree = "<group>"; };
 		3799BA321D38CD540092F003 /* NewCommonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommonCell.swift; sourceTree = "<group>"; };
 		379DB10C1D386A1A001BEA29 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 		37C152E01D37C5CB0006B111 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		37C152E21D37C5E00006B111 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		37C152E51D37DC300006B111 /* ShareTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareTest.png; sourceTree = "<group>"; };
+		37C1581B1D3DFEAB001313DC /* NewCommentOneImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommentOneImageCell.swift; sourceTree = "<group>"; };
+		37C1581D1D3DFEBC001313DC /* NewCommentTwoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommentTwoImageCell.swift; sourceTree = "<group>"; };
 		37F091521D3A59A400091F95 /* NewCommonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCommonModel.swift; sourceTree = "<group>"; };
 		37F549451D3638A4008A9C72 /* UIButton+WHE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WHE.h"; sourceTree = "<group>"; };
 		37F549461D3638A4008A9C72 /* UIButton+WHE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WHE.m"; sourceTree = "<group>"; };
@@ -498,6 +503,8 @@
 			children = (
 				3799BA321D38CD540092F003 /* NewCommonCell.swift */,
 				37F549621D363DDB008A9C72 /* ToolBarView.swift */,
+				37C1581B1D3DFEAB001313DC /* NewCommentOneImageCell.swift */,
+				37C1581D1D3DFEBC001313DC /* NewCommentTwoImageCell.swift */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -780,6 +787,7 @@
 		A6A4F915C9A2BDD9C3830AD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				378778A41D3F030100488627 /* YYWebImage.framework */,
 				37C152E21D37C5E00006B111 /* libsqlite3.tbd */,
 				37C152E01D37C5CB0006B111 /* ImageIO.framework */,
 				37C152DE1D37C5BD0006B111 /* JavaScriptCore.framework */,
@@ -1084,6 +1092,7 @@
 				37C152751D3787E50006B111 /* CommentCell.swift in Sources */,
 				379DB1191D388D4C001BEA29 /* Setting.swift in Sources */,
 				37F958D81D39FDC300781CDD /* LYShareItemMenuView.m in Sources */,
+				37C1581E1D3DFEBC001313DC /* NewCommentTwoImageCell.swift in Sources */,
 				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
 				371C48D41D34DD3A00488043 /* API.swift in Sources */,
 				37F549611D3638A4008A9C72 /* UINavigationBar+Awesome.m in Sources */,
@@ -1095,6 +1104,7 @@
 				3747A0E91D3630F6001C69AE /* Extension.swift in Sources */,
 				3747A0A51D35CFB5001C69AE /* CategoryCell.swift in Sources */,
 				3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */,
+				37C1581C1D3DFEAB001313DC /* NewCommentOneImageCell.swift in Sources */,
 				372122BF1D348C9F0041601F /* AppDelegate.swift in Sources */,
 				37C1526A1D37310D0006B111 /* MineHeaderView.swift in Sources */,
 				37C1526D1D377D2F0006B111 /* Comment.swift in Sources */,

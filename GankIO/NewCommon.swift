@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import SVProgressHUD
+import YYWebImage
 
 class NewCommon: UIViewController
 {
@@ -30,6 +31,11 @@ class NewCommon: UIViewController
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit
+    {
+        print(type.desc())
     }
     
     override func viewDidLoad()
@@ -58,8 +64,12 @@ class NewCommon: UIViewController
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 64), collectionViewLayout: layout)
-        collectionView.registerClass(NewCommonCell.classForCoder(), forCellWithReuseIdentifier: "NewCommonCell")
         
+        // 注册三种模式的cell
+        collectionView.registerClass(NewCommonCell.self, forCellWithReuseIdentifier: "NewCommonCell")
+        collectionView.registerClass(NewCommentOneImageCell.self, forCellWithReuseIdentifier: "NewCommentOneImageCell")
+        collectionView.registerClass(NewCommentTwoImageCell.self, forCellWithReuseIdentifier: "NewCommentTwoImageCell")
+
         collectionView.backgroundColor = UIColor.flatWhiteColor()
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -73,6 +83,9 @@ class NewCommon: UIViewController
     // 下拉刷新
     func headerRefresh()
     {
+        let cache = YYWebImageManager.sharedManager().cache
+        cache?.memoryCache.removeAllObjects()
+
         API.getDataByTypeAndParams(type, limit: 10, skip: 0, successCall: { (results) in
             self.collectionView.mj_header.endRefreshing()
             self.dataArr.removeAll()
@@ -116,25 +129,69 @@ extension NewCommon: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommonCell", forIndexPath: indexPath) as! NewCommonCell
-        
         let model = dataArr[indexPath.row]
         let object = model.avObject
+        let imgArr = object["image"] as? [String]
         let isZan = model.isZan
         let isCollection = model.isCollection
         
-        cell.who?.text = object["author"] as? String
-        cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
-        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
-        cell.desc?.text = object["title"] as? String
-        cell.toolBar?.delegate = self
+        if imgArr?.count == 0
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommonCell", forIndexPath: indexPath) as! NewCommonCell
         
-        // 设置赞的图标和数量
-        cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
-        // 设置收藏图标和数量
-        cell.toolBar?.isCollectionOrNot(isCollection, collectionNum: object["CollectionNum"] as! Int)
-        
-        return cell
+            cell.who?.text = object["author"] as? String
+            cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
+            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+            cell.desc?.text = object["title"] as? String
+            cell.toolBar?.delegate = self
+            
+            // 设置赞的图标和数量
+            cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
+            // 设置收藏图标和数量
+            cell.toolBar?.isCollectionOrNot(isCollection)
+            
+            return cell
+        }
+        else if imgArr?.count == 1
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommentOneImageCell", forIndexPath: indexPath) as! NewCommentOneImageCell
+            
+            cell.who?.text = object["author"] as? String
+            cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
+            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+            cell.desc?.text = object["title"] as? String
+            cell.toolBar?.delegate = self
+            
+            // 设置图片
+            cell.imgView?.yy_setImageWithURL(NSURL(string: imgArr![0]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+            // 设置赞的图标和数量
+            cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
+            // 设置收藏图标和数量
+            cell.toolBar?.isCollectionOrNot(isCollection)
+            
+            return cell
+        }
+        else
+        {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommentTwoImageCell", forIndexPath: indexPath) as! NewCommentTwoImageCell
+            
+            cell.who?.text = object["author"] as? String
+            cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
+            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+            cell.desc?.text = object["title"] as? String
+            cell.toolBar?.delegate = self
+            
+            // 设置左右图片
+            cell.leftImg?.yy_setImageWithURL(NSURL(string: imgArr![0]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+            cell.rightImg?.yy_setImageWithURL(NSURL(string: imgArr![1]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+            
+            // 设置赞的图标和数量
+            cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
+            // 设置收藏图标和数量
+            cell.toolBar?.isCollectionOrNot(isCollection)
+            
+            return cell
+        }
     }
     
     func getIndexByTouch(event: UIEvent) -> NSIndexPath?
@@ -227,14 +284,12 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isZan = false
                 
-                // 获取赞数量
-                let model = self.dataArr[(indexPath?.item)!]
-                let zanNum = model.avObject["ZanNum"] as! Int
-                
                 // 当前按钮设置为取消赞状态
                 btn.setImage(UIImage(named: "Zan")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = UIColor.flatGrayColor()
-                btn.setTitle("\(zanNum - 1)", forState: .Normal)
+                let zanNum = Int((btn.titleLabel?.text)!)
+                btn.setTitle("\(zanNum! - 1)", forState: .Normal)
+                
                 // 按钮恢复可点击
                 btn.enabled = true
             }, failCall: { (error) in
@@ -249,15 +304,12 @@ extension NewCommon: ToolBarViewDelegate
             API.userZan(type, objectId: model.avObject.objectId, successCall: { 
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isZan = true
-                
-                // 获取赞数量
-                let model = self.dataArr[(indexPath?.item)!]
-                let zanNum = model.avObject["ZanNum"] as! Int
 
                 // 当前按钮设置为赞状态
                 btn.setImage(UIImage(named: "Zan-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = Common.zanColor
-                btn.setTitle("\(zanNum+1)", forState: .Normal)
+                let zanNum = Int((btn.titleLabel?.text)!)
+                btn.setTitle("\(zanNum! + 1)", forState: .Normal)
                 // 按钮恢复可点击
                 btn.enabled = true
             }, failCall: { (error) in
@@ -286,14 +338,9 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isCollection = true
                 
-                // 获取赞数量
-                let model = self.dataArr[(indexPath?.item)!]
-                let colectionNum = model.avObject["ColectionNum"] as! Int
-                
                 // 当前按钮设置为取消收藏状态
                 btn.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = UIColor.flatGrayColor()
-                btn.setTitle("\(colectionNum - 1)", forState: .Normal)
                 
                 // 按钮恢复可点击
                 btn.enabled = true
@@ -310,14 +357,9 @@ extension NewCommon: ToolBarViewDelegate
                 // 更新model
                 self.dataArr[(indexPath?.item)!].isCollection = true
                 
-                // 获取赞数量
-                let model = self.dataArr[(indexPath?.item)!]
-                let colectionNum = model.avObject["ColectionNum"] as! Int
-                
                 // 当前按钮设置为收藏状态
                 btn.setImage(UIImage(named: "Collection-Fill")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
                 btn.tintColor = Common.zanColor
-                btn.setTitle("\(colectionNum + 1)", forState: .Normal)
                 
                 // 按钮恢复可点击
                 btn.enabled = true
@@ -385,7 +427,16 @@ extension NewCommon: UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         let result = dataArr[indexPath.item].avObject
+        let imgArr = result["image"] as? [String]
+        
         let contentHeight = (result["title"] as? String)!.stringHeightWith(Common.font16, width: Common.screenWidth - 20)
-        return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 60)
+        if imgArr?.count != 0
+        {
+            return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 60 + 200)
+        }
+        else
+        {
+            return CGSize(width: Common.screenWidth, height: contentHeight + 80 + 60)
+        }
     }
 }

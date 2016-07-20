@@ -10,7 +10,6 @@ pod 'Alamofire'
 pod 'AVOSCloud'               
 pod 'SnapKit'
 pod 'ChameleonFramework/Swift'
-pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'Material'
 pod 'MJRefresh'
@@ -21,6 +20,8 @@ pod 'ITDAvatarPlaceholder'
 pod 'LTMorphingLabel'
 pod 'FDFullscreenPopGesture'
 pod 'Toast-Swift'
+pod 'YYWebImage'
+pod 'SDWebImage'
   target 'GankIOTests' do
     inherit! :search_paths
     # Pods for testing

@@ -9,7 +9,7 @@
 
 import UIKit
 
-protocol ToolBarViewDelegate
+protocol ToolBarViewDelegate: class
 {
     func clickShare(btn: UIButton, event: UIEvent)
     func clickComment(btn: UIButton, event: UIEvent)
@@ -19,7 +19,7 @@ protocol ToolBarViewDelegate
 
 class ToolBarView: UIView
 {
-    var delegate: ToolBarViewDelegate!
+    weak var delegate: ToolBarViewDelegate!
     
     override func drawRect(rect: CGRect)
     {
@@ -60,6 +60,11 @@ class ToolBarView: UIView
         }
     }
     
+    deinit
+    {
+        print("ToolBarView")
+    }
+    
     // 点击分享点赞等4个按钮
     func toolBarViewAction(btn: UIButton, event: UIEvent)
     {
@@ -96,7 +101,7 @@ class ToolBarView: UIView
     }
     
     // 设置是否收藏
-    func isCollectionOrNot(isCollection: Bool, collectionNum: Int)
+    func isCollectionOrNot(isCollection: Bool)
     {
         let collectionBtn = self.viewWithTag(3) as? UIButton
         if isCollection
@@ -109,7 +114,6 @@ class ToolBarView: UIView
             collectionBtn?.setImage(UIImage(named: "Collection")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
             collectionBtn?.tintColor = UIColor.flatGrayColor()
         }
-        collectionBtn?.setTitle("\(collectionNum)", forState: .Normal)
     }
     
     required init?(coder aDecoder: NSCoder)

@@ -52,7 +52,8 @@ class NewCommonCell: UICollectionViewCell
         desc?.textColor = UIColor.flatBlackColor()
         self.contentView.addSubview(desc!)
         
-        toolBar = ToolBarView(frame: CGRect(x: 0, y: frame.height - 40, width: Common.screenWidth, height: 40))
+        // 底部导航条
+        toolBar = ToolBarView()
         self.contentView.addSubview(toolBar!)
         
         // 布局
@@ -80,13 +81,18 @@ class NewCommonCell: UICollectionViewCell
         desc?.snp_makeConstraints(closure: { (make) in
             make.width.equalTo(Common.screenWidth - 30)
             make.left.equalTo(avatar!)
-            make.top.equalTo(avatar!.snp_bottom).offset(15)
-            make.bottom.equalTo((self.toolBar?.snp_top)!).offset(-15)
+            make.top.equalTo(avatar!.snp_bottom).offset(10)
+            make.bottom.equalTo((self.toolBar?.snp_top)!).offset(-10)
         })
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit
+    {
+        print("NewCommonCell")
     }
 }

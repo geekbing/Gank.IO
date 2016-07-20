@@ -48,8 +48,14 @@ class New: UIViewController
             magic.magicView.delegate = self
             self.addChildViewController(self.magic)
             self.view.addSubview(magic.view)
+            magic.magicView.needPreloading = false
         }
         magic.magicView.reloadData()
+    }
+    
+    deinit
+    {
+        print("New deinit")
     }
     
     override func didReceiveMemoryWarning()
@@ -81,43 +87,49 @@ extension New: VTMagicViewDataSource
     func magicView(magicView: VTMagicView!, viewControllerAtPage pageIndex: UInt) -> UIViewController!
     {
         
-//        if (0 == pageIndex)
-//        {
-//            let recomViewController = magicView.dequeueReusablePageWithIdentifier("PageWithIdentifier")
-//            
-//            if recomViewController == nil
-//            {
-//                recomViewController = VTRecomViewController()
-//            }
-//            return recomViewController;
-//        }
-//        
-//        static NSString *gridId = @"grid.identifier";
-//        VTGridViewController *gridViewController = [magicView dequeueReusablePageWithIdentifier:gridId];
-//        if (!gridViewController) {
-//            gridViewController = [[VTGridViewController alloc] init];
-//        }
-//        return gridViewController;
-//        ["iOS", "Android", "Web", "Video", "App"]
         switch pageIndex
         {
             case 0:
-                let vc = NewCommon(type: .iOS)
+                var vc = magicView.dequeueReusablePageWithIdentifier("iOS")
+                if vc == nil
+                {
+                    vc = NewCommon(type: .iOS)
+                }
                 return vc
             case 1:
-                let vc = NewCommon(type: .Android)
+                var vc = magicView.dequeueReusablePageWithIdentifier("Android")
+                if vc == nil
+                {
+                    vc = NewCommon(type: .Android)
+                }
                 return vc
             case 2:
-                let vc = NewCommon(type: .Web)
+                var vc = magicView.dequeueReusablePageWithIdentifier("Web")
+                if vc == nil
+                {
+                    vc = NewCommon(type: .Web)
+                }
                 return vc
             case 3:
-                let vc = NewCommon(type: .Video)
+                var vc = magicView.dequeueReusablePageWithIdentifier("Video")
+                if vc == nil
+                {
+                    vc = NewCommon(type: .Video)
+                }
                 return vc
             case 4:
-                let vc = NewCommon(type: .App)
+                var vc = magicView.dequeueReusablePageWithIdentifier("App")
+                if vc == nil
+                {
+                    vc = NewCommon(type: .App)
+                }
                 return vc
             default:
-                let vc = NewCommon(type: .iOS)
+                var vc = magicView.dequeueReusablePageWithIdentifier("iOS")
+                if vc == nil
+                {
+                    vc = NewCommon(type: .iOS)
+                }
                 return vc
         }
     }
