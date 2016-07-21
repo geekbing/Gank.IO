@@ -30,3 +30,6 @@
 
 // 导入YYWebImage
 #import <YYWebImage/YYWebImage.h>
+
+// 查看屏幕帧数
+#import "YYFPSLabel.h"

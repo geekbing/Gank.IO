@@ -116,6 +116,13 @@ class ToolBarView: UIView
         }
     }
     
+    // 设置评论的数量
+    func setCommentNum(num: Int)
+    {
+        let commentBtn = self.viewWithTag(2) as? UIButton
+        commentBtn?.setTitle("\(num)", forState: .Normal)
+    }
+    
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")

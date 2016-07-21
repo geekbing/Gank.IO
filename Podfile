@@ -21,7 +21,9 @@ pod 'LTMorphingLabel'
 pod 'FDFullscreenPopGesture'
 pod 'Toast-Swift'
 pod 'YYWebImage'
+pod 'IQKeyboardManager'
 pod 'SDWebImage'
+pod 'JGProgressHUD'
   target 'GankIOTests' do
     inherit! :search_paths
     # Pods for testing

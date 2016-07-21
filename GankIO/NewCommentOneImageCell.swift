@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol NewCommentOneImageCellDelegate: class
+{
+    func clickImageView(sender: UITapGestureRecognizer)
+}
+
 class NewCommentOneImageCell: UICollectionViewCell
 {
     // 描述
@@ -23,6 +28,8 @@ class NewCommentOneImageCell: UICollectionViewCell
     
     // 工具条
     var toolBar: ToolBarView?
+    
+    weak var delegate: NewCommentOneImageCellDelegate!
     
     override init(frame: CGRect)
     {
@@ -58,10 +65,16 @@ class NewCommentOneImageCell: UICollectionViewCell
         imgView = YYAnimatedImageView()
         imgView?.layer.masksToBounds = true
         imgView?.contentMode = .ScaleAspectFit
+        imgView?.tag = 1
+        imgView?.userInteractionEnabled = true
+        
+        let tapSingle = UITapGestureRecognizer(target: self, action: .tapSingleDid)
+        imgView?.addGestureRecognizer(tapSingle)
+
         self.contentView.addSubview(imgView!)
         
         // 工具条
-        toolBar = ToolBarView()
+        toolBar = ToolBarView(frame: CGRect(x: 0, y: frame.height - 40, width: Common.screenWidth, height: 40))
         self.contentView.addSubview(toolBar!)
         
         // 布局
@@ -105,8 +118,18 @@ class NewCommentOneImageCell: UICollectionViewCell
         fatalError("init(coder:) has not been implemented")
     }
     
+    func tapSingleDid(sender: UITapGestureRecognizer)
+    {
+        delegate.clickImageView(sender)
+    }
+    
     deinit
     {
         print("NewCommentOneImageCell")
     }
+}
+
+private extension Selector
+{
+    static let tapSingleDid = #selector(NewCommentOneImageCell.tapSingleDid(_:))
 }

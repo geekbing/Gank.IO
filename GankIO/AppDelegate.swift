@@ -31,10 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         UIApplication.sharedApplication().statusBarHidden = false
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UINavigationBar.appearance().translucent = false
-        UINavigationBar.appearance().barTintColor = Common.mainColor
+//        UINavigationBar.appearance().translucent = false
+//        UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(Common.mainColor, size: CGSize(width: Common.screenWidth, height: 64)))
+//        UINavigationBar.appearance().barTintColor = Common.mainColor
+        
+        // 给导航条增加一个纯色背景来实现设置导航条背景色
+        UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(Common.mainColor, size: CGSize(width: Common.screenWidth, height: 64)), forBarMetrics: .Default)
+
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: Common.font18, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
         // 设置导航条返回按钮
         let backImg = UIImage(named: "Back")?.resizableImageWithCapInsets(UIEdgeInsetsMake(0, 30, 0, 0))
         UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal, barMetrics: .Default)
@@ -44,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UITabBar.appearance().clipsToBounds = true
         UITabBar.appearance().tintColor = Common.mainColor
 
-        
         // 配置SVProgressHUD样式
         SVProgressHUD.setDefaultStyle(.Custom)
         SVProgressHUD.setMinimumDismissTimeInterval(1.2)

@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol NewCommentTwoImageCellDelegate: class
+{
+    func leftImgSingleTip(sender: UITapGestureRecognizer)
+    func rightImgSingleTip(sender: UITapGestureRecognizer)
+}
+
 class NewCommentTwoImageCell: UICollectionViewCell
 {
     // 描述
@@ -24,6 +30,8 @@ class NewCommentTwoImageCell: UICollectionViewCell
     var rightImg: YYAnimatedImageView?
     // 底部工具条
     var toolBar: ToolBarView?
+    
+    weak var delegate: NewCommentTwoImageCellDelegate!
     
     override init(frame: CGRect)
     {
@@ -55,20 +63,31 @@ class NewCommentTwoImageCell: UICollectionViewCell
         desc?.textColor = UIColor.flatBlackColor()
         self.contentView.addSubview(desc!)
         
+        // 左边点击手势
+        let leftTap = UITapGestureRecognizer(target: self, action: .leftImgSingleTip)
+        // 右边点击手势
+        let rightTap = UITapGestureRecognizer(target: self, action: .rightImgSingleTip)
+        
         // 左边的图片
         leftImg = YYAnimatedImageView()
         leftImg?.layer.masksToBounds = true
         leftImg?.contentMode = .ScaleAspectFit
+        leftImg?.tag = 1
+        leftImg?.userInteractionEnabled = true
         self.contentView.addSubview(leftImg!)
-        
+        leftImg?.addGestureRecognizer(leftTap)
+
         // 右边的图片
         rightImg = YYAnimatedImageView()
         rightImg?.layer.masksToBounds = true
         rightImg?.contentMode = .ScaleAspectFit
+        rightImg?.tag = 2
+        rightImg?.userInteractionEnabled = true
         self.contentView.addSubview(rightImg!)
-        
+        rightImg?.addGestureRecognizer(rightTap)
+
         // 底部工具条
-        toolBar = ToolBarView()
+        toolBar = ToolBarView(frame: CGRect(x: 0, y: frame.height - 40, width: Common.screenWidth, height: 40))
         self.contentView.addSubview(toolBar!)
         
         // 布局
@@ -118,8 +137,24 @@ class NewCommentTwoImageCell: UICollectionViewCell
         fatalError("init(coder:) has not been implemented")
     }
     
+    func leftImgSingleTip(sender: UITapGestureRecognizer)
+    {
+        delegate.leftImgSingleTip(sender)
+    }
+    
+    func rightImgSingleTip(sender: UITapGestureRecognizer)
+    {
+        delegate.rightImgSingleTip(sender)
+    }
+    
     deinit
     {
         print("NewCommentTwoImageCell")
     }
+}
+
+private extension Selector
+{
+    static let leftImgSingleTip = #selector(NewCommentTwoImageCell.leftImgSingleTip(_:))
+    static let rightImgSingleTip = #selector(NewCommentTwoImageCell.rightImgSingleTip(_:))
 }

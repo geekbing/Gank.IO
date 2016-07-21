@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1C96066CDBB068EE62F183B54A55D30"
+               BlueprintIdentifier = "893B8AE70D010345F90EEA2CB99CC3CF"
                BuildableName = "Pods_GankIO.framework"
                BlueprintName = "Pods-GankIO"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1C96066CDBB068EE62F183B54A55D30"
+            BlueprintIdentifier = "893B8AE70D010345F90EEA2CB99CC3CF"
             BuildableName = "Pods_GankIO.framework"
             BlueprintName = "Pods-GankIO"
             ReferencedContainer = "container:Pods.xcodeproj">

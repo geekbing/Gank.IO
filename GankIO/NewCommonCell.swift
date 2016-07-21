@@ -53,7 +53,7 @@ class NewCommonCell: UICollectionViewCell
         self.contentView.addSubview(desc!)
         
         // 底部导航条
-        toolBar = ToolBarView()
+        toolBar = ToolBarView(frame: CGRect(x: 0, y: frame.height - 40, width: Common.screenWidth, height: 40))
         self.contentView.addSubview(toolBar!)
         
         // 布局

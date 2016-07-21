@@ -516,7 +516,20 @@ struct API
         object.saveInBackgroundWithBlock { (success: Bool, error: NSError!) in
             if success
             {
-                successCall()
+                // 原子增加评论的次数amount
+                target.incrementKey(OperType.Comment.getColName(), byAmount: 1)
+                // 保存时自动取回云端最新数据
+                target.fetchWhenSave = true
+                target.saveInBackgroundWithBlock({ (success: Bool, error: NSError!) in
+                    if success
+                    {
+                        successCall()
+                    }
+                    else
+                    {
+                        failCall(error: error)
+                    }
+                })
             }
             else
             {

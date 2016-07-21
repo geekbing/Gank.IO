@@ -18,6 +18,8 @@ protocol MineHeaderViewDelegate
 
 class MineHeaderView: UIView
 {
+    // 背景
+    var background: UIImageView!
     // 头像
     var avatar: UIImageView!
     // 用户名
@@ -32,7 +34,9 @@ class MineHeaderView: UIView
         super.init(frame: frame)
         
         // 背景图
-        let background = UIImageView()
+        background = UIImageView()
+        background.clipsToBounds = true
+        background.contentMode = .ScaleAspectFill
         background.image = UIImage(named: "background")
         self.addSubview(background)
         

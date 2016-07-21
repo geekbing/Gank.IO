@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CommentToolBarDelegate
+protocol CommentToolBarDelegate: class
 {
     func commentBtnClick(content: String)
 }
@@ -20,7 +20,7 @@ class CommentToolBar: UIView
     // 评论按钮
     var comment: UIButton!
     
-    var delegate: CommentToolBarDelegate!
+    weak var delegate: CommentToolBarDelegate!
     
     override init(frame: CGRect)
     {
@@ -57,6 +57,12 @@ class CommentToolBar: UIView
     {
         let content = self.input.text
         delegate.commentBtnClick(content!)
+    }
+    
+    // 清空评论框数据
+    func clearInput()
+    {
+        input.text = ""
     }
     
     required init?(coder aDecoder: NSCoder)

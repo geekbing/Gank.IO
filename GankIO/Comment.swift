@@ -150,8 +150,12 @@ extension Comment: CommentToolBarDelegate
             API.userComment(type, target: result, content: content, successCall: {
                 // 重新获取评论数据
                 API.getCommentByTypeAndParams(self.type, object: self.result, limit: 10, skip: 0, successCall: { (results) in
+                    // 清空评论框
+                    self.commentToolBar.clearInput()
+                    // 刷新表格
                     self.dataArr = results
                     self.tableView.reloadData()
+                    // 提示用户
                     SVProgressHUD.showSuccessWithStatus("评论成功")
                 }) { (error) in
                     SVProgressHUD.showErrorWithStatus("获取评论数据出错了")

@@ -10,43 +10,37 @@ import UIKit
 
 class Mine: UIViewController
 {
+    var headerView: MineHeaderView!
     var tableView: UITableView!
-    var dataDict = [["title": "我的收藏", "icon": "Collection"],
-                    ["title": "我的分享", "icon": "Collection"],
-                    ["title": "我的收藏", "icon": "Collection"],
-                    ["title": "我的收藏", "icon": "Collection"]]
+    var dataDict = [["title": "我的收藏1", "icon": "Collection"],
+                    ["title": "我的分享2", "icon": "Collection"],
+                    ["title": "我的收藏3", "icon": "Collection"],
+                    ["title": "我的收藏4", "icon": "Collection"],
+                    ["title": "我的收藏5", "icon": "Collection"],
+                    ["title": "我的收藏6", "icon": "Collection"],
+                    ["title": "我的收藏7", "icon": "Collection"],
+                    ["title": "我的收藏8", "icon": "Collection"],
+                    ["title": "我的收藏9", "icon": "Collection"],
+                    ["title": "我的收藏10", "icon": "Collection"]]
+                    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.automaticallyAdjustsScrollViewInsets = false
         
-        let headerView = MineHeaderView()
+        // 顶部视图
+        headerView = MineHeaderView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: 200))
         headerView.delegate = self
-        view.addSubview(headerView)
-        
-        tableView = UITableView()
+
+        // 表格视图
+         tableView = UITableView(frame: CGRect(x: 0, y: -20, width: Common.screenWidth, height: Common.screenHeight))
         tableView.registerClass(MineCell.classForCoder(), forCellReuseIdentifier: "MineCell")
         tableView.tableFooterView = UIView()
         tableView.separatorInset = UIEdgeInsetsZero
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableHeaderView = headerView
         view.addSubview(tableView)
-        
-        // 布局
-        headerView.snp_makeConstraints { (make) in
-            make.width.equalTo(Common.screenWidth)
-            make.top.equalTo(-20)
-            make.left.equalTo(0)
-            make.height.equalTo(220)
-        }
-//        background.snp_makeConstraints { (make) in
-//            make.edges.equalTo(headerView)
-//        }
-        tableView.snp_makeConstraints { (make) in
-            make.top.equalTo(headerView.snp_bottom)
-            make.left.equalTo(0)
-            make.width.equalTo(Common.screenWidth)
-            make.bottom.equalTo(view)
-        }
     }
 
     // 消除分割线前面的间距
@@ -117,5 +111,17 @@ extension Mine: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+}
+
+extension Mine: UIScrollViewDelegate
+{
+    func scrollViewDidScroll(scrollView: UIScrollView)
+    {
+        let offsetY = scrollView.contentOffset.y
+        if offsetY < 0
+        {
+            headerView.background.frame = CGRect(x: offsetY / 2, y: offsetY, width: Common.screenWidth - offsetY, height: 200 - offsetY)
+        }
     }
 }

@@ -22,6 +22,8 @@ class NewCommon: UIViewController
     
     var type: ClassType
     
+    var fpsLabel: YYFPSLabel!
+    
     init(type: ClassType)
     {
         self.type = type
@@ -78,11 +80,18 @@ class NewCommon: UIViewController
         // 下拉刷新和上拉加载
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: .headerRefresh)
         collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: .footerRefresh)
+        
+        // 显示帧数
+        fpsLabel = YYFPSLabel(frame: CGRect(x: 20, y: 20, width: 50, height: 30))
+        fpsLabel.backgroundColor = UIColor.flatRedColor()
+        fpsLabel.sizeToFit()
+        view.addSubview(self.fpsLabel)
     }
     
     // 下拉刷新
     func headerRefresh()
     {
+        // 清除内存中的缓存
         let cache = YYWebImageManager.sharedManager().cache
         cache?.memoryCache.removeAllObjects()
 
@@ -99,6 +108,10 @@ class NewCommon: UIViewController
     // 上拉加载
     func footerRefresh()
     {
+        // 清除内存中的缓存
+        let cache = YYWebImageManager.sharedManager().cache
+        cache?.memoryCache.removeAllObjects()
+        
         API.getDataByTypeAndParams(type, limit: 10, skip: dataArr.count, successCall: { (results) in
             self.collectionView.mj_footer.endRefreshing()
             self.dataArr.appendContentsOf(results)
@@ -134,14 +147,22 @@ extension NewCommon: UICollectionViewDataSource
         let imgArr = object["image"] as? [String]
         let isZan = model.isZan
         let isCollection = model.isCollection
+        let commentNum = object["CommentNum"] as? Int
         
         if imgArr?.count == 0
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommonCell", forIndexPath: indexPath) as! NewCommonCell
         
-            cell.who?.text = object["author"] as? String
+            // 获取用户名
+            var name = object["author"] as? String
+            if name == nil || name! == ""
+            {
+                name = "代码家"
+            }
+
+            cell.who?.text = name
             cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
-            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+                        cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: name!, placeholderSize: CGSize(width: 90, height: 90))
             cell.desc?.text = object["title"] as? String
             cell.toolBar?.delegate = self
             
@@ -149,6 +170,8 @@ extension NewCommon: UICollectionViewDataSource
             cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
             // 设置收藏图标和数量
             cell.toolBar?.isCollectionOrNot(isCollection)
+            // 设置评论的数量
+            cell.toolBar?.setCommentNum(commentNum!)
             
             return cell
         }
@@ -156,18 +179,31 @@ extension NewCommon: UICollectionViewDataSource
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommentOneImageCell", forIndexPath: indexPath) as! NewCommentOneImageCell
             
-            cell.who?.text = object["author"] as? String
+            cell.delegate = self
+            
+            // 获取用户名称
+            var name = object["author"] as? String
+            if name == nil || name! == ""
+            {
+                name = "代码家"
+            }
+            cell.who?.text = name
             cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
-            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: name!, placeholderSize: CGSize(width: 90, height: 90))
             cell.desc?.text = object["title"] as? String
             cell.toolBar?.delegate = self
             
             // 设置图片
-            cell.imgView?.yy_setImageWithURL(NSURL(string: imgArr![0]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+            dispatch_async(dispatch_get_main_queue(), {
+                 cell.imgView?.yy_setImageWithURL(NSURL(string: imgArr![0]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+            })
+           
             // 设置赞的图标和数量
             cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
             // 设置收藏图标和数量
             cell.toolBar?.isCollectionOrNot(isCollection)
+            // 设置评论的数量
+            cell.toolBar?.setCommentNum(commentNum!)
             
             return cell
         }
@@ -175,20 +211,36 @@ extension NewCommon: UICollectionViewDataSource
         {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NewCommentTwoImageCell", forIndexPath: indexPath) as! NewCommentTwoImageCell
             
-            cell.who?.text = object["author"] as? String
+            cell.delegate = self
+            
+            // 获取用户名称
+            var name = object["author"] as? String
+            if name == nil || name! == ""
+            {
+                name = "代码家"
+            }
+
+            cell.who?.text = name
             cell.publishedAt?.text = Common.getStringWithDate(object["resourcePublished"] as! NSDate)
-            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: (object["author"] as? String) ?? "代码家", placeholderSize: CGSize(width: 90, height: 90))
+            cell.avatar?.image = UIImage.createAvatarPlaceholder(userFullName: name!, placeholderSize: CGSize(width: 90, height: 90))
             cell.desc?.text = object["title"] as? String
             cell.toolBar?.delegate = self
             
             // 设置左右图片
-            cell.leftImg?.yy_setImageWithURL(NSURL(string: imgArr![0]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
-            cell.rightImg?.yy_setImageWithURL(NSURL(string: imgArr![1]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
-            
+            dispatch_async(dispatch_get_main_queue(), {
+                cell.leftImg?.yy_setImageWithURL(NSURL(string: imgArr![0]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+                
+            })
+            dispatch_async(dispatch_get_main_queue(), {
+                cell.rightImg?.yy_setImageWithURL(NSURL(string: imgArr![1]), options: [.ProgressiveBlur ,.SetImageWithFadeAnimation])
+            })
+
             // 设置赞的图标和数量
             cell.toolBar?.isZanOrNot(isZan, zanNum: object["ZanNum"] as! Int)
             // 设置收藏图标和数量
             cell.toolBar?.isCollectionOrNot(isCollection)
+            // 设置评论的数量
+            cell.toolBar?.setCommentNum(commentNum!)
             
             return cell
         }
@@ -196,12 +248,53 @@ extension NewCommon: UICollectionViewDataSource
     
     func getIndexByTouch(event: UIEvent) -> NSIndexPath?
     {
+        // 获取点击位置所在的行
         let touches:NSSet = event.allTouches()!
         let touch:UITouch = touches.anyObject() as! UITouch
         let currentTouchPosition:CGPoint = touch.locationInView(collectionView)
-        // 获取点击位置所在的行
         let indexPath = collectionView.indexPathForItemAtPoint(currentTouchPosition)
+        
         return indexPath
+    }
+}
+
+extension NewCommon: NewCommentOneImageCellDelegate
+{
+    func clickImageView(sender: UITapGestureRecognizer)
+    {
+        let imageView = sender.view?.viewWithTag(1) as? UIImageView
+        let remoteImage = [(imageView?.yy_imageURL)!]
+        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
+        browser.sourceType = .REMOTE
+        browser.index = 0
+        browser.show()
+    }
+}
+
+extension NewCommon: NewCommentTwoImageCellDelegate
+{
+    func leftImgSingleTip(sender: UITapGestureRecognizer)
+    {
+        let leftImageView = sender.view?.viewWithTag(1) as? UIImageView
+        let rightImageView = sender.view?.viewWithTag(2) as? UIImageView
+        let remoteImage = [(leftImageView?.yy_imageURL)!, (rightImageView?.yy_imageURL)!]
+        
+        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
+        browser.sourceType = .REMOTE
+        browser.index = 0
+        browser.show()
+    }
+    
+    func rightImgSingleTip(sender: UITapGestureRecognizer)
+    {
+        let leftImageView = sender.view?.viewWithTag(1) as? UIImageView
+        let rightImageView = sender.view?.viewWithTag(2) as? UIImageView
+        let remoteImage = [(leftImageView?.yy_imageURL)!, (rightImageView?.yy_imageURL)!]
+        
+        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
+        browser.sourceType = .REMOTE
+        browser.index = 1
+        browser.show()
     }
 }
 
