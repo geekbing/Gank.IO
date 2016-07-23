@@ -2,7 +2,7 @@
 //  CategoryCell.swift
 //  GankIO
 //
-//  Created by Bing on 7/13/16.
+//  Created by Bing on 7/22/16.
 //  Copyright © 2016 Bing. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ class CategoryCell: UITableViewCell
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         imgView = UIImageView(frame: CGRect(x: Common.screenWidth / 2 - 32, y: (Common.screenHeight - 64 - 49) / 6 - 48, width: 64, height: 64))
         self.addSubview(imgView!)
         

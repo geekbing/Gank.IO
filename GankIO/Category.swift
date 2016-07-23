@@ -24,12 +24,21 @@ class Category: UIViewController
         super.viewDidLoad()
         self.title = "分类"
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        // 表格视图
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 64 - 49))
         tableView.separatorStyle = .None
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registerClass(CategoryCell.classForCoder(), forCellReuseIdentifier: "CategoryCell")
         view.addSubview(tableView)
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.hidden = false
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()
@@ -48,10 +57,7 @@ extension Category: UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCell
-//        for view in (cell?.subviews)!
-//        {
-//            view.removeFromSuperview()
-//        }
+        
         cell.backgroundColor = colorArr[indexPath.row]
         cell.imgView?.image = UIImage(named: imageArr[indexPath.row])?.imageWithRenderingMode(.AlwaysTemplate)
         cell.imgView?.tintColor = UIColor.whiteColor()
@@ -73,12 +79,12 @@ extension Category: UITableViewDelegate
         var vc: UIViewController
         if indexPath.row == 0
         {
-            vc = Girls()
+            vc = Welfare()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         else
         {
-            let vc = IOSVC()
+            let vc = CommonCategory(type: Common.classTypeArr[indexPath.row])
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -36,7 +36,6 @@ class ArticleDetail: CYWebViewController
     override func viewWillDisappear(animated: Bool)
     {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.hidden = true
         self.tabBarController?.tabBar.hidden = false
     }
     

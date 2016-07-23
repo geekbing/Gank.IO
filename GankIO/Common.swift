@@ -10,6 +10,10 @@ import UIKit
 
 struct Common
 {
+    // 分类
+    static let categoryArr = ["福利", "iOS", "Android", "前端", "App", "拓展资源", "休息视频", "瞎推荐"]
+    static let classTypeArr: [ClassType] = [.Welfare, .iOS, .Android, .Web, .App, .ExpandResource, .Video, .Random]
+
     // 屏幕的长和宽
     static let screenWidth = UIScreen.mainScreen().bounds.size.width
     static let screenHeight = UIScreen.mainScreen().bounds.size.height

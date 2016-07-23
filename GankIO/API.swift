@@ -143,6 +143,25 @@ struct API
         }
     }
     
+    // 根据请求类型获取文章，不包含点赞收藏评论
+    static func getDataByType(type: ClassType, limit: Int, skip: Int, successCall: (results: [AVObject]) -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: type.desc())
+        query.orderByDescending("resourcePublished")
+        query.limit = limit
+        query.skip = skip
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in
+            if error == nil
+            {
+                successCall(results: results as! [AVObject])
+            }
+            else
+            {
+                failCall(error: error)
+            }
+        }
+    }
+    
     // 根据请求类型获取数据
     static func getDataByTypeAndParams(type: ClassType, limit: Int, skip: Int, successCall: (results: [NewCommonModel]) -> (), failCall: (error: NSError) -> ())
     {
@@ -530,6 +549,25 @@ struct API
                         failCall(error: error)
                     }
                 })
+            }
+            else
+            {
+                failCall(error: error)
+            }
+        }
+    }
+    
+    // 搜索
+    static func searchByType(type: ClassType, searchWord: String, limit: Int, skip: Int, successCall: (results: [AVObject]) -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: type.desc())
+        query.limit = limit
+        query.skip = skip
+        query.whereKey("title", containsString: searchWord)
+        query.findObjectsInBackgroundWithBlock { (results: [AnyObject]!, error: NSError!) in
+            if error == nil
+            {
+                successCall(results: results as! [AVObject])
             }
             else
             {

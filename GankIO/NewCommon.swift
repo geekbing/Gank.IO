@@ -275,26 +275,26 @@ extension NewCommon: NewCommentTwoImageCellDelegate
 {
     func leftImgSingleTip(sender: UITapGestureRecognizer)
     {
-        let leftImageView = sender.view?.viewWithTag(1) as? UIImageView
-        let rightImageView = sender.view?.viewWithTag(2) as? UIImageView
-        let remoteImage = [(leftImageView?.yy_imageURL)!, (rightImageView?.yy_imageURL)!]
-        
-        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
-        browser.sourceType = .REMOTE
-        browser.index = 0
-        browser.show()
+//        let leftImageView = sender.view?.viewWithTag(1) as? UIImageView
+//        let rightImageView = sender.view?.viewWithTag(2) as? UIImageView
+//        let remoteImage = [(leftImageView?.yy_imageURL)!, (rightImageView?.yy_imageURL)!]
+//        
+//        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
+//        browser.sourceType = .REMOTE
+//        browser.index = 0
+//        browser.show()
     }
     
     func rightImgSingleTip(sender: UITapGestureRecognizer)
     {
-        let leftImageView = sender.view?.viewWithTag(1) as? UIImageView
-        let rightImageView = sender.view?.viewWithTag(2) as? UIImageView
-        let remoteImage = [(leftImageView?.yy_imageURL)!, (rightImageView?.yy_imageURL)!]
-        
-        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
-        browser.sourceType = .REMOTE
-        browser.index = 1
-        browser.show()
+//        let leftImageView = sender.view?.viewWithTag(1) as? UIImageView
+//        let rightImageView = sender.view?.viewWithTag(2) as? UIImageView
+//        let remoteImage = [(leftImageView?.yy_imageURL)!, (rightImageView?.yy_imageURL)!]
+//        
+//        let browser = PhotoBrowserView.initWithPhotos(withUrlArray: remoteImage)
+//        browser.sourceType = .REMOTE
+//        browser.index = 1
+//        browser.show()
     }
 }
 
