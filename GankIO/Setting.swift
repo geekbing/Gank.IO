@@ -12,10 +12,13 @@ import SnapKit
 
 class Setting: UIViewController
 {
- 
     var tableView: UITableView!
-    
-    var dataArr = []
+    var dataArr = [
+                    ["title": "用户协议", "icon": ""],
+                    ["title": "清除缓存", "icon": ""],
+                    ["title": "向朋友推荐", "icon": ""],
+                    ["title": "给IT干货评分", "icon": ""],
+                    ["title": "退出登录", "icon": ""]]
     
     override func viewDidLoad()
     {
@@ -23,12 +26,10 @@ class Setting: UIViewController
         view.backgroundColor = UIColor.whiteColor()
         
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight))
+        tableView.registerClass(SettingCell.self, forCellReuseIdentifier: "SettingCell")
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
-        
-        
-        
         
 //        // 退出按钮
 //        let logout = UIButton()
@@ -81,8 +82,13 @@ extension Setting: UITableViewDataSource
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("", forIndexPath: indexPath)
-        return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("SettingCell", forIndexPath: indexPath) as? SettingCell
+        let data = dataArr[indexPath.row]
+        
+        cell?.icon?.image = UIImage(named: data["icon"]!)
+        cell?.title?.text = data["title"]
+        
+        return cell!
     }
 }
 

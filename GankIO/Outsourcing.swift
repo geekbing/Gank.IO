@@ -17,6 +17,7 @@ class Outsourcing: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.title = "外包"
         view.backgroundColor = UIColor.whiteColor()
         
         let layout = UICollectionViewFlowLayout()

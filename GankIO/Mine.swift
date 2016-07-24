@@ -12,20 +12,15 @@ class Mine: UIViewController
 {
     var headerView: MineHeaderView!
     var tableView: UITableView!
-    var dataDict = [["title": "我的收藏1", "icon": "Collection"],
-                    ["title": "我的分享2", "icon": "Collection"],
-                    ["title": "我的收藏3", "icon": "Collection"],
-                    ["title": "我的收藏4", "icon": "Collection"],
-                    ["title": "我的收藏5", "icon": "Collection"],
-                    ["title": "我的收藏6", "icon": "Collection"],
-                    ["title": "我的收藏7", "icon": "Collection"],
-                    ["title": "我的收藏8", "icon": "Collection"],
-                    ["title": "我的收藏9", "icon": "Collection"],
-                    ["title": "我的收藏10", "icon": "Collection"]]
+    var dataDict = [["title": "主题调整", "icon": "Adjust"],
+                    ["title": "我的收藏", "icon": "Like"],
+                    ["title": "随意吐槽", "icon": "Feedback"]]
                     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.hidden = true
+        self.tabBarController?.tabBar.hidden = false
         self.automaticallyAdjustsScrollViewInsets = false
         
         // 顶部视图
@@ -53,7 +48,17 @@ class Mine: UIViewController
     override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.hidden = true
+        UIView.animateWithDuration(0.3, animations: { 
+            self.navigationController?.navigationBar.alpha = 0
+            self.tabBarController?.tabBar.alpha = 1
+        }) { (finished) in
+            self.navigationController?.navigationBar.alpha = 1
+            self.navigationController?.navigationBar.hidden = true
+            self.tabBarController?.tabBar.alpha = 1
+            self.tabBarController?.tabBar.hidden = false
+        }
+//        self.navigationController?.navigationBar.hidden = true
+//        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()
@@ -111,6 +116,18 @@ extension Mine: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        switch indexPath.row
+        {
+            case 0:
+                let vc = Adjust()
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 1:
+                let vc = Adjust()
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                break
+        }
     }
 }
 

@@ -128,7 +128,6 @@ class OutsourcingModel
     var money: String
     // 状态
     var status: OutsourcingStatus
-    
     // 地址
     var url: String
     
