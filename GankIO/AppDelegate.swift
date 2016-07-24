@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         SVProgressHUD.setDefaultStyle(.Custom)
         SVProgressHUD.setMinimumDismissTimeInterval(1.2)
         SVProgressHUD.setFont(Common.font14)
-        SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: -Common.screenHeight / 2 + 150))
+        // SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: -Common.screenHeight / 2 + 150))
         SVProgressHUD.setErrorImage(UIImage(named: "Close"))
         SVProgressHUD.setInfoImage(UIImage(named: "Info"))
         SVProgressHUD.setSuccessImage(UIImage(named: "Correct"))

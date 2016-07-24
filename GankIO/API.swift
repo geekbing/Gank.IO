@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import Fuzi
 
 // 操作类型
 enum OperType
@@ -572,6 +573,54 @@ struct API
             else
             {
                 failCall(error: error)
+            }
+        }
+    }
+    
+    // 抓取http://waibao.io/projects信息
+    static func grabDataFromWaibao(successCall: (dataArr: [OutsourcingModel]) -> (), failCall: (error: NSError) -> ())
+    {
+        Alamofire.request(.GET, "http://waibao.io/projects").validate().responseData { response in
+            switch response.result
+            {
+                case .Success:
+                    if let data = response.result.value
+                    {
+                        do
+                        {
+                            let doc = try HTMLDocument(data: data)
+                            
+                            // 获取所有的card元素
+                            var dataArr = [OutsourcingModel]()
+                            
+                            for card in doc.css(".card")
+                            {
+                                // 获取外包类型
+                                let meta = card.firstChild(css: ".card-meta")?.stringValue.removeSpace()
+                                let type = meta?.componentsSeparatedByString("/").first!.removeSpace()
+                                // 获取标题
+                                let title = card.firstChild(css: ".card-title")?.stringValue.removeSpace()
+                                // 获取描述
+                                let desc = card.firstChild(css: ".card-body")?.stringValue.removeSpace()
+                                // 获取价格
+                                let money = card.firstChild(css: "span")?.stringValue.removeSpace()
+                                // 获取状态
+                                let status = getStatusByString((card.firstChild(css: ".label")?.stringValue.removeSpace())!)
+                                // 获取地址
+                                let url = "http://waibao.io" + card.firstChild(css: "a")!["href"]!
+                                let model = OutsourcingModel(type: getTypeByString(type!), title: title!, desc: desc!, money: money!, status: status, url: url)
+                                dataArr.append(model)
+                            }
+                            
+                            successCall(dataArr: dataArr)
+                        }
+                        catch let error
+                        {
+                            print(error)
+                        }
+                    }
+                case .Failure(let error):
+                    print(error.localizedDescription)
             }
         }
     }

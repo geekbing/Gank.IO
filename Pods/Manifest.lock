@@ -5,6 +5,7 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - FDFullscreenPopGesture (1.1)
+  - Fuzi (0.3.1)
   - IQKeyboardManager (4.0.4)
   - ITDAvatarPlaceholder (0.1.0):
     - ChameleonFramework/Swift
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - AVOSCloud
   - ChameleonFramework/Swift
   - FDFullscreenPopGesture
+  - Fuzi
   - IQKeyboardManager
   - ITDAvatarPlaceholder
   - JGProgressHUD
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   AVOSCloud: 1fe170768bee7e05bc3ea86e38d5bddb105cb957
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  Fuzi: 25118b725a1637f1676f63ae1acbba1f30a5dd6c
   IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
   ITDAvatarPlaceholder: 1aa137b6c863cae4b40a18402f97d1387fb19ad5
   JGProgressHUD: 5b202636fa103db63e6f001888d11ea628133129
@@ -73,6 +76,6 @@ SPEC CHECKSUMS:
   YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
   YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: 58996a6d823436474a2b6c2ee24619c4a0f1d991
+PODFILE CHECKSUM: fc5b73faaa1e1ce0439cadd2b8506ed42532ccb7
 
 COCOAPODS: 1.0.1

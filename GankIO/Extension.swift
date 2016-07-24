@@ -22,6 +22,13 @@ extension String
         let rect = text.boundingRectWithSize(size, options: .UsesLineFragmentOrigin, attributes: attributes, context: nil)
         return rect.size.height
     }
+    
+    // 去掉字符串首尾的空格
+    func removeSpace() -> String
+    {
+        let whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        return self.stringByTrimmingCharactersInSet(whitespace)
+    }
 }
 
 extension UIViewController: NVActivityIndicatorViewable

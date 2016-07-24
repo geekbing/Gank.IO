@@ -24,6 +24,7 @@ pod 'YYWebImage'
 pod 'IQKeyboardManager'
 pod 'SDWebImage'
 pod 'JGProgressHUD'
+pod 'Fuzi'
   target 'GankIOTests' do
     inherit! :search_paths
     # Pods for testing

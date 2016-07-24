@@ -31,6 +31,8 @@
 		373736D21D41BA180079366C /* CommonCategoryOneImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736D11D41BA180079366C /* CommonCategoryOneImageCell.swift */; };
 		373736D51D41CA7C0079366C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736D41D41CA7C0079366C /* Search.swift */; };
 		373736D91D41F6B70079366C /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736D81D41F6B70079366C /* SearchCell.swift */; };
+		373736DE1D4319F90079366C /* OutsourcingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736DD1D4319F90079366C /* OutsourcingCell.swift */; };
+		373736E01D431A010079366C /* OutsourcingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736DF1D431A010079366C /* OutsourcingModel.swift */; };
 		3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0A01D352DD5001C69AE /* ArticleDetail.swift */; };
 		3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0D91D360F5C001C69AE /* Girls.swift */; };
 		3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0DE1D36129C001C69AE /* NewSubVC.swift */; };
@@ -148,6 +150,8 @@
 		373736D11D41BA180079366C /* CommonCategoryOneImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCategoryOneImageCell.swift; sourceTree = "<group>"; };
 		373736D41D41CA7C0079366C /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		373736D81D41F6B70079366C /* SearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		373736DD1D4319F90079366C /* OutsourcingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsourcingCell.swift; sourceTree = "<group>"; };
+		373736DF1D431A010079366C /* OutsourcingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsourcingModel.swift; sourceTree = "<group>"; };
 		3747A0A01D352DD5001C69AE /* ArticleDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		3747A0D91D360F5C001C69AE /* Girls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Girls.swift; sourceTree = "<group>"; };
 		3747A0DE1D36129C001C69AE /* NewSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVC.swift; sourceTree = "<group>"; };
@@ -351,7 +355,9 @@
 		371C48B81D349EDF00488043 /* Outsourcing */ = {
 			isa = PBXGroup;
 			children = (
-				371C48B91D349FBF00488043 /* Outsourcing.swift */,
+				373736DC1D4319E70079366C /* C */,
+				373736DB1D4319E20079366C /* V */,
+				373736DA1D4319DC0079366C /* M */,
 			);
 			name = Outsourcing;
 			sourceTree = "<group>";
@@ -533,6 +539,30 @@
 			isa = PBXGroup;
 			children = (
 				373736D41D41CA7C0079366C /* Search.swift */,
+			);
+			name = C;
+			sourceTree = "<group>";
+		};
+		373736DA1D4319DC0079366C /* M */ = {
+			isa = PBXGroup;
+			children = (
+				373736DF1D431A010079366C /* OutsourcingModel.swift */,
+			);
+			name = M;
+			sourceTree = "<group>";
+		};
+		373736DB1D4319E20079366C /* V */ = {
+			isa = PBXGroup;
+			children = (
+				373736DD1D4319F90079366C /* OutsourcingCell.swift */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		373736DC1D4319E70079366C /* C */ = {
+			isa = PBXGroup;
+			children = (
+				371C48B91D349FBF00488043 /* Outsourcing.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -1246,6 +1276,7 @@
 				373736D21D41BA180079366C /* CommonCategoryOneImageCell.swift in Sources */,
 				373736BF1D419FA00079366C /* CommonCategory.swift in Sources */,
 				37C1581E1D3DFEBC001313DC /* NewCommentTwoImageCell.swift in Sources */,
+				373736E01D431A010079366C /* OutsourcingModel.swift in Sources */,
 				371C48BF1D34A19300488043 /* Guide.swift in Sources */,
 				371C48D41D34DD3A00488043 /* API.swift in Sources */,
 				37E7D6BD1D409798000CB1AB /* BrowserCellDelegate.swift in Sources */,
@@ -1258,6 +1289,7 @@
 				371C48BA1D349FBF00488043 /* Outsourcing.swift in Sources */,
 				3747A0E91D3630F6001C69AE /* Extension.swift in Sources */,
 				373736D51D41CA7C0079366C /* Search.swift in Sources */,
+				373736DE1D4319F90079366C /* OutsourcingCell.swift in Sources */,
 				37E7D6AC1D3F6787000CB1AB /* CommentUpViewOneImage.swift in Sources */,
 				3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */,
 				37C1581C1D3DFEAB001313DC /* NewCommentOneImageCell.swift in Sources */,

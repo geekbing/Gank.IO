@@ -35,6 +35,8 @@ struct Common
     static let cateColor8 = UIColor(hexString: "673ADD", withAlpha: 0.85)!
     
     // 字体
+    static let font26 = UIFont.systemFontOfSize(26, weight: UIFontWeightThin)
+    static let font27 = UIFont.italicSystemFontOfSize(27)
     static let font20 = UIFont.systemFontOfSize(20, weight: UIFontWeightThin)
     static let font19 = UIFont.systemFontOfSize(19, weight: UIFontWeightThin)
     static let font18 = UIFont.systemFontOfSize(18, weight: UIFontWeightThin)

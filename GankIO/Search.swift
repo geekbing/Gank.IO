@@ -177,9 +177,16 @@ extension Search: UITextFieldDelegate
             SVProgressHUD.show()
             // 执行搜索
             API.searchByType(self.type, searchWord: searchWord!, limit: 10, skip: 0, successCall: { (results) in
-                SVProgressHUD.dismiss()
-                self.dataArr = results
-                self.tableView.reloadData()
+                if results.count == 0
+                {
+                    SVProgressHUD.showInfoWithStatus("没有相关数据")
+                }
+                else
+                {
+                    SVProgressHUD.dismiss()
+                    self.dataArr = results
+                    self.tableView.reloadData()
+                }
             }, failCall: { (error) in
                 SVProgressHUD.showErrorWithStatus("获取数据出错了")
             })
