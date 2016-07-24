@@ -577,6 +577,25 @@ struct API
         }
     }
     
+    // 获取外包信息
+    static func getWaibaoData(limit: Int, skip: Int, successCall: (dataArr: [AVObject]) -> (), failCall: (error: NSError) -> ())
+    {
+        let query = AVQuery(className: "Wanted")
+        query.limit = limit
+        query.skip = skip
+        query.orderByAscending("createdAt")
+        query.findObjectsInBackgroundWithBlock { (dataArr: [AnyObject]!, error: NSError!) in
+            if error == nil
+            {
+                successCall(dataArr: dataArr as! [AVObject])
+            }
+            else
+            {
+                failCall(error: error)
+            }
+        }
+    }
+    
     // 抓取http://waibao.io/projects信息
     static func grabDataFromWaibao(successCall: (dataArr: [OutsourcingModel]) -> (), failCall: (error: NSError) -> ())
     {

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import MJRefresh
 import SVProgressHUD
 
 class Outsourcing: UIViewController
 {
     var collectionView: UICollectionView!
-    var dataArr = [OutsourcingModel]()
+    var dataArr = [AVObject]()
     
     override func viewDidLoad()
     {
@@ -23,20 +24,50 @@ class Outsourcing: UIViewController
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 20
         
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 49 - 20), collectionViewLayout: layout)
-        
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 15, right: 0)
+        // 表格视图
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight - 49), collectionViewLayout: layout)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: -15, right: 0)
         collectionView.backgroundColor = UIColor(red:0.93, green:0.95, blue:0.95, alpha:1.00)
         collectionView.registerClass(OutsourcingCell.self, forCellWithReuseIdentifier: "OutsourcingCell")
         collectionView.dataSource = self
         collectionView.delegate = self
         view.addSubview(collectionView)
         
+        // 下拉刷新和上拉加载
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: .headerRefresh)
+        header.lastUpdatedTimeLabel.hidden = true
+        collectionView.mj_header = header
+        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: .footerRefresh)
+        
         // 获取数据
         SVProgressHUD.show()
-        API.grabDataFromWaibao({ (dataArr) in
+        API.getWaibaoData(10, skip: 0, successCall: { (dataArr) in
             SVProgressHUD.dismiss()
             self.dataArr = dataArr
+            self.collectionView.reloadData()
+        }) { (error) in
+            SVProgressHUD.showErrorWithStatus("获取数据出错")
+        }
+    }
+    
+    // 下拉刷新
+    func headerRefresh()
+    {
+        API.getWaibaoData(10, skip: 0, successCall: { (dataArr) in
+            self.collectionView.mj_header.endRefreshing()
+            self.dataArr = dataArr
+            self.collectionView.reloadData()
+        }) { (error) in
+            SVProgressHUD.showErrorWithStatus("获取数据出错")
+        }
+    }
+    
+    // 上拉加载
+    func footerRefresh()
+    {
+        API.getWaibaoData(10, skip: dataArr.count, successCall: { (resultArr) in
+            self.collectionView.mj_footer.endRefreshing()
+            self.dataArr.appendContentsOf(resultArr)
             self.collectionView.reloadData()
         }) { (error) in
             SVProgressHUD.showErrorWithStatus("获取数据出错")
@@ -47,6 +78,12 @@ class Outsourcing: UIViewController
     {
         super.didReceiveMemoryWarning()
     }
+}
+
+private extension Selector
+{
+    static let headerRefresh = #selector(Outsourcing.headerRefresh)
+    static let footerRefresh = #selector(Outsourcing.footerRefresh)
 }
 
 extension Outsourcing: UICollectionViewDataSource
@@ -63,18 +100,17 @@ extension Outsourcing: UICollectionViewDataSource
         
         let model = dataArr[indexPath.row]
         
-        cell?.desc?.text = model.desc
-        cell?.title?.text = model.title
-        cell?.money?.text = model.money
-        cell?.type?.text = model.type.desc()
-        cell?.bigImg?.image = UIImage(named: model.type.desc() + "BigImg")
-        cell?.typeImage?.image = UIImage(named: model.type.desc() + "MiniImg")
-        cell?.status?.text = model.status.desc()
-        cell?.status?.backgroundColor = model.status.getBackgroundColor()
+        cell?.desc?.text = model["detail"] as? String
+        cell?.title?.text = model["title"] as? String
+        cell?.money?.text = model["price"] as? String
+        cell?.type?.text = model["kind"] as? String
+        cell?.bigImg?.image = UIImage(named: (model["kind"] as! String) + "BigImg")
+        cell?.typeImage?.image = UIImage(named: (model["kind"] as! String) + "MiniImg")
+        cell?.status?.text = model["status"] as? String
+        cell?.status?.backgroundColor = getStatusByString(model["status"] as! String).getBackgroundColor()
         
         return cell!
     }
-
 }
 
 extension Outsourcing: UICollectionViewDelegate
@@ -82,7 +118,7 @@ extension Outsourcing: UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         let result = dataArr[indexPath.item]
-        let vc = ArticleDetail(URLString: result.url)
+        let vc = ArticleDetail(URLString: result["url"] as? String)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -92,10 +128,14 @@ extension Outsourcing: UICollectionViewDelegateFlowLayout
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
         let model = dataArr[indexPath.item]
+        
         // 标题高度
-        let titleHeight = model.title.stringHeightWith(Common.font18, width: Common.screenWidth - 40)
+        let title = model["title"] as! String
+        let titleHeight = title.stringHeightWith(Common.font18, width: Common.screenWidth - 40)
+        
         // 描述高度
-        let descHeight = model.desc.stringHeightWith(Common.font14, width: Common.screenWidth - 40)
+        let desc = model["detail"] as! String
+        let descHeight = desc.stringHeightWith(Common.font14, width: Common.screenWidth - 40)
         
         return CGSize(width: Common.screenWidth - 20, height: titleHeight + descHeight + 280)
     }

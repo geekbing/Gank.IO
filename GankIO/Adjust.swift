@@ -12,14 +12,14 @@ import Material
 class Adjust: UIViewController
 {
     var tableView: UITableView!
-    var dataArr = [["title": "iOS", "icon": ""],
-                   ["title": "Android", "icon": ""],
-                   ["title": "前端", "icon": ""],
-                   ["title": "App", "icon": ""],
-                   ["title": "拓展资源", "icon": ""],
-                   ["title": "休息视频", "icon": ""],
-                   ["title": "瞎推荐", "icon": ""],
-                   ["title": "福利", "icon": ""]]
+    var dataArr = [["title": "iOS", "icon": "iOS2"],
+                   ["title": "Android", "icon": "Android2"],
+                   ["title": "Web", "icon": "Web2"],
+                   ["title": "App", "icon": "App2"],
+                   ["title": "拓展资源", "icon": "ExpandResource2"],
+                   ["title": "休息视频", "icon": "RestVideo2"],
+                   ["title": "瞎推荐", "icon": "Random2"],
+                   ["title": "福利", "icon": "Welfare2"]]
     
     override func viewDidLoad()
     {
@@ -76,14 +76,14 @@ class Adjust: UIViewController
     func resetBtnClick()
     {
         tableView.setEditing(false, animated: true)
-        dataArr = [["title": "iOS", "icon": ""],
-                   ["title": "Android", "icon": ""],
-                   ["title": "前端", "icon": ""],
-                   ["title": "App", "icon": ""],
-                   ["title": "拓展资源", "icon": ""],
-                   ["title": "休息视频", "icon": ""],
-                   ["title": "瞎推荐", "icon": ""],
-                   ["title": "福利", "icon": ""]]
+        dataArr = [["title": "iOS", "icon": "iOS2"],
+                   ["title": "Android", "icon": "Android2"],
+                   ["title": "Web", "icon": "Web2"],
+                   ["title": "App", "icon": "App2"],
+                   ["title": "拓展资源", "icon": "ExpandResource2"],
+                   ["title": "休息视频", "icon": "RestVideo2"],
+                   ["title": "瞎推荐", "icon": "Random2"],
+                   ["title": "福利", "icon": "Welfare2"]]
         tableView.reloadData()
     }
     
@@ -137,11 +137,10 @@ extension Adjust: UITableViewDataSource
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("AdjustCell", forIndexPath: indexPath) as! AdjustCell
         let cellData = dataArr[indexPath.row]
-        
+
         cell.title?.text = cellData["title"]
         cell.icon?.image = UIImage(named: cellData["icon"]!)
         
-        cell.showsReorderControl = false
         return cell
     }
     

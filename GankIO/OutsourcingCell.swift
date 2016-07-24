@@ -97,7 +97,7 @@ class OutsourcingCell: UICollectionViewCell
         })
         // 状态
         status?.snp_makeConstraints(closure: { (make) in
-            make.width.equalTo(80)
+            make.width.equalTo(60)
             make.height.equalTo(24)
             make.right.equalTo(self.contentView).offset(-15)
             make.bottom.equalTo(self.contentView).offset(-15)
