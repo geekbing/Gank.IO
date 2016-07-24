@@ -12,28 +12,40 @@ import SnapKit
 
 class Setting: UIViewController
 {
+ 
+    var tableView: UITableView!
+    
+    var dataArr = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         
-        // 退出按钮
-        let logout = UIButton()
-        logout.backgroundColor = UIColor.flatRedColor()
-        logout.layer.masksToBounds = true
-        logout.layer.cornerRadius = 15
-        logout.setTitle("退出", forState: .Normal)
-        logout.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        logout.addTarget(self, action: .logoutBtnClick, forControlEvents: .TouchUpInside)
-        view.addSubview(logout)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Common.screenWidth, height: Common.screenHeight))
+        tableView.dataSource = self
+        tableView.delegate = self
+        view.addSubview(tableView)
         
-        logout.snp_makeConstraints { (make) in
-            make.left.equalTo(30)
-            make.right.equalTo(-30)
-            make.height.equalTo(30)
-            make.bottom.equalTo(-100)
-        }
+        
+        
+        
+//        // 退出按钮
+//        let logout = UIButton()
+//        logout.backgroundColor = UIColor.flatRedColor()
+//        logout.layer.masksToBounds = true
+//        logout.layer.cornerRadius = 15
+//        logout.setTitle("退出", forState: .Normal)
+//        logout.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+//        logout.addTarget(self, action: .logoutBtnClick, forControlEvents: .TouchUpInside)
+//        view.addSubview(logout)
+//        
+//        logout.snp_makeConstraints { (make) in
+//            make.left.equalTo(30)
+//            make.right.equalTo(-30)
+//            make.height.equalTo(30)
+//            make.bottom.equalTo(-100)
+//        }
         
     }
     
@@ -58,4 +70,26 @@ class Setting: UIViewController
 private extension Selector
 {
     static let logoutBtnClick = #selector(Setting.logoutBtnClick)
+}
+
+extension Setting: UITableViewDataSource
+{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return dataArr.count
+    }
+
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("", forIndexPath: indexPath)
+        return cell
+    }
+}
+
+extension Setting: UITableViewDelegate
+{
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 }
