@@ -1,22 +1,27 @@
 //
-//  Welfare.swift
+//  Feedback.swift
 //  GankIO
 //
-//  Created by Bing on 7/22/16.
+//  Created by Bing on 7/24/16.
 //  Copyright © 2016 Bing. All rights reserved.
 //
 
 import UIKit
 
-class Welfare: UIViewController
+class Feedback: UIViewController
 {
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        self.title = "福利"
+        self.title = "随意吐槽"
         view.backgroundColor = UIColor.whiteColor()
+
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        self.navigationController?.navigationBar.hidden = false
+        self.tabBarController?.tabBar.hidden = true
     }
     
     override func didReceiveMemoryWarning()
@@ -24,3 +29,4 @@ class Welfare: UIViewController
         super.didReceiveMemoryWarning()
     }
 }
+

@@ -183,6 +183,11 @@ extension Adjust: UITableViewDelegate
         cell.layoutMargins = UIEdgeInsetsZero
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
     {
         tableView.setEditing(true, animated: true)

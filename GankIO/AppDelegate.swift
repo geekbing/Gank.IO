@@ -35,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 //        UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(Common.mainColor, size: CGSize(width: Common.screenWidth, height: 64)))
 //        UINavigationBar.appearance().barTintColor = Common.mainColor
         
-        // 设置状态栏颜色为白色
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
-        
         // 给导航条增加一个纯色背景来实现设置导航条背景色
         UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(Common.mainColor, size: CGSize(width: Common.screenWidth, height: 64)), forBarMetrics: .Default)
 

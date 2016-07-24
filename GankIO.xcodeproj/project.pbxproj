@@ -36,6 +36,8 @@
 		373736E51D44577F0079366C /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736E41D44577F0079366C /* SettingCell.swift */; };
 		373736E81D4469790079366C /* Adjust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736E71D4469790079366C /* Adjust.swift */; };
 		373736EC1D446A4F0079366C /* AdjustCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736EB1D446A4F0079366C /* AdjustCell.swift */; };
+		373736EF1D44F23C0079366C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736EE1D44F23C0079366C /* Collection.swift */; };
+		373736F21D44F27B0079366C /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373736F11D44F27B0079366C /* Feedback.swift */; };
 		3747A0A11D352DD5001C69AE /* ArticleDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0A01D352DD5001C69AE /* ArticleDetail.swift */; };
 		3747A0DA1D360F5C001C69AE /* Girls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0D91D360F5C001C69AE /* Girls.swift */; };
 		3747A0DF1D36129C001C69AE /* NewSubVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3747A0DE1D36129C001C69AE /* NewSubVC.swift */; };
@@ -158,6 +160,8 @@
 		373736E41D44577F0079366C /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		373736E71D4469790079366C /* Adjust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adjust.swift; sourceTree = "<group>"; };
 		373736EB1D446A4F0079366C /* AdjustCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustCell.swift; sourceTree = "<group>"; };
+		373736EE1D44F23C0079366C /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		373736F11D44F27B0079366C /* Feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		3747A0A01D352DD5001C69AE /* ArticleDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetail.swift; sourceTree = "<group>"; };
 		3747A0D91D360F5C001C69AE /* Girls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Girls.swift; sourceTree = "<group>"; };
 		3747A0DE1D36129C001C69AE /* NewSubVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSubVC.swift; sourceTree = "<group>"; };
@@ -342,6 +346,8 @@
 		371C48B01D349C5D00488043 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				373736F01D44F2620079366C /* Feedback */,
+				373736ED1D44F22F0079366C /* Collection */,
 				373736E61D4469620079366C /* Adjust */,
 				373736E11D4457120079366C /* Mine */,
 				379DB1171D388D44001BEA29 /* Setting */,
@@ -621,6 +627,22 @@
 				373736E71D4469790079366C /* Adjust.swift */,
 			);
 			name = C;
+			sourceTree = "<group>";
+		};
+		373736ED1D44F22F0079366C /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				373736EE1D44F23C0079366C /* Collection.swift */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
+		373736F01D44F2620079366C /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				373736F11D44F27B0079366C /* Feedback.swift */,
+			);
+			name = Feedback;
 			sourceTree = "<group>";
 		};
 		3747A09F1D352DB1001C69AE /* ArticleDetail */ = {
@@ -1309,6 +1331,7 @@
 				37C152681D37149D0006B111 /* MineCell.swift in Sources */,
 				37E7D6C01D409798000CB1AB /* RMDownloadIndicator.swift in Sources */,
 				37F549631D363DDB008A9C72 /* ToolBarView.swift in Sources */,
+				373736EF1D44F23C0079366C /* Collection.swift in Sources */,
 				37C152771D378A0D0006B111 /* CommentToolBar.swift in Sources */,
 				37F958D71D39FDC300781CDD /* LYShareMenuItem.m in Sources */,
 				37F5495A1D3638A4008A9C72 /* UIImage+CYButtonIcon.m in Sources */,
@@ -1328,6 +1351,7 @@
 				373736EC1D446A4F0079366C /* AdjustCell.swift in Sources */,
 				379DB1191D388D4C001BEA29 /* Setting.swift in Sources */,
 				37F958D81D39FDC300781CDD /* LYShareItemMenuView.m in Sources */,
+				373736F21D44F27B0079366C /* Feedback.swift in Sources */,
 				373736E51D44577F0079366C /* SettingCell.swift in Sources */,
 				37E7D6BF1D409798000CB1AB /* PhotoBrowserView.swift in Sources */,
 				373736C91D41A24A0079366C /* CommonCategoryCell.swift in Sources */,

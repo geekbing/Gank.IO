@@ -57,8 +57,6 @@ class Mine: UIViewController
             self.tabBarController?.tabBar.alpha = 1
             self.tabBarController?.tabBar.hidden = false
         }
-//        self.navigationController?.navigationBar.hidden = true
-//        self.tabBarController?.tabBar.hidden = false
     }
     
     override func didReceiveMemoryWarning()
@@ -123,7 +121,10 @@ extension Mine: UITableViewDelegate
                 let vc = Adjust()
                 self.navigationController?.pushViewController(vc, animated: true)
             case 1:
-                let vc = Adjust()
+                let vc = Collection()
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 2:
+                let vc = Feedback()
                 self.navigationController?.pushViewController(vc, animated: true)
             default:
                 break
