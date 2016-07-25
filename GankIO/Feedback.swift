@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Feedback: UIViewController
+class Feedback: RCConversationViewController
 {
     override func viewDidLoad()
     {
@@ -16,6 +16,9 @@ class Feedback: UIViewController
         self.title = "随意吐槽"
         view.backgroundColor = UIColor.whiteColor()
 
+        self.targetId = "578cde816be3ff006ceaffc0"
+        self.setMessageAvatarStyle(.USER_AVATAR_CYCLE)
+        self.conversationType = .ConversationType_PRIVATE
     }
     
     override func viewWillAppear(animated: Bool)

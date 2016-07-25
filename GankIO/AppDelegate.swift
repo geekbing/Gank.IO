@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         setupGlobalStyle()          // 配置全局样式
         setupGlobalData()           // 配置全局数据
         setupLeanCloud()            // 配置LeanCloud
+        setupRongCloud()            // 配置融云聊天
         setupRootViewController()   // 配置根控制器
         setupShareSDK()             // 配置shareSDK
        
@@ -85,6 +86,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         let AppKey = "ihT09VMyr4sY0naf833CTnqA"
         // 注册LeanCloud
         AVOSCloud.setApplicationId(AppID, clientKey: AppKey)
+    }
+    
+    func setupRongCloud()
+    {
+        RCIM.sharedRCIM().userInfoDataSource = self
+        
+        let AppKey = "x18ywvqf8866c"
+        // let AppSecret = "hlTtUdcsWpV"
+        RCIM.sharedRCIM().initWithAppKey(AppKey)
+        
+        let testUserToken = "iQB1IyJtSXYsxRx9HOyDCLhM/6v5Esk40gZVNL9Od8Abh+LRxlg0KRS+8UYSYX4CVgnTynNGGMe1gPZ+xS83reznxw1P/JdbEf9gBtHBwGtWSmQx9QfFdg=="
+        RCIM.sharedRCIM().connectWithToken(testUserToken, success: { (userId) in
+            print("登陆成功。当前登录的用户ID：\(userId)")
+        }, error: { (status: RCConnectErrorCode) in
+            print("登陆的错误码为:\(status.rawValue)")
+        }) {
+            // token过期或者不正确。
+            // 如果设置了token有效期并且token过期，请重新请求您的服务器获取新的token
+            // 如果没有设置token有效期却提示token错误，请检查您客户端和服务器的appkey是否匹配，还有检查您获取token的流程。
+            print("token错误")
+        }
     }
     
     // 配置根控制器
@@ -202,5 +224,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func applicationWillTerminate(application: UIApplication)
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+}
+
+extension AppDelegate: RCIMUserInfoDataSource
+{
+    // 获取用户信息
+    func getUserInfoWithUserId(userId: String!, completion: ((RCUserInfo!) -> Void)!)
+    {
+        let userInfo = RCUserInfo()
+        userInfo.userId = userId
+        switch userId
+        {
+            case "578855872e958a005410f778":
+                userInfo.name = "Bing"
+                userInfo.portraitUri = "http://diary123.oss-cn-shanghai.aliyuncs.com/me.jpg"
+            case "578cde816be3ff006ceaffc0":
+                userInfo.name = "程序媛"
+                userInfo.portraitUri = "http://diary123.oss-cn-shanghai.aliyuncs.com/ITGank.png"
+            default:
+                print("无此用户")
+        }
+        return completion(userInfo)
     }
 }

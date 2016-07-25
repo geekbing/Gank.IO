@@ -12,7 +12,7 @@ class Mine: UIViewController
 {
     var headerView: MineHeaderView!
     var tableView: UITableView!
-    var dataDict = [["title": "主题调整", "icon": "Adjust"],
+    var dataDict = [["title": "栏目调整", "icon": "Adjust"],
                     ["title": "我的收藏", "icon": "Like"],
                     ["title": "随意吐槽", "icon": "Feedback"]]
                     

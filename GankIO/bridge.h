@@ -1,6 +1,9 @@
 // LeanCloud
 #import <AVOSCloud/AVOSCloud.h>
 
+// RongCloud聊天
+#import <RongIMKit/RongIMKit.h>
+
 // 下拉刷新
 #import <MJRefresh/MJRefresh.h>
 

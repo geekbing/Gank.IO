@@ -7,7 +7,8 @@ target 'GankIO' do
 
   # Pods for GankIO
 pod 'Alamofire'
-pod 'AVOSCloud'               
+pod 'AVOSCloud'
+pod 'RongCloudIMKit'
 pod 'SnapKit'
 pod 'ChameleonFramework/Swift'
 pod 'SVProgressHUD'

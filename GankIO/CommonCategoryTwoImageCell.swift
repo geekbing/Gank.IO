@@ -73,7 +73,7 @@ class CommonCategoryTwoImageCell: UITableViewCell
         leftImg?.tag = 1
         leftImg?.userInteractionEnabled = true
         self.contentView.addSubview(leftImg!)
-        leftImg?.addGestureRecognizer(leftTap)
+//        leftImg?.addGestureRecognizer(leftTap)
         
         // 右边的图片
         rightImg = YYAnimatedImageView()
@@ -82,7 +82,7 @@ class CommonCategoryTwoImageCell: UITableViewCell
         rightImg?.tag = 2
         rightImg?.userInteractionEnabled = true
         self.contentView.addSubview(rightImg!)
-        rightImg?.addGestureRecognizer(rightTap)
+//        rightImg?.addGestureRecognizer(rightTap)
         
         // 布局
         avatar?.snp_makeConstraints(closure: { (make) in

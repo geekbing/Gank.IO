@@ -14,6 +14,7 @@ PODS:
   - Material (1.42.7)
   - MJRefresh (3.1.10)
   - NVActivityIndicatorView (2.9)
+  - RongCloudIMKit (2.6.7)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - Material
   - MJRefresh
   - NVActivityIndicatorView
+  - RongCloudIMKit
   - SDWebImage
   - SnapKit
   - SVProgressHUD
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
   NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
+  RongCloudIMKit: bf5e835bd9a2ecd7c12a64919a0dbf0bb4038755
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
@@ -76,6 +79,6 @@ SPEC CHECKSUMS:
   YYImage: 362f44ffba1fc498f2152060f3bb54ed84600981
   YYWebImage: 0431ed108e104527669b86f75efd58958425cca2
 
-PODFILE CHECKSUM: fc5b73faaa1e1ce0439cadd2b8506ed42532ccb7
+PODFILE CHECKSUM: 27f1b3d3271e440cccc334f71bed8dae134e2473
 
 COCOAPODS: 1.0.1
